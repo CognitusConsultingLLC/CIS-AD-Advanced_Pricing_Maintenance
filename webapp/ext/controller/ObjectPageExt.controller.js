@@ -20,32 +20,40 @@ sap.ui.define([
 
 			//this.setTableColumnData();
 			let oRouter = this.getOwnerComponent().getRouter();
-
-			// oRouter.getRoute("xCGDCxI_PRICING_MAIN/toCondCat").attachMatched(this.onRouteMatched, this);
+			oRouter.detachRouteMatched(this.onRouteMatched, this);
+			//	 oRouter.getRoute("xCGDCxI_PRICING_MAIN/toCondCat").attachMatched(this.onRouteMatched, this);
 			oRouter.attachRouteMatched(this.onRouteMatched, this);
 
 			let oModel = this.getOwnerComponent().getModel();
-		//	 oModel.attachRequestCompleted(this.onRouteMatched, this);
-			// if (sap.ui.getCore().byId(
-			// 		"CGDC.CIS-AD-Pricing-Maintenance::sap.suite.ui.generic.template.ObjectPage.view.Details::xCGDCxI_CONDITON_CATALOG--ItemDetails::responsiveTable"
-			// 	)) {
-			// 	let oCustomFieldsTable = that.getOwnerComponent().getModel("CustomFields").getData();
-			// 	let table = sap.ui.getCore().byId(
-			// 		"CGDC.CIS-AD-Pricing-Maintenance::sap.suite.ui.generic.template.ObjectPage.view.Details::xCGDCxI_CONDITON_CATALOG--ItemDetails::Table"
-			// 	);
-		
-			// 	let sInitiallyVisibleFields = Object.keys(oCustomFieldsTable).map(function (k) {
-			// 		return oCustomFieldsTable[k].FIELDNAME.toLowerCase()
-			// 	}).join(",");
-			// 	table.setInitiallyVisibleFields(sInitiallyVisibleFields);
+			//	 oModel.attachRequestCompleted(this.onRouteMatched, this);
+			if (sap.ui.getCore().byId(
+					"CGDC.CIS-AD-Pricing-Maintenance::sap.suite.ui.generic.template.ObjectPage.view.Details::xCGDCxI_CONDITON_CATALOG--ItemDetails::responsiveTable"
+				)) {
+				let oCustomFieldsTable = that.getOwnerComponent().getModel("CustomFields").getData();
+				let table = sap.ui.getCore().byId(
+					"CGDC.CIS-AD-Pricing-Maintenance::sap.suite.ui.generic.template.ObjectPage.view.Details::xCGDCxI_CONDITON_CATALOG--ItemDetails::Table"
+				);
 
-			// }
+				let sInitiallyVisibleFields = Object.keys(oCustomFieldsTable).map(function (k) {
+					return oCustomFieldsTable[k].FIELDNAME.toLowerCase()
+				}).join(",");
+				//	table.setInitiallyVisibleFields(sInitiallyVisibleFields);
+				let oColumn = sap.ui.getCore().byId(
+					"CGDC.CIS-AD-Pricing-Maintenance::sap.suite.ui.generic.template.ObjectPage.view.Details::xCGDCxI_CONDITON_CATALOG--ItemDetails::Table-vbeln"
+				);
+				if (oColumn) {
+					//oColumn.setVisible(false);
+					table.getTable().getColumns()[0].setVisible(false);
+					this.getView().getModel().refresh(true)
+				}
+
+			}
 
 			this.extensionAPI.attachPageDataLoaded(function (oEvent) {
 				{
 					let spath = oEvent.context.getPath();
 					that.object = that.getView().getBindingContext().getObject(spath);
-					that.onRouteMatched();
+					//	that.onRouteMatched();
 				}
 			});
 		},
@@ -75,7 +83,9 @@ sap.ui.define([
 						);
 						//oColumn.setVisible(false);
 						table.getTable().getColumns()[0].setVisible(false);
-					//	table.setInitiallyVisibleFields(sInitiallyVisibleFields);
+						this.getView().getModel().refresh(true)
+						//	table.refresh(true);
+						//	table.setInitiallyVisibleFields(sInitiallyVisibleFields);
 					}
 
 				}
@@ -105,20 +115,34 @@ sap.ui.define([
 				});
 			}
 		},
-		onBeforeRendering: function () {
-			// if (sap.ui.getCore().byId(
-			// 		"CGDC.CIS-AD-Pricing-Maintenance::sap.suite.ui.generic.template.ObjectPage.view.Details::xCGDCxI_CONDITON_CATALOG--ItemDetails::responsiveTable"
-			// 	)) {
-			// 	let oCustomFieldsTable = this.getOwnerComponent().getModel("CustomFields").getData();
-			// 	let table = sap.ui.getCore().byId(
-			// 		"CGDC.CIS-AD-Pricing-Maintenance::sap.suite.ui.generic.template.ObjectPage.view.Details::xCGDCxI_CONDITON_CATALOG--ItemDetails::Table"
-			// 	);
-			// 	let sInitiallyVisibleFields = Object.keys(oCustomFieldsTable).map(function (k) {
-			// 		return oCustomFieldsTable[k].FIELDNAME.toLowerCase()
-			// 	}).join(",");
-			// 	table.setInitiallyVisibleFields(sInitiallyVisibleFields);
-
-			// }
+		onBeforeRebindTableExtension: function () {
+			if (sap.ui.getCore().byId(
+					"CGDC.CIS-AD-Pricing-Maintenance::sap.suite.ui.generic.template.ObjectPage.view.Details::xCGDCxI_CONDITON_CATALOG--ItemDetails::responsiveTable"
+				)) {
+				let oCustomFieldsTable = this.getOwnerComponent().getModel("CustomFields").getData();
+				let table = sap.ui.getCore().byId(
+					"CGDC.CIS-AD-Pricing-Maintenance::sap.suite.ui.generic.template.ObjectPage.view.Details::xCGDCxI_CONDITON_CATALOG--ItemDetails::Table"
+				);
+				let sInitiallyVisibleFields = Object.keys(oCustomFieldsTable).map(function (k) {
+					return oCustomFieldsTable[k].FIELDNAME.toLowerCase()
+				}).join(",");
+				//table.setInitiallyVisibleFields(sInitiallyVisibleFields);
+				let oColumn = sap.ui.getCore().byId(
+					"CGDC.CIS-AD-Pricing-Maintenance::sap.suite.ui.generic.template.ObjectPage.view.Details::xCGDCxI_CONDITON_CATALOG--ItemDetails::Table-vbeln"
+				);
+				if (oColumn) {
+					//oColumn.setVisible(false);
+					table.getTable().getColumns()[0].setVisible(false);
+					this.getView().getModel().refresh(true);
+				//	table.refresh(true);
+				}
+			}
+		},
+		onExit: function () {
+			var
+				oRouter = this.getOwnerComponent().getRouter();
+			oRouter.detachRouteMatched(this.onRouteMatched, this);
+			// Clean up event listeners
 		}
 
 	});
