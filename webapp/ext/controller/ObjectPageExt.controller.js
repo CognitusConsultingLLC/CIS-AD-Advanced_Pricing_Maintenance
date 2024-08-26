@@ -24,21 +24,22 @@ sap.ui.define([
 			// oRouter.getRoute("xCGDCxI_PRICING_MAIN/toCondCat").attachMatched(this.onRouteMatched, this);
 			oRouter.attachRouteMatched(this.onRouteMatched, this);
 
-			// let oModel = this.getOwnerComponent().getModel();
-			// oModel.attachRequestCompleted(this.onRouteMatched, this);
-			if (sap.ui.getCore().byId(
-					"CGDC.CIS-AD-Pricing-Maintenance::sap.suite.ui.generic.template.ObjectPage.view.Details::xCGDCxI_CONDITON_CATALOG--ItemDetails::responsiveTable"
-				)) {
-				let oCustomFieldsTable = that.getOwnerComponent().getModel("CustomFields").getData();
-				let table = sap.ui.getCore().byId(
-					"CGDC.CIS-AD-Pricing-Maintenance::sap.suite.ui.generic.template.ObjectPage.view.Details::xCGDCxI_CONDITON_CATALOG--ItemDetails::Table"
-				);
-				let sInitiallyVisibleFields = Object.keys(oCustomFieldsTable).map(function (k) {
-					return oCustomFieldsTable[k].FIELDNAME.toLowerCase()
-				}).join(",");
-				table.setInitiallyVisibleFields(sInitiallyVisibleFields);
+			let oModel = this.getOwnerComponent().getModel();
+		//	 oModel.attachRequestCompleted(this.onRouteMatched, this);
+			// if (sap.ui.getCore().byId(
+			// 		"CGDC.CIS-AD-Pricing-Maintenance::sap.suite.ui.generic.template.ObjectPage.view.Details::xCGDCxI_CONDITON_CATALOG--ItemDetails::responsiveTable"
+			// 	)) {
+			// 	let oCustomFieldsTable = that.getOwnerComponent().getModel("CustomFields").getData();
+			// 	let table = sap.ui.getCore().byId(
+			// 		"CGDC.CIS-AD-Pricing-Maintenance::sap.suite.ui.generic.template.ObjectPage.view.Details::xCGDCxI_CONDITON_CATALOG--ItemDetails::Table"
+			// 	);
+		
+			// 	let sInitiallyVisibleFields = Object.keys(oCustomFieldsTable).map(function (k) {
+			// 		return oCustomFieldsTable[k].FIELDNAME.toLowerCase()
+			// 	}).join(",");
+			// 	table.setInitiallyVisibleFields(sInitiallyVisibleFields);
 
-			}
+			// }
 
 			this.extensionAPI.attachPageDataLoaded(function (oEvent) {
 				{
@@ -69,7 +70,12 @@ sap.ui.define([
 						let sInitiallyVisibleFields = Object.keys(oCustomFieldsTable).map(function (k) {
 							return oCustomFieldsTable[k].FIELDNAME.toLowerCase()
 						}).join(",");
-						table.setInitiallyVisibleFields(sInitiallyVisibleFields);
+						let oColumn = sap.ui.getCore().byId(
+							"CGDC.CIS-AD-Pricing-Maintenance::sap.suite.ui.generic.template.ObjectPage.view.Details::xCGDCxI_CONDITON_CATALOG--ItemDetails::Table-vbeln"
+						);
+						//oColumn.setVisible(false);
+						table.getTable().getColumns()[0].setVisible(false);
+					//	table.setInitiallyVisibleFields(sInitiallyVisibleFields);
 					}
 
 				}
@@ -100,19 +106,19 @@ sap.ui.define([
 			}
 		},
 		onBeforeRendering: function () {
-			if (sap.ui.getCore().byId(
-					"CGDC.CIS-AD-Pricing-Maintenance::sap.suite.ui.generic.template.ObjectPage.view.Details::xCGDCxI_CONDITON_CATALOG--ItemDetails::responsiveTable"
-				)) {
-				let oCustomFieldsTable = this.getOwnerComponent().getModel("CustomFields").getData();
-				let table = sap.ui.getCore().byId(
-					"CGDC.CIS-AD-Pricing-Maintenance::sap.suite.ui.generic.template.ObjectPage.view.Details::xCGDCxI_CONDITON_CATALOG--ItemDetails::Table"
-				);
-				let sInitiallyVisibleFields = Object.keys(oCustomFieldsTable).map(function (k) {
-					return oCustomFieldsTable[k].FIELDNAME.toLowerCase()
-				}).join(",");
-				table.setInitiallyVisibleFields(sInitiallyVisibleFields);
+			// if (sap.ui.getCore().byId(
+			// 		"CGDC.CIS-AD-Pricing-Maintenance::sap.suite.ui.generic.template.ObjectPage.view.Details::xCGDCxI_CONDITON_CATALOG--ItemDetails::responsiveTable"
+			// 	)) {
+			// 	let oCustomFieldsTable = this.getOwnerComponent().getModel("CustomFields").getData();
+			// 	let table = sap.ui.getCore().byId(
+			// 		"CGDC.CIS-AD-Pricing-Maintenance::sap.suite.ui.generic.template.ObjectPage.view.Details::xCGDCxI_CONDITON_CATALOG--ItemDetails::Table"
+			// 	);
+			// 	let sInitiallyVisibleFields = Object.keys(oCustomFieldsTable).map(function (k) {
+			// 		return oCustomFieldsTable[k].FIELDNAME.toLowerCase()
+			// 	}).join(",");
+			// 	table.setInitiallyVisibleFields(sInitiallyVisibleFields);
 
-			}
+			// }
 		}
 
 	});
