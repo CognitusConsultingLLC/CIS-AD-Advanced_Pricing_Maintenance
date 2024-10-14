@@ -15,134 +15,114 @@ sap.ui.define([
 
 	return sap.ui.controller("CGDC.CIS-AD-Pricing-Maintenance.ext.controller.ObjectPageExt", {
 		onInit: function () {
-			//	this.initializeJSONModel();
 			let that = this;
-
-			//this.setTableColumnData();
-			let oRouter = this.getOwnerComponent().getRouter();
-			oRouter.detachRouteMatched(this.onRouteMatched, this);
-			//	 oRouter.getRoute("xCGDCxI_PRICING_MAIN/toCondCat").attachMatched(this.onRouteMatched, this);
-			oRouter.attachRouteMatched(this.onRouteMatched, this);
-
-			let oModel = this.getOwnerComponent().getModel();
-			//	 oModel.attachRequestCompleted(this.onRouteMatched, this);
-			if (sap.ui.getCore().byId(
-					"CGDC.CIS-AD-Pricing-Maintenance::sap.suite.ui.generic.template.ObjectPage.view.Details::xCGDCxI_CONDITON_CATALOG--ItemDetails::responsiveTable"
-				)) {
-				let oCustomFieldsTable = that.getOwnerComponent().getModel("CustomFields").getData();
-				let table = sap.ui.getCore().byId(
-					"CGDC.CIS-AD-Pricing-Maintenance::sap.suite.ui.generic.template.ObjectPage.view.Details::xCGDCxI_CONDITON_CATALOG--ItemDetails::Table"
-				);
-
-				let sInitiallyVisibleFields = Object.keys(oCustomFieldsTable).map(function (k) {
-					return oCustomFieldsTable[k].FIELDNAME.toLowerCase()
-				}).join(",");
-				//	table.setInitiallyVisibleFields(sInitiallyVisibleFields);
-				let oColumn = sap.ui.getCore().byId(
-					"CGDC.CIS-AD-Pricing-Maintenance::sap.suite.ui.generic.template.ObjectPage.view.Details::xCGDCxI_CONDITON_CATALOG--ItemDetails::Table-vbeln"
-				);
-				if (oColumn) {
-					//oColumn.setVisible(false);
-					table.getTable().getColumns()[0].setVisible(false);
-					this.getView().getModel().refresh(true)
-				}
-
-			}
-
 			this.extensionAPI.attachPageDataLoaded(function (oEvent) {
 				{
 					let spath = oEvent.context.getPath();
 					that.object = that.getView().getBindingContext().getObject(spath);
-					//	that.onRouteMatched();
+					if (that.object.Kotab) {
+						that.aTable = that.object.Kotab;
+						that.Kschl = that.object.Kschl;
+						that.Vbeln =  that.object.Vbeln;
+					}
+					if (that.object.kotab) {
+						that.aTable = that.object.kotab;
+						that.Kschl = that.object.kschl;
+						that.Vbeln =  that.object.vbeln;
+					}
+					that.setTableColumnData(that.aTable, that.Kschl, that.Vbeln);
 				}
 			});
 		},
-		onRouteMatched: function () {
-			if (this.getView().getId(
-					"CGDC.CIS-AD-Pricing-Maintenance::sap.suite.ui.generic.template.ObjectPage.view.Details::xCGDCxI_PRICING_MAIN"
-				)) {
-				if (this.getView().getBindingContext()) {
-					let spath = this.getView().getBindingContext().sPath;
-					this.object = this.getView().getBindingContext().getObject(spath);
-					if (this.object.Kotab) {
-						this.setTableColumnData(this.object.Kotab);
-						this.getView().getModel().refresh();
-					}
-					if (sap.ui.getCore().byId(
-							"CGDC.CIS-AD-Pricing-Maintenance::sap.suite.ui.generic.template.ObjectPage.view.Details::xCGDCxI_CONDITON_CATALOG--ItemDetails::responsiveTable"
-						)) {
-						let oCustomFieldsTable = this.getOwnerComponent().getModel("CustomFields").getData();
-						let table = sap.ui.getCore().byId(
-							"CGDC.CIS-AD-Pricing-Maintenance::sap.suite.ui.generic.template.ObjectPage.view.Details::xCGDCxI_CONDITON_CATALOG--ItemDetails::Table"
-						);
-						let sInitiallyVisibleFields = Object.keys(oCustomFieldsTable).map(function (k) {
-							return oCustomFieldsTable[k].FIELDNAME.toLowerCase()
-						}).join(",");
-						let oColumn = sap.ui.getCore().byId(
-							"CGDC.CIS-AD-Pricing-Maintenance::sap.suite.ui.generic.template.ObjectPage.view.Details::xCGDCxI_CONDITON_CATALOG--ItemDetails::Table-vbeln"
-						);
-						//oColumn.setVisible(false);
-						table.getTable().getColumns()[0].setVisible(false);
-						this.getView().getModel().refresh(true)
-						//	table.refresh(true);
-						//	table.setInitiallyVisibleFields(sInitiallyVisibleFields);
-					}
 
-				}
+		extractTerms: function (inputString) {
+			// Define a regular expression to capture terms after '--ItemDetails::Table-'
+			const regex = /--ItemDetails::Table-([a-zA-Z0-9_]+)/g;
+
+			// Initialize an array to hold the matched terms
+			let matches = [];
+			let match;
+
+			// Use the regex to find all matches in the string
+			while ((match = regex.exec(inputString)) !== null) {
+				matches.push(match[1]); // match[1] contains the captured term
 			}
+
+			// Return the array of matched terms
+			return matches;
 		},
-		setTableColumnData: function (Kotab) {
+
+		setTableColumnData: function (Kotab, Kschl, Vbeln) {
 			let that = this;
 			if (this.getView().getBindingContext()) {
 				let oModel = this.getView().getModel();
 				let filters = [];
 				let oPath = '/xcgdcxi_pricing_t_key';
 				filters.push(new sap.ui.model.Filter("TABNAME", sap.ui.model.FilterOperator.EQ, Kotab));
+				filters.push(new sap.ui.model.Filter("KSCHL", sap.ui.model.FilterOperator.EQ, Kschl));
+				filters.push(new sap.ui.model.Filter("VBELN", sap.ui.model.FilterOperator.EQ, Vbeln));
 				oModel.read(oPath, {
 					filters: filters,
 					success: function (oData) {
 						let tableColumn = oData.results;
 						that.getOwnerComponent().getModel("CustomFields").setData(tableColumn);
 						if (sap.ui.getCore().byId(
-								"CGDC.CIS-AD-Pricing-Maintenance::sap.suite.ui.generic.template.ObjectPage.view.Details::xCGDCxI_CONDITON_CATALOG--ItemDetails::Table"
-							)) {
+								"CGDC.CIS-AD-Pricing-Maintenance::sap.suite.ui.generic.template.ObjectPage.view.Details::xCGDCxI_CNC_MAIN--Home::Form")) {
+							let createForm = sap.ui.getCore().byId(
+								"CGDC.CIS-AD-Pricing-Maintenance::sap.suite.ui.generic.template.ObjectPage.view.Details::xCGDCxI_CNC_MAIN--Home::Form");
+							let allVisiblieFields = createForm.getVisibleProperties();
+							let oRequiredFields = that.getOwnerComponent().getModel("CustomFields").getData();
+							let aRequiredFields = [];
+							let sInitiallyVisibleFields = Object.keys(oRequiredFields).map(function (k) {
+								aRequiredFields.push(oRequiredFields[k].FIELDNAME.toLowerCase());
+								return oRequiredFields[k].FIELDNAME.toLowerCase()
+							}).join(",");
+							let aDeactivateFields = that.removeElements(allVisiblieFields, aRequiredFields);
+							let aAllSmartfield = createForm.getSmartFields();
+							for (let i = 0; i < aAllSmartfield.length; i++) {
+								aAllSmartfield[i].setVisible(false);
+								for (let j = 0; j < aRequiredFields.length; j++) {
+								if(aAllSmartfield[i].getDataProperty().property.name == aRequiredFields[j]){
+									aAllSmartfield[i].setVisible(true);
+									break;
+								}
+								}
+							}
+							that.getView().getModel().refresh(true);
 
 						}
-
-						//	that.setColumnVisiblity();
+						if (sap.ui.getCore().byId(
+								"CGDC.CIS-AD-Pricing-Maintenance::sap.suite.ui.generic.template.ObjectPage.view.Details::xCGDCxI_CONDITON_CATALOG--ItemDetails::Table"
+							)) {
+							let smarttable = sap.ui.getCore().byId(
+								"CGDC.CIS-AD-Pricing-Maintenance::sap.suite.ui.generic.template.ObjectPage.view.Details::xCGDCxI_CONDITON_CATALOG--ItemDetails::Table"
+							);
+							let responsivetable = sap.ui.getCore().byId(
+								"CGDC.CIS-AD-Pricing-Maintenance::sap.suite.ui.generic.template.ObjectPage.view.Details::xCGDCxI_CONDITON_CATALOG--ItemDetails::responsiveTable"
+							);
+							let oColumns = responsivetable.getColumns();
+							let aColumnId = that.extractTerms(oColumns.toString());
+							let oCustomFieldsTable = that.getOwnerComponent().getModel("CustomFields").getData();
+							let aRequiredColumns = [];
+							let sInitiallyVisibleFields = Object.keys(oCustomFieldsTable).map(function (k) {
+								aRequiredColumns.push(oCustomFieldsTable[k].FIELDNAME.toLowerCase());
+								return oCustomFieldsTable[k].FIELDNAME.toLowerCase()
+							}).join(",");
+							let aDeactivateColumns = that.removeElements(aColumnId, aRequiredColumns);
+							smarttable.deactivateColumns(aDeactivateColumns);
+							that.getView().getModel().refresh(true);
+						}
 					},
 					error: function (oError) {}
 				});
 			}
 		},
-		onBeforeRebindTableExtension: function () {
-			if (sap.ui.getCore().byId(
-					"CGDC.CIS-AD-Pricing-Maintenance::sap.suite.ui.generic.template.ObjectPage.view.Details::xCGDCxI_CONDITON_CATALOG--ItemDetails::responsiveTable"
-				)) {
-				let oCustomFieldsTable = this.getOwnerComponent().getModel("CustomFields").getData();
-				let table = sap.ui.getCore().byId(
-					"CGDC.CIS-AD-Pricing-Maintenance::sap.suite.ui.generic.template.ObjectPage.view.Details::xCGDCxI_CONDITON_CATALOG--ItemDetails::Table"
-				);
-				let sInitiallyVisibleFields = Object.keys(oCustomFieldsTable).map(function (k) {
-					return oCustomFieldsTable[k].FIELDNAME.toLowerCase()
-				}).join(",");
-				//table.setInitiallyVisibleFields(sInitiallyVisibleFields);
-				let oColumn = sap.ui.getCore().byId(
-					"CGDC.CIS-AD-Pricing-Maintenance::sap.suite.ui.generic.template.ObjectPage.view.Details::xCGDCxI_CONDITON_CATALOG--ItemDetails::Table-vbeln"
-				);
-				if (oColumn) {
-					//oColumn.setVisible(false);
-					table.getTable().getColumns()[0].setVisible(false);
-					this.getView().getModel().refresh(true);
-				//	table.refresh(true);
-				}
-			}
-		},
-		onExit: function () {
-			var
-				oRouter = this.getOwnerComponent().getRouter();
-			oRouter.detachRouteMatched(this.onRouteMatched, this);
-			// Clean up event listeners
+		removeElements: function (array, elementsToRemove) {
+			// Create a Set from the elements to remove for efficient lookup
+			const removalSet = new Set(elementsToRemove);
+
+			// Filter the array to remove the elements that are in the removal set
+			return array.filter(item => !removalSet.has(item));
 		}
 
 	});

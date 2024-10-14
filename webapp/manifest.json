@@ -120,8 +120,12 @@
 			},
 			"CustomFields": {
 				"type": "sap.ui.model.json.JSONModel",
-				"settings": {},
-				"preload": false
+				"settings": {
+					"defaultOperationMode": "Server",
+					"defaultBindingMode": "OneWay",
+					"defaultCountMode": "Request"
+				},
+				"preload": true
 			}
 		},
 		"extends": {
@@ -147,8 +151,8 @@
 		"_version": "1.3.0",
 		"settings": {
 			"flexibleColumnLayout": {
-				"defaultTwoColumnLayoutType": "ThreeColumnsEndExpanded",
-			  	"defaultThreeColumnLayoutType": "ThreeColumnsEndExpanded"
+				"defaultTwoColumnLayoutType": "TwoColumnsMidExpanded",
+				"defaultThreeColumnLayoutType": "ThreeColumnsEndExpanded"
 			},
 			"forceGlobalRefresh": true,
 			"objectPageHeaderType": "Dynamic",
@@ -173,7 +177,7 @@
 				"pages": {
 					"ObjectPage|xCGDCxI_PRICING_MAIN": {
 						"entitySet": "xCGDCxI_PRICING_MAIN",
-						"defaultLayoutTypeIfExternalNavigation": "MidColumnFullScreen",
+						"defaultLayoutType": "OneColumn",
 						"component": {
 							"name": "sap.suite.ui.generic.template.ObjectPage"
 						},
@@ -181,6 +185,7 @@
 							"ObjectPage|toCondCat": {
 								"navigationProperty": "toCondCat",
 								"entitySet": "xCGDCxI_CONDITON_CATALOG",
+								"defaultLayoutType": "OneColumn",
 								"defaultLayoutTypeIfExternalNavigation": "MidColumnFullScreen",
 								"component": {
 									"name": "sap.suite.ui.generic.template.ObjectPage"
@@ -191,7 +196,10 @@
 										"entitySet": "xCGDCxI_CNC_MAIN",
 										"defaultLayoutTypeIfExternalNavigation": "MidColumnFullScreen",
 										"component": {
-											"name": "sap.suite.ui.generic.template.ObjectPage"
+											"name": "sap.suite.ui.generic.template.ObjectPage",
+											"settings": {
+												"createMode": "inline"
+											}
 										}
 									}
 								}
