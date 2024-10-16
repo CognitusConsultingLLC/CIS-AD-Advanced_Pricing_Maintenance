@@ -18,23 +18,36 @@ sap.ui.define([
 			let that = this;
 			this.extensionAPI.attachPageDataLoaded(function (oEvent) {
 				{
-					let spath = oEvent.context.getPath();
-					that.object = that.getView().getBindingContext().getObject(spath);
-					if (that.object.Kotab) {
-						that.aTable = that.object.Kotab;
-						that.Kschl = that.object.Kschl;
-						that.Vbeln =  that.object.Vbeln;
+					that.object = that.extractParameters(oEvent.context.getDeepPath());
+					if (that.object) {
+						if (that.object.Kotab) {
+							that.aTable = that.object.Kotab;
+							that.Kschl = that.object.Kschl;
+							that.Vbeln = that.object.Vbeln;
+						}
+						if (that.object.kotab) {
+							that.aTable = that.object.kotab;
+							that.Kschl = that.object.kschl;
+							that.Vbeln = that.object.vbeln;
+						}
+						that.setTableColumnData(that.aTable, that.Kschl, that.Vbeln);
 					}
-					if (that.object.kotab) {
-						that.aTable = that.object.kotab;
-						that.Kschl = that.object.kschl;
-						that.Vbeln =  that.object.vbeln;
-					}
-					that.setTableColumnData(that.aTable, that.Kschl, that.Vbeln);
 				}
 			});
 		},
+		extractParameters: function(inputString) {
+			// Regular expression to match the parameters in the form of Key='Value'
+			const regex = /(\w+)=\'([^\']*)\'/g;
+			const parameters = {};
+			let match;
 
+			// Iterate over all matches and store them in an object
+			while ((match = regex.exec(inputString)) !== null) {
+				parameters[match[1]] = match[2];
+			}
+
+			return parameters;
+		},
 		extractTerms: function (inputString) {
 			// Define a regular expression to capture terms after '--ItemDetails::Table-'
 			const regex = /--ItemDetails::Table-([a-zA-Z0-9_]+)/g;
@@ -82,13 +95,13 @@ sap.ui.define([
 							for (let i = 0; i < aAllSmartfield.length; i++) {
 								aAllSmartfield[i].setVisible(false);
 								for (let j = 0; j < aRequiredFields.length; j++) {
-								if(aAllSmartfield[i].getDataProperty().property.name == aRequiredFields[j]){
-									aAllSmartfield[i].setVisible(true);
-									break;
-								}
+									if (aAllSmartfield[i].getDataProperty().property.name == aRequiredFields[j]) {
+										aAllSmartfield[i].setVisible(true);
+										break;
+									}
 								}
 							}
-							that.getView().getModel().refresh(true);
+							//	that.getView().getModel().refresh(true);
 
 						}
 						if (sap.ui.getCore().byId(
@@ -110,7 +123,7 @@ sap.ui.define([
 							}).join(",");
 							let aDeactivateColumns = that.removeElements(aColumnId, aRequiredColumns);
 							smarttable.deactivateColumns(aDeactivateColumns);
-							that.getView().getModel().refresh(true);
+							//	that.getView().getModel().refresh(true);
 						}
 					},
 					error: function (oError) {}

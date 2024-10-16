@@ -196,10 +196,7 @@
 										"entitySet": "xCGDCxI_CNC_MAIN",
 										"defaultLayoutTypeIfExternalNavigation": "MidColumnFullScreen",
 										"component": {
-											"name": "sap.suite.ui.generic.template.ObjectPage",
-											"settings": {
-												"createMode": "inline"
-											}
+											"name": "sap.suite.ui.generic.template.ObjectPage"
 										}
 									}
 								}
