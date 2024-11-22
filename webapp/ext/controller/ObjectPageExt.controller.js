@@ -14,120 +14,204 @@ sap.ui.define([
 	"use strict";
 
 	return sap.ui.controller("CGDC.CIS-AD-Pricing-Maintenance.ext.controller.ObjectPageExt", {
-		onInit: function () {
-			let that = this;
-			this.extensionAPI.attachPageDataLoaded(function (oEvent) {
-				{
-					that.object = that.extractParameters(oEvent.context.getDeepPath());
-					if (that.object) {
-						if (that.object.Kotab) {
-							that.aTable = that.object.Kotab;
-							that.Kschl = that.object.Kschl;
-							that.Vbeln = that.object.Vbeln;
+			onInit: function () {
+				let that = this;
+				this.extensionAPI.attachPageDataLoaded(function (oEvent) {
+					{
+						that.object = that.extractParameters(oEvent.context.getDeepPath());
+						that.additionalData = oEvent.context.getProperty('AddDataVis');
+						if (that.object) {
+							if (that.object.Kotab) {
+								that.aTable = that.object.Kotab;
+								that.Kschl = that.object.Kschl;
+
+							}
+							if (that.object.kotab) {
+								that.aTable = that.object.kotab;
+								that.Kschl = that.object.kschl;
+
+							}
+							that.setTableColumnData(that.aTable, that.Kschl);
+							let edit = sap.ui.getCore().byId(
+								"CGDC.CIS-AD-Pricing-Maintenance::sap.suite.ui.generic.template.ObjectPage.view.Details::xCGDCxI_CNC_MAIN--edit");
+							if (edit) {
+								edit.attachPress(that.editPress, that);
+							}
+
 						}
-						if (that.object.kotab) {
-							that.aTable = that.object.kotab;
-							that.Kschl = that.object.kschl;
-							that.Vbeln = that.object.vbeln;
+					}
+				});
+			},
+			editPress: function () {
+				if (sap.ui.getCore().byId(
+						"CGDC.CIS-AD-Pricing-Maintenance::sap.suite.ui.generic.template.ObjectPage.view.Details::xCGDCxI_CNC_MAIN--Home::Form")) {
+					let createForm = sap.ui.getCore().byId(
+						"CGDC.CIS-AD-Pricing-Maintenance::sap.suite.ui.generic.template.ObjectPage.view.Details::xCGDCxI_CNC_MAIN--Home::Form");
+					let aAllSmartfield = createForm.getSmartFields();
+					for (let i = 0; i < aAllSmartfield.length; i++) {
+						if (aAllSmartfield[i].getDataProperty().property.name == 'vbelnentry') {
+							if (aAllSmartfield[6].getValue() == "") {
+								aAllSmartfield[6].setEditable(true);
+							} else {
+								aAllSmartfield[6].setEditable(false);
+							}
 						}
-						that.setTableColumnData(that.aTable, that.Kschl, that.Vbeln);
 					}
 				}
-			});
-		},
-		extractParameters: function(inputString) {
-			// Regular expression to match the parameters in the form of Key='Value'
-			const regex = /(\w+)=\'([^\']*)\'/g;
-			const parameters = {};
-			let match;
 
-			// Iterate over all matches and store them in an object
-			while ((match = regex.exec(inputString)) !== null) {
-				parameters[match[1]] = match[2];
-			}
+			},
+			extractParameters: function (inputString) {
+				// Regular expression to match the parameters in the form of Key='Value'
+				const regex = /(\w+)=\'([^\']*)\'/g;
+				const parameters = {};
+				let match;
 
-			return parameters;
-		},
-		extractTerms: function (inputString) {
-			// Define a regular expression to capture terms after '--ItemDetails::Table-'
-			const regex = /--ItemDetails::Table-([a-zA-Z0-9_]+)/g;
+				// Iterate over all matches and store them in an object
+				while ((match = regex.exec(inputString)) !== null) {
+					parameters[match[1]] = match[2];
+				}
 
-			// Initialize an array to hold the matched terms
-			let matches = [];
-			let match;
+				return parameters;
+			},
+			extractTerms: function (inputString) {
+				// Define a regular expression to capture terms after '--ItemDetails::Table-'
+				const regex = /--ItemDetails::Table-([a-zA-Z0-9_]+)/g;
 
-			// Use the regex to find all matches in the string
-			while ((match = regex.exec(inputString)) !== null) {
-				matches.push(match[1]); // match[1] contains the captured term
-			}
+				// Initialize an array to hold the matched terms
+				let matches = [];
+				let match;
 
-			// Return the array of matched terms
-			return matches;
-		},
+				// Use the regex to find all matches in the string
+				while ((match = regex.exec(inputString)) !== null) {
+					matches.push(match[1]); // match[1] contains the captured term
+				}
 
-		setTableColumnData: function (Kotab, Kschl, Vbeln) {
-			let that = this;
-			if (this.getView().getBindingContext()) {
-				let oModel = this.getView().getModel();
-				let filters = [];
-				let oPath = '/xcgdcxi_pricing_t_key';
-				filters.push(new sap.ui.model.Filter("TABNAME", sap.ui.model.FilterOperator.EQ, Kotab));
-				filters.push(new sap.ui.model.Filter("KSCHL", sap.ui.model.FilterOperator.EQ, Kschl));
-				filters.push(new sap.ui.model.Filter("VBELN", sap.ui.model.FilterOperator.EQ, Vbeln));
-				oModel.read(oPath, {
-					filters: filters,
-					success: function (oData) {
-						let tableColumn = oData.results;
-						that.getOwnerComponent().getModel("CustomFields").setData(tableColumn);
-						if (sap.ui.getCore().byId(
-								"CGDC.CIS-AD-Pricing-Maintenance::sap.suite.ui.generic.template.ObjectPage.view.Details::xCGDCxI_CNC_MAIN--Home::Form")) {
-							let createForm = sap.ui.getCore().byId(
-								"CGDC.CIS-AD-Pricing-Maintenance::sap.suite.ui.generic.template.ObjectPage.view.Details::xCGDCxI_CNC_MAIN--Home::Form");
-							let allVisiblieFields = createForm.getVisibleProperties();
-							let oRequiredFields = that.getOwnerComponent().getModel("CustomFields").getData();
-							let aRequiredFields = [];
-							let sInitiallyVisibleFields = Object.keys(oRequiredFields).map(function (k) {
-								aRequiredFields.push(oRequiredFields[k].FIELDNAME.toLowerCase());
-								return oRequiredFields[k].FIELDNAME.toLowerCase()
-							}).join(",");
-							let aDeactivateFields = that.removeElements(allVisiblieFields, aRequiredFields);
-							let aAllSmartfield = createForm.getSmartFields();
-							for (let i = 0; i < aAllSmartfield.length; i++) {
-								aAllSmartfield[i].setVisible(false);
-								for (let j = 0; j < aRequiredFields.length; j++) {
-									if (aAllSmartfield[i].getDataProperty().property.name == aRequiredFields[j]) {
-										aAllSmartfield[i].setVisible(true);
-										break;
+				// Return the array of matched terms
+				return matches;
+			},
+
+			setTableColumnData: function (Kotab, Kschl, Vbeln, mganr) {
+				let that = this;
+				if (this.getView().getBindingContext()) {
+					let oModel = this.getView().getModel();
+					let filters = [];
+					let oPath = '/xcgdcxi_pricing_t_key';
+					filters.push(new sap.ui.model.Filter("TABNAME", sap.ui.model.FilterOperator.EQ, Kotab));
+					filters.push(new sap.ui.model.Filter("KSCHL", sap.ui.model.FilterOperator.EQ, Kschl));
+					//	filters.push(new sap.ui.model.Filter("VBELN", sap.ui.model.FilterOperator.EQ, Vbeln));
+					//		filters.push(new sap.ui.model.Filter("MGANR", sap.ui.model.FilterOperator.EQ, mganr));
+					oModel.read(oPath, {
+							filters: filters,
+							success: function (oData) {
+								let tableColumn = oData.results;
+								that.getOwnerComponent().getModel("CustomFields").setData(tableColumn);
+								if (sap.ui.getCore().byId(
+										"CGDC.CIS-AD-Pricing-Maintenance::sap.suite.ui.generic.template.ObjectPage.view.Details::xCGDCxI_CNC_MAIN--Home::Form")) {
+									let createForm = sap.ui.getCore().byId(
+										"CGDC.CIS-AD-Pricing-Maintenance::sap.suite.ui.generic.template.ObjectPage.view.Details::xCGDCxI_CNC_MAIN--Home::Form");
+									let allVisiblieFields = createForm.getVisibleProperties();
+									let oRequiredFields = that.getOwnerComponent().getModel("CustomFields").getData();
+									let aRequiredFields = [];
+									let sInitiallyVisibleFields = Object.keys(oRequiredFields).map(function (k) {
+										aRequiredFields.push(oRequiredFields[k].FIELDNAME.toLowerCase());
+										return oRequiredFields[k].FIELDNAME.toLowerCase()
+									}).join(",");
+									let aDeactivateFields = that.removeElements(allVisiblieFields, aRequiredFields);
+									let aAllSmartfield = createForm.getSmartFields();
+									for (let i = 0; i < aAllSmartfield.length; i++) {
+										aAllSmartfield[i].setVisible(false);
+										for (let j = 0; j < aRequiredFields.length; j++) {
+											if (aAllSmartfield[i].getDataProperty().property.name == aRequiredFields[j]) {
+												aAllSmartfield[i].setVisible(true);
+												break;
+											}
+
+										}
+
+									}
+								}
+
+								//	that.getView().getModel().refresh(true);
+
+								if (sap.ui.getCore().byId(
+										"CGDC.CIS-AD-Pricing-Maintenance::sap.suite.ui.generic.template.ObjectPage.view.Details::xCGDCxI_CNC_MAIN--Price::Form")) {
+									let oPriceForm = sap.ui.getCore().byId(
+										"CGDC.CIS-AD-Pricing-Maintenance::sap.suite.ui.generic.template.ObjectPage.view.Details::xCGDCxI_CNC_MAIN--Price::Form");
+									let allVisiblieFields = oPriceForm.getVisibleProperties();
+									let oRequiredFields = that.getOwnerComponent().getModel("CustomFields").getData();
+									let aRequiredFields = [];
+									let sInitiallyVisibleFields = Object.keys(oRequiredFields).map(function (k) {
+										aRequiredFields.push(oRequiredFields[k].FIELDNAME.toLowerCase());
+										return oRequiredFields[k].FIELDNAME.toLowerCase()
+									}).join(",");
+									let aDeactivateFields = that.removeElements(allVisiblieFields, aRequiredFields);
+									let aAllSmartfield = oPriceForm.getSmartFields();
+									for (let i = 0; i < aAllSmartfield.length; i++) {
+										aAllSmartfield[i].setVisible(false);
+										for (let j = 0; j < aRequiredFields.length; j++) {
+											if (aAllSmartfield[i].getDataProperty().property.name == aRequiredFields[j]) {
+												aAllSmartfield[i].setVisible(true);
+												break;
+											}
+										}
+									}
+
+								}
+								if (sap.ui.getCore().byId(
+										"CGDC.CIS-AD-Pricing-Maintenance::sap.suite.ui.generic.template.ObjectPage.view.Details::xCGDCxI_CNC_MAIN--AddData::Form")) {
+									let oAddDataForm = sap.ui.getCore().byId(
+										"CGDC.CIS-AD-Pricing-Maintenance::sap.suite.ui.generic.template.ObjectPage.view.Details::xCGDCxI_CNC_MAIN--AddData::Form");
+									let addSection = sap.ui.getCore().byId(
+										"CGDC.CIS-AD-Pricing-Maintenance::sap.suite.ui.generic.template.ObjectPage.view.Details::xCGDCxI_CNC_MAIN--AddData::Section"
+									);
+									addSection.setVisible(true);
+									if (that.additionalData === 'X') {
+										addSection.setVisible(false);
+									} else {
+										let allVisiblieFields = oAddDataForm.getVisibleProperties();
+										let oRequiredFields = that.getOwnerComponent().getModel("CustomFields").getData();
+										let aRequiredFields = [];
+										let sInitiallyVisibleFields = Object.keys(oRequiredFields).map(function (k) {
+											aRequiredFields.push(oRequiredFields[k].FIELDNAME.toLowerCase());
+											return oRequiredFields[k].FIELDNAME.toLowerCase()
+										}).join(",");
+										let aDeactivateFields = that.removeElements(allVisiblieFields, aRequiredFields);
+										let aAllSmartfield = oAddDataForm.getSmartFields();
+										for (let i = 0; i < aAllSmartfield.length; i++) {
+											aAllSmartfield[i].setVisible(false);
+											for (let j = 0; j < aRequiredFields.length; j++) {
+												if( aAllSmartfield[i].getId().includes(aRequiredFields[j]) ) {
+												aAllSmartfield[i].setVisible(true);
+												break;
+											}
+										}
 									}
 								}
 							}
-							//	that.getView().getModel().refresh(true);
-
-						}
-						if (sap.ui.getCore().byId(
-								"CGDC.CIS-AD-Pricing-Maintenance::sap.suite.ui.generic.template.ObjectPage.view.Details::xCGDCxI_CONDITON_CATALOG--ItemDetails::Table"
-							)) {
-							let smarttable = sap.ui.getCore().byId(
-								"CGDC.CIS-AD-Pricing-Maintenance::sap.suite.ui.generic.template.ObjectPage.view.Details::xCGDCxI_CONDITON_CATALOG--ItemDetails::Table"
-							);
-							let responsivetable = sap.ui.getCore().byId(
-								"CGDC.CIS-AD-Pricing-Maintenance::sap.suite.ui.generic.template.ObjectPage.view.Details::xCGDCxI_CONDITON_CATALOG--ItemDetails::responsiveTable"
-							);
-							let oColumns = responsivetable.getColumns();
-							let aColumnId = that.extractTerms(oColumns.toString());
-							let oCustomFieldsTable = that.getOwnerComponent().getModel("CustomFields").getData();
-							let aRequiredColumns = [];
-							let sInitiallyVisibleFields = Object.keys(oCustomFieldsTable).map(function (k) {
-								aRequiredColumns.push(oCustomFieldsTable[k].FIELDNAME.toLowerCase());
-								return oCustomFieldsTable[k].FIELDNAME.toLowerCase()
-							}).join(",");
-							let aDeactivateColumns = that.removeElements(aColumnId, aRequiredColumns);
-							smarttable.deactivateColumns(aDeactivateColumns);
-							//	that.getView().getModel().refresh(true);
-						}
-					},
-					error: function (oError) {}
-				});
+							if (sap.ui.getCore().byId(
+									"CGDC.CIS-AD-Pricing-Maintenance::sap.suite.ui.generic.template.ObjectPage.view.Details::xCGDCxI_CONDITON_CATALOG--ItemDetails::Table"
+								)) {
+								let smarttable = sap.ui.getCore().byId(
+									"CGDC.CIS-AD-Pricing-Maintenance::sap.suite.ui.generic.template.ObjectPage.view.Details::xCGDCxI_CONDITON_CATALOG--ItemDetails::Table"
+								);
+								let responsivetable = sap.ui.getCore().byId(
+									"CGDC.CIS-AD-Pricing-Maintenance::sap.suite.ui.generic.template.ObjectPage.view.Details::xCGDCxI_CONDITON_CATALOG--ItemDetails::responsiveTable"
+								);
+								let oColumns = responsivetable.getColumns();
+								let aColumnId = that.extractTerms(oColumns.toString());
+								let oCustomFieldsTable = that.getOwnerComponent().getModel("CustomFields").getData();
+								let aRequiredColumns = [];
+								let sInitiallyVisibleFields = Object.keys(oCustomFieldsTable).map(function (k) {
+									aRequiredColumns.push(oCustomFieldsTable[k].FIELDNAME.toLowerCase());
+									return oCustomFieldsTable[k].FIELDNAME.toLowerCase()
+								}).join(",");
+								let aDeactivateColumns = that.removeElements(aColumnId, aRequiredColumns);
+								smarttable.deactivateColumns(aDeactivateColumns);
+								//	that.getView().getModel().refresh(true);
+							}
+						},
+						error: function (oError) {}
+					});
 			}
 		},
 		removeElements: function (array, elementsToRemove) {
