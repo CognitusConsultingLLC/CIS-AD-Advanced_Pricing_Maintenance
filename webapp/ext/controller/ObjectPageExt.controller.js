@@ -8,9 +8,10 @@ sap.ui.define([
 	"sap/ui/core/ListItem",
 	"sap/ui/model/Sorter",
 	"sap/m/BusyDialog",
-	"sap/ui/comp/state/UIState"
+	"sap/ui/comp/state/UIState",
+	"xlsx"
 
-], function (ControllerExtension, JSONModel, Fragment, ODataModel, Filter, FilterOperator, ListItem, Sorter, BusyDialog, UIState) {
+], function (ControllerExtension, JSONModel, Fragment, ODataModel, Filter, FilterOperator, ListItem, Sorter, BusyDialog, UIState, XLSX) {
 	"use strict";
 
 	return sap.ui.controller("CGDC.CIS-AD-Pricing-Maintenance.ext.controller.ObjectPageExt", {
@@ -212,6 +213,43 @@ sap.ui.define([
 						},
 						error: function (oError) {}
 					});
+			}
+		},
+		onExcelUpload : function(oEvent){
+			
+		},
+		onImportToExcel : function(oEvent){
+			let responsivetable = sap.ui.getCore().byId(
+				"CGDC.CIS-AD-Pricing-Maintenance::sap.suite.ui.generic.template.ObjectPage.view.Details::xCGDCxI_CONDITON_CATALOG--ItemDetails::responsiveTable"
+			);
+			if (responsivetable.getSelectedItem()) {
+				let aColumns = this.getOwnerComponent().getModel("CustomFields").getData();
+				  // get the odata model binded to this application
+				  var oModel = this.getView().getModel();	  
+				  var excelColumnList = [];
+				  var colList = {};
+				  aColumns.forEach((value, index)=>{
+					colList[value.FIELDNAME] = '';
+				  });
+				//   // finding the property description corresponding to the property id
+				//   propertyList.forEach((value, index) => {
+				// 	  let property = oBuilding.property.find(x => x.name === value);
+				// 	  colList[property.extensions.find(x => x.name === 'label').value] = '';
+				//   });
+				   excelColumnList.push(colList);
+				  
+				  // initialising the excel work sheet
+				  const ws = XLSX.utils.json_to_sheet(excelColumnList);
+				  // creating the new excel work book
+				  const wb = XLSX.utils.book_new();
+				  // set the file value
+				  XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
+				  // download the created excel file
+				  XLSX.writeFile(wb, 'Condition_Catalogs.xlsx');
+	  
+				  sap.m.MessageToast.show(this.getView().getModel("i18n").getResourceBundle().getText("tempdownload"));
+			}else{
+				sap.m.MessageToast.show(this.getView().getModel("i18n").getResourceBundle().getText("selectitem"));
 			}
 		},
 		removeElements: function (array, elementsToRemove) {
