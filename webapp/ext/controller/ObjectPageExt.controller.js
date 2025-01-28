@@ -215,22 +215,174 @@ sap.ui.define([
 					});
 			}
 		},
-		onExcelUpload : function(oEvent){
+		onUploadCancelButton : function(oEvent){
+			this.oUploadDialog.close();
+		},
+		handleUploadComplete : function(oEvent){
+			this.excelSheetsData = [];
+			var oFileUploader = sap.ui.core.Fragment.byId("idFragUploadDialog", "fileUploader");
+			var oFile = oEvent.getSource().FUEl.files[0]
+			var reader = new FileReader();
+			var that = this;
+	
+			reader.onload = (e) => {
+				
+				// getting the binary excel file content
+				let xlsx_content = e.currentTarget.result;
+	
+				let workbook = XLSX.read(xlsx_content, { type: 'binary' });
+				// here reading only the excel file sheet- Sheet1
+				var excelData = XLSX.utils.sheet_to_row_object_array(workbook.Sheets["Sheet1"]);
+				
+				workbook.SheetNames.forEach(function (sheetName) {
+					// appending the excel file data to the global variable
+					that.excelSheetsData.push(XLSX.utils.sheet_to_row_object_array(workbook.Sheets[sheetName]));
+				});
+				console.log("Excel Data", excelData);
+			//	console.log("Excel Sheets Data", this.excelSheetsData);
+			that.backendCall(excelData);
+			};
+			reader.readAsBinaryString(oFile);
+		},
+		onSUploadOkButton : function(oEvent){
 			
+			var that = this;
+			
+			this.excelSheetsData = [];
+			var oFileUploader = sap.ui.core.Fragment.byId("idFragUploadDialog", "fileUploader");
+			var oFile = oFileUploader.FUEl.files[0]
+			if(!oFile){
+				sap.m.MessageToast.show(this.getView().getModel("i18n").getResourceBundle().getText("selectFile"));
+				return;
+			}
+			var reader = new FileReader();
+			var that = this;
+	
+			reader.onload = (e) => {
+				
+				// getting the binary excel file content
+				let xlsx_content = e.currentTarget.result;
+	
+				let workbook = XLSX.read(xlsx_content, { type: 'binary' });
+				// here reading only the excel file sheet- Sheet1
+				var excelData = XLSX.utils.sheet_to_row_object_array(workbook.Sheets["Sheet1"]);
+				
+				workbook.SheetNames.forEach(function (sheetName) {
+					// appending the excel file data to the global variable
+					that.excelSheetsData.push(XLSX.utils.sheet_to_row_object_array(workbook.Sheets[sheetName]));
+				});
+				console.log("Excel Data", excelData);
+			//	console.log("Excel Sheets Data", this.excelSheetsData);
+			that.backendCall(excelData);
+			};
+			reader.readAsBinaryString(oFile);
+		},
+		backendCall : function(data){
+			var that = this;
+			var fnAddMessage = function () {
+                return new Promise((fnResolve, fnReject) => {
+                    that.callOdata(fnResolve, fnReject);
+                });
+            };
+			this.extensionAPI.securedExecution(fnAddMessage);
+		},
+		callOdata : function(fnResolve, fnReject){
+			var data = this.excelSheetsData[0];
+			var oData = this.getOwnerComponent().getModel("CustomFields").getData();
+			var oModel = this.getOwnerComponent().getModel();
+			var aFianlArray = [],that = this;
+			var sPath = this.getView().getBindingContext().sPath + "/toCncMain";
+			data.forEach(function(value,index){
+				var oObject = {};
+				oData.forEach((oColumn,iIndex)=>{
+					oColumn.FIELDNAME = oColumn.FIELDNAME.toLowerCase();
+					//find it's data type
+					var oFieldsEntityType = oModel.getServiceMetadata().dataServices.schema[0].entityType.find(x => x.name === 'xCGDCxI_CNC_MAINType');
+					var oField = oFieldsEntityType.property.find((field,fieldIndex)=>{
+						if(field.name === oColumn.FIELDNAME){
+						return field;
+						}
+					})
+					if(value[oColumn.FIELDNAME] !== undefined && value[oColumn.FIELDNAME] !== ''){
+					if(oField.type === "Edm.DateTime"){
+						oObject[oColumn.FIELDNAME] = new Date(value[oColumn.FIELDNAME]);
+					}else if(oField.type === "Edm.Boolean"){
+						oObject[oColumn.FIELDNAME] = value[oColumn.FIELDNAME];
+					}else if(oField.type !== "Edm.DateTime" && oField.type !== "Edm.Boolean"){
+						oObject[oColumn.FIELDNAME] = value[oColumn.FIELDNAME].toString();
+					}else{
+						oObject[oColumn.FIELDNAME] = value[oColumn.FIELDNAME].toString();
+					}
+					}
+					// if(value[oColumn.FIELDNAME]){
+					// if(oColumn.DataType === "DATS"){
+					// 	oObject[oColumn.FIELDNAME] = new Date(value[oColumn.FIELDNAME]);
+					// }else{
+					// 	oObject[oColumn.FIELDNAME] = value[oColumn.FIELDNAME].toString();
+					// }
+					// }
+				});
+				//make the post call
+				//xCGDCxI_CONDITON_CATALOG(Pmprf='ASL',Kschl='ZCC3',Kotab='A828',Vbeln='',mganr='',cc_docno='',Subct='S1',Counter=0)/toCncMain
+
+				if(Object.keys(oObject).length !== 0){
+				oModel.create(sPath, oObject, {
+                    success: (result) => {
+                        console.log(result);
+						that.oUploadDialog.close();
+                       fnResolve();
+                    },
+                    error: (oError)=>{
+						console.log(oError);
+						fnReject();		
+					}
+                });
+				}
+			})
+			
+		},
+		onExcelUpload : function(oEvent){
+			let responsivetable = sap.ui.getCore().byId(
+				"CGDC.CIS-AD-Pricing-Maintenance::sap.suite.ui.generic.template.ObjectPage.view.Details::xCGDCxI_CONDITON_CATALOG--ItemDetails::responsiveTable"
+			);
+			if (responsivetable.getItems().length === 0) {
+				sap.m.MessageToast.show(this.getView().getModel("i18n").getResourceBundle().getText("downloadTemplate"));
+				return;
+			}
+			if (!this.oUploadDialog) {
+				this.oUploadDialog = sap.ui.xmlfragment("idFragUploadDialog",
+					"CGDC.CIS-AD-Pricing-Maintenance.ext.fragments.UploadDialog", this);
+				this.getView().addDependent(this.oUploadDialog);
+			}
+			this.oUploadDialog.open();
 		},
 		onImportToExcel : function(oEvent){
 			let responsivetable = sap.ui.getCore().byId(
 				"CGDC.CIS-AD-Pricing-Maintenance::sap.suite.ui.generic.template.ObjectPage.view.Details::xCGDCxI_CONDITON_CATALOG--ItemDetails::responsiveTable"
 			);
 			if (responsivetable.getSelectedItem()) {
+				var oSelectedObject = responsivetable.getSelectedItem().getBindingContext().getObject();
 				let aColumns = this.getOwnerComponent().getModel("CustomFields").getData();
 				  // get the odata model binded to this application
 				  var oModel = this.getView().getModel();	  
-				  var excelColumnList = [];
+				  var excelColumnList = [],aRequiredColumns=[];
 				  var colList = {};
 				  aColumns.forEach((value, index)=>{
-					colList[value.FIELDNAME] = '';
+					value.FIELDNAME = value.FIELDNAME.toLowerCase();
+					if(value.DataType === "DATS"){
+						var oFormat = sap.ui.core.format.DateFormat.getInstance({
+						//	pattern: "MM-dd-yyyy",
+							style: "medium",
+							calendarType: sap.ui.core.CalendarType.Gregorian
+						});
+						colList[value.FIELDNAME] = oSelectedObject[value.FIELDNAME] ? oFormat.format(new Date(oSelectedObject[value.FIELDNAME])) : null;
+					}else{
+					colList[value.FIELDNAME] = oSelectedObject[value.FIELDNAME];
+					}
 				  });
+				  Object.keys(aColumns).map(function (k) {
+					aRequiredColumns.push(aColumns[k].FIELDNAME.toLowerCase());
+				}).join(",");
 				//   // finding the property description corresponding to the property id
 				//   propertyList.forEach((value, index) => {
 				// 	  let property = oBuilding.property.find(x => x.name === value);

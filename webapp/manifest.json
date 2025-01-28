@@ -146,6 +146,12 @@
                                                 "text" : "{@i18n>import}",
                                                 "press" : "onImportToExcel",
                                                 "requiresSelection": false
+                                            },
+                                            "ExcelUpload" :{
+                                                "id" : "ExcelUpload",
+                                                "text" : "{@i18n>upload}",
+                                                "press" : "onExcelUpload",
+                                                "requiresSelection": false
                                             }
                                         }
                                     }
