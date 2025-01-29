@@ -264,6 +264,11 @@ sap.ui.define([
 				let xlsx_content = e.currentTarget.result;
 	
 				let workbook = XLSX.read(xlsx_content, { type: 'binary' });
+				Object.keys(workbook.Sheets.Sheet1).map(function (k) {
+					if(workbook.Sheets.Sheet1[k].w && workbook.Sheets.Sheet1[k].w.split("/").length > 1){
+						workbook.Sheets.Sheet1[k].v = new Date(workbook.Sheets.Sheet1[k].w);
+					}
+				})
 				// here reading only the excel file sheet- Sheet1
 				var excelData = XLSX.utils.sheet_to_row_object_array(workbook.Sheets["Sheet1"]);
 				
@@ -278,6 +283,14 @@ sap.ui.define([
 			reader.readAsBinaryString(oFile);
 		},
 		backendCall : function(data){
+			var data = this.excelSheetsData[0];
+			var oData = this.getOwnerComponent().getModel("CustomFields").getData();
+			var iExcelKeys = Object.keys(data[0]).length;
+			var iOdataKeys = oData.length;
+			// if(iExcelKeys !== iOdataKeys){
+			// 	sap.m.MessageToast.show(this.getView().getModel("i18n").getResourceBundle().getText("columnsdiff"));
+			// 	return;
+			// }
 			var that = this;
 			var fnAddMessage = function () {
                 return new Promise((fnResolve, fnReject) => {
@@ -287,6 +300,9 @@ sap.ui.define([
 			this.extensionAPI.securedExecution(fnAddMessage);
 		},
 		callOdata : function(fnResolve, fnReject){
+			let smarttable = sap.ui.getCore().byId(
+				"CGDC.CIS-AD-Pricing-Maintenance::sap.suite.ui.generic.template.ObjectPage.view.Details::xCGDCxI_CONDITON_CATALOG--ItemDetails::Table"
+			);
 			var data = this.excelSheetsData[0];
 			var oData = this.getOwnerComponent().getModel("CustomFields").getData();
 			var oModel = this.getOwnerComponent().getModel();
@@ -305,7 +321,15 @@ sap.ui.define([
 					})
 					if(value[oColumn.FIELDNAME] !== undefined && value[oColumn.FIELDNAME] !== ''){
 					if(oField.type === "Edm.DateTime"){
+						if(isNaN(new Date(value[oColumn.FIELDNAME]).getTime())){
+							if(value[oColumn.FIELDNAME].split(".").length > 1 ){
+							oObject[oColumn.FIELDNAME] = new Date(value[oColumn.FIELDNAME].split(".")[1] +'-'+ value[oColumn.FIELDNAME].split(".")[0] +'-'+ value[oColumn.FIELDNAME].split(".")[2]);
+							}else{
+							oObject[oColumn.FIELDNAME] = new Date(value[oColumn.FIELDNAME]);
+							}
+						}else{
 						oObject[oColumn.FIELDNAME] = new Date(value[oColumn.FIELDNAME]);
+						}
 					}else if(oField.type === "Edm.Boolean"){
 						oObject[oColumn.FIELDNAME] = value[oColumn.FIELDNAME];
 					}else if(oField.type !== "Edm.DateTime" && oField.type !== "Edm.Boolean"){
@@ -322,6 +346,7 @@ sap.ui.define([
 					// }
 					// }
 				});
+				aFianlArray.push(oObject);
 				//make the post call
 				//xCGDCxI_CONDITON_CATALOG(Pmprf='ASL',Kschl='ZCC3',Kotab='A828',Vbeln='',mganr='',cc_docno='',Subct='S1',Counter=0)/toCncMain
 
@@ -330,6 +355,8 @@ sap.ui.define([
                     success: (result) => {
                         console.log(result);
 						that.oUploadDialog.close();
+						oModel.refresh();
+						smarttable.rebindTable();
                        fnResolve();
                     },
                     error: (oError)=>{
@@ -338,30 +365,31 @@ sap.ui.define([
 					}
                 });
 				}
-			})
-			
+			})			
 		},
 		onExcelUpload : function(oEvent){
 			let responsivetable = sap.ui.getCore().byId(
 				"CGDC.CIS-AD-Pricing-Maintenance::sap.suite.ui.generic.template.ObjectPage.view.Details::xCGDCxI_CONDITON_CATALOG--ItemDetails::responsiveTable"
 			);
-			if (responsivetable.getItems().length === 0) {
-				sap.m.MessageToast.show(this.getView().getModel("i18n").getResourceBundle().getText("downloadTemplate"));
-				return;
-			}
+			// if (responsivetable.getItems().length === 0) {
+			// 	sap.m.MessageToast.show(this.getView().getModel("i18n").getResourceBundle().getText("downloadTemplate"));
+			// 	return;
+			// }
 			if (!this.oUploadDialog) {
 				this.oUploadDialog = sap.ui.xmlfragment("idFragUploadDialog",
 					"CGDC.CIS-AD-Pricing-Maintenance.ext.fragments.UploadDialog", this);
 				this.getView().addDependent(this.oUploadDialog);
 			}
 			this.oUploadDialog.open();
+			var oFileUploader = sap.ui.core.Fragment.byId("idFragUploadDialog", "fileUploader");
+			oFileUploader.clear();
 		},
 		onImportToExcel : function(oEvent){
 			let responsivetable = sap.ui.getCore().byId(
 				"CGDC.CIS-AD-Pricing-Maintenance::sap.suite.ui.generic.template.ObjectPage.view.Details::xCGDCxI_CONDITON_CATALOG--ItemDetails::responsiveTable"
 			);
-			if (responsivetable.getSelectedItem()) {
-				var oSelectedObject = responsivetable.getSelectedItem().getBindingContext().getObject();
+			// if (responsivetable.getSelectedItem()) {
+				var oSelectedObject = responsivetable.getSelectedItem() ? responsivetable.getSelectedItem().getBindingContext().getObject() : undefined;
 				let aColumns = this.getOwnerComponent().getModel("CustomFields").getData();
 				  // get the odata model binded to this application
 				  var oModel = this.getView().getModel();	  
@@ -375,9 +403,9 @@ sap.ui.define([
 							style: "medium",
 							calendarType: sap.ui.core.CalendarType.Gregorian
 						});
-						colList[value.FIELDNAME] = oSelectedObject[value.FIELDNAME] ? oFormat.format(new Date(oSelectedObject[value.FIELDNAME])) : null;
+						colList[value.FIELDNAME] = oSelectedObject && oSelectedObject[value.FIELDNAME] ? oFormat.format(new Date(oSelectedObject[value.FIELDNAME])) : null;
 					}else{
-					colList[value.FIELDNAME] = oSelectedObject[value.FIELDNAME];
+					colList[value.FIELDNAME] = oSelectedObject?oSelectedObject[value.FIELDNAME]:"";
 					}
 				  });
 				  Object.keys(aColumns).map(function (k) {
@@ -400,9 +428,9 @@ sap.ui.define([
 				  XLSX.writeFile(wb, 'Condition_Catalogs.xlsx');
 	  
 				  sap.m.MessageToast.show(this.getView().getModel("i18n").getResourceBundle().getText("tempdownload"));
-			}else{
-				sap.m.MessageToast.show(this.getView().getModel("i18n").getResourceBundle().getText("selectitem"));
-			}
+			// }else{
+			// 	sap.m.MessageToast.show(this.getView().getModel("i18n").getResourceBundle().getText("selectitem"));
+			// }
 		},
 		removeElements: function (array, elementsToRemove) {
 			// Create a Set from the elements to remove for efficient lookup
