@@ -266,7 +266,7 @@ sap.ui.define([
 				let workbook = XLSX.read(xlsx_content, { type: 'binary' });
 				Object.keys(workbook.Sheets.Sheet1).map(function (k) {
 					if(workbook.Sheets.Sheet1[k].w && workbook.Sheets.Sheet1[k].w.split("/").length > 1){
-						workbook.Sheets.Sheet1[k].v = new Date(workbook.Sheets.Sheet1[k].w);
+						workbook.Sheets.Sheet1[k].v = new Date(workbook.Sheets.Sheet1[k].w); //new Date(workbook.Sheets.Sheet1[k].w.split("/")[1] +'-'+ workbook.Sheets.Sheet1[k].w.split("/")[0] +'-'+ workbook.Sheets.Sheet1[k].w.split("/")[2]);
 					}
 				})
 				// here reading only the excel file sheet- Sheet1
@@ -357,6 +357,7 @@ sap.ui.define([
 						that.oUploadDialog.close();
 						oModel.refresh();
 						smarttable.rebindTable();
+					//	sap.m.MessageToast.show(this.getView().getModel("i18n").getResourceBundle().getText("condrecordssaved"));
                        fnResolve();
                     },
                     error: (oError)=>{
@@ -438,6 +439,38 @@ sap.ui.define([
 
 			// Filter the array to remove the elements that are in the removal set
 			return array.filter(item => !removalSet.has(item));
+		},
+		onPressGrops : function(oEvent){
+			let responsivetable = sap.ui.getCore().byId(
+				"CGDC.CIS-AD-Pricing-Maintenance::sap.suite.ui.generic.template.ObjectPage.view.Details::xCGDCxI_CONDITON_CATALOG--ItemDetails::responsiveTable"
+			);
+			if (responsivetable.getSelectedItem()) {
+			if (!this.oGroupPopver) {
+				this.oGroupPopver = sap.ui.xmlfragment("idFragGrppopover",
+					"CGDC.CIS-AD-Pricing-Maintenance.ext.fragments.GroupPopOver", this);
+				this.getView().addDependent(this.oGroupPopver);
+			}
+			this.oGroupPopver.openBy(oEvent.getSource());
+		}else{
+				sap.m.MessageToast.show(this.getView().getModel("i18n").getResourceBundle().getText("selectitem"));
+			}
+		},
+		onCreateGroupPress : function(GroupCode){
+			this.GroupCode = GroupCode;
+			if (!this.oGroupDialog) {
+				this.oGroupDialog = sap.ui.xmlfragment("idFragGrpDialog",
+					"CGDC.CIS-AD-Pricing-Maintenance.ext.fragments.GroupDialog", this);
+				this.getView().addDependent(this.oGroupDialog);
+			}
+			this.oGroupDialog.open();
+			if(GroupCode === 1){
+			this.oGroupDialog.setTitle(this.getView().getModel("i18n").getResourceBundle().getText("creategroup"));
+			}else if(GroupCode === 2){
+				this.oGroupDialog.setTitle(this.getView().getModel("i18n").getResourceBundle().getText("maintgroup"));
+			}
+		},
+		onGroupDialogClose : function(oEvent){
+			this.oGroupDialog.close();
 		}
 
 	});

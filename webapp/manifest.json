@@ -152,6 +152,12 @@
                                                 "text" : "{@i18n>upload}",
                                                 "press" : "onExcelUpload",
                                                 "requiresSelection": false
+                                            },
+                                            "Groups" :{
+                                                "id" : "Groups",
+                                                "text" : "{@i18n>groups}",
+                                                "press" : "onPressGrops",
+                                                "requiresSelection": false
                                             }
                                         }
                                     }

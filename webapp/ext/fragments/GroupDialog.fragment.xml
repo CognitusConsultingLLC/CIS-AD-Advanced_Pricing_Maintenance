@@ -1,0 +1,106 @@
+<core:FragmentDefinition xmlns:core="sap.ui.core" xmlns:t="sap.ui.table" xmlns:f="sap.ui.layout.form" xmlns:c="sap.ui.core" xmlns="sap.m"
+	xmlns:smartList="sap.ui.comp.smartlist" xmlns:smartForm="sap.ui.comp.smartform"
+	xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1" xmlns:l="sap.ui.layout"
+	xmlns:smartField="sap.ui.comp.smartfield" xmlns:smartTable="sap.ui.comp.smarttable">
+	<Dialog title="" class="" horizontalScrolling="false">
+		<content>
+			<!-- <VBox>
+				<smartForm:SmartForm id="idmbismartform1" app:defaultCheckBoxDisplayBehaviour="OnOff" editable="true" editTogglable="false"
+					editToggled="handleEditToggled" class="sapUiNoMarginTopBottom">
+					<smartForm:layout>
+						<smartForm:ColumnLayout columnsM="1" columnsL="2" columnsXL="3"/>
+					</smartForm:layout>
+					<smartForm:Group>
+						 <smartForm:GroupElement>
+							<smartField:SmartField value="{Customer}" editable="true">
+							</smartField:SmartField>
+						</smartForm:GroupElement>
+							 <smartForm:GroupElement>
+							<smartField:SmartField value="{Notification}" editable="true">
+							</smartField:SmartField>
+						</smartForm:GroupElement>
+						<smartForm:GroupElement>
+							<smartField:SmartField value="{ReqDeliveryDate}">
+								<smartField:configuration>
+									<smartField:Configuration controlType="datePicker"></smartField:Configuration>
+								</smartField:configuration>
+							</smartField:SmartField>
+						</smartForm:GroupElement>
+                        <smartForm:GroupElement>
+							<smartField:SmartField value="{SoType}" textInEditModeSource="ValueList">
+							<smartField:configuration>
+									<smartField:Configuration displayBehaviour="idAndDescription" ></smartField:Configuration>
+								</smartField:configuration>
+							</smartField:SmartField>
+						</smartForm:GroupElement>
+                         <smartForm:GroupElement>
+							<smartField:SmartField value="{SalesOrg}" textInEditModeSource="ValueList">
+							<smartField:configuration>
+									<smartField:Configuration displayBehaviour="idAndDescription" ></smartField:Configuration>
+								</smartField:configuration>
+							</smartField:SmartField>
+						</smartForm:GroupElement>
+                         <smartForm:GroupElement>
+							<smartField:SmartField value="{DistChannel}" textInEditModeSource="ValueList">
+							<smartField:configuration>
+									<smartField:Configuration displayBehaviour="idAndDescription" ></smartField:Configuration>
+								</smartField:configuration>
+							</smartField:SmartField>
+						</smartForm:GroupElement>
+                         <smartForm:GroupElement>
+							<smartField:SmartField value="{Division}" textInEditModeSource="ValueList">
+							<smartField:configuration>
+									<smartField:Configuration displayBehaviour="idAndDescription" ></smartField:Configuration>
+								</smartField:configuration>
+							</smartField:SmartField>
+						</smartForm:GroupElement>
+					</smartForm:Group>
+				</smartForm:SmartForm>	
+			<Table id="RmaSoItemTable" inset="false" items="{ path: 'Items>/results' }" mode="SingleSelectLeft">
+				<headerToolbar>
+					<OverflowToolbar>
+						<content>
+							<Title text="Items ({=${Items>/results}.length})"/>
+							<Button text="{i18n>addrow}" press="onAddRowSoItem"/>
+							<Button text="{i18n>delrow}" press="onDelRowSoItem"/>
+							<Button text="{i18n>editrow}" press="onEditRowSoItem"/>
+						</content>
+					</OverflowToolbar>
+				</headerToolbar>
+				<columns>
+					<Column minScreenWidth="Tablet" demandPopin="true" width="15em">
+						<Text text="{/#SoItem/Material/@sap:label}"/>
+					</Column>
+					<Column minScreenWidth="Tablet" demandPopin="true">
+						<Text text="{/#SoItem/Quantity/@sap:label}"/>
+					</Column>
+					<Column minScreenWidth="Tablet" demandPopin="true">
+						<Text text="{/#SoItem/ServiceableMat/@sap:label}"/>
+					</Column>
+					<Column minScreenWidth="Tablet" demandPopin="true">
+						<Text text="{/#SoItem/SrvcbleMatQnty/@sap:label}"/>
+					</Column>
+					<Column minScreenWidth="Tablet" demandPopin="true">
+						<Text text="{/#SoItem/Plant/@sap:label}"/>
+					</Column>
+				</columns>
+				<items>
+					<ColumnListItem vAlign="Middle">
+						<cells>
+							<Text text="{Items>Material}"/>
+							<Text text="{Items>Quantity}"/>
+							<Text text="{Items>ServiceableMat}"/>
+							<Text text="{Items>SrvcbleMatQnty}"/>
+							<Text text="{Items>Plant}"/>	
+						</cells>
+					</ColumnListItem>
+				</items>
+			</Table>
+			</VBox> -->
+		</content>
+		<buttons>
+			<Button text="{i18n>create}" press="onGroupDialogOkButton" type="Emphasized"/>
+			<Button text="{i18n>close}" press="onGroupDialogClose" type="Emphasized"/>
+		</buttons>
+	</Dialog>
+</core:FragmentDefinition>
