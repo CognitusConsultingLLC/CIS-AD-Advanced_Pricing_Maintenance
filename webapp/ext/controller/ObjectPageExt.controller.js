@@ -444,18 +444,22 @@ sap.ui.define([
 			let responsivetable = sap.ui.getCore().byId(
 				"CGDC.CIS-AD-Pricing-Maintenance::sap.suite.ui.generic.template.ObjectPage.view.Details::xCGDCxI_CONDITON_CATALOG--ItemDetails::responsiveTable"
 			);
-			if (responsivetable.getSelectedItem()) {
+			// if (responsivetable.getSelectedItem()) {
 			if (!this.oGroupPopver) {
 				this.oGroupPopver = sap.ui.xmlfragment("idFragGrppopover",
 					"CGDC.CIS-AD-Pricing-Maintenance.ext.fragments.GroupPopOver", this);
 				this.getView().addDependent(this.oGroupPopver);
 			}
 			this.oGroupPopver.openBy(oEvent.getSource());
-		}else{
-				sap.m.MessageToast.show(this.getView().getModel("i18n").getResourceBundle().getText("selectitem"));
-			}
+		// }else{
+		// 		sap.m.MessageToast.show(this.getView().getModel("i18n").getResourceBundle().getText("selectitem"));
+		// 	}
 		},
 		onCreateGroupPress : function(GroupCode){
+			var oItemsJson = new JSONModel({
+				results: []
+			});
+			this.getView().setModel(oItemsJson, "Items");
 			this.GroupCode = GroupCode;
 			if (!this.oGroupDialog) {
 				this.oGroupDialog = sap.ui.xmlfragment("idFragGrpDialog",
@@ -463,15 +467,102 @@ sap.ui.define([
 				this.getView().addDependent(this.oGroupDialog);
 			}
 			this.oGroupDialog.open();
+			//this.oGroupDialog.setTitle(this.getView().getModel("i18n").getResourceBundle().getText("group"));
+			var oSaveButton = sap.ui.core.Fragment.byId("idFragGrpDialog", "idsavebutton");
 			if(GroupCode === 1){
+				oSaveButton.setText(this.getView().getModel("i18n").getResourceBundle().getText("create"));
 			this.oGroupDialog.setTitle(this.getView().getModel("i18n").getResourceBundle().getText("creategroup"));
 			}else if(GroupCode === 2){
+				oSaveButton.setText(this.getView().getModel("i18n").getResourceBundle().getText("save"));
 				this.oGroupDialog.setTitle(this.getView().getModel("i18n").getResourceBundle().getText("maintgroup"));
 			}
+			//var sPath = "/CC_Group_Header(cc_grpid='')";
+			let oSelectedItemContext = this.getOwnerComponent().getModel().createEntry("/CC_Group_Header", {
+				properties: {
+					cc_grpid: '',
+					cc_desc: "",
+					cc_stdt:null,
+					cc_endt : null,
+					cc_ernam :"",
+					cc_erdat : null,
+					cc_aenam : "",
+					cc_aedat : null
+				}
+			});
+			var oForm = sap.ui.core.Fragment.byId("idFragGrpDialog", "idmbismartform1");
+			oForm.setBindingContext(oSelectedItemContext);
 		},
 		onGroupDialogClose : function(oEvent){
 			this.oGroupDialog.close();
-		}
+			var oModelContexts = oEvent.getSource().getModel().mContexts;
+			this._performResetChanges(oModelContexts,"/CC_Group_Header");
+		},
+		onGroupDialogOkButton : function(oEvent){
+			this.oGroupDialog.close();
+			sap.m.MessageToast.show("Development is in Progress");
+			var oModelContexts = oEvent.getSource().getModel().mContexts;
+			this._performResetChanges(oModelContexts,"/CC_Group_Header");
+		},
+		_performResetChanges : function(oModelContexts,sPath){
+			var oModel = this.getView().getModel();
+		//    var oForm = sap.ui.core.Fragment.byId(fragid, formid);
+			var aModelContexts = $.map(oModelContexts, function (value, index) {
+				return [index];
+			});
+			for (var i = 0; i < aModelContexts.length; i++) {
+				if (aModelContexts[i].toString().startsWith(sPath)) {
+					oModel.resetChanges([aModelContexts[i]], undefined, true);
+				}
+			}
+		},
+		onAddRowSoItem: function (oEvent) {
+			var oModel1 = this.getView().getModel("Items");
+			var aArray = oModel1.getData().results;
+			var sNum = aArray.length + 1;
+			var oEntry = {
+				key: Math.random(),
+			//	FENUM: sNum.toString(),
+				fieldname: "",
+				operator: "",
+				value: "",
+				cc_set: "",
+				NEWENTRY: "X"
+			};
+			aArray.push(oEntry);
+			oModel1.setData({
+				results: aArray
+			});
+			oModel1.refresh(true);
+		},
+		onDelRowSoItem: function (oEvent) {
+			if (oEvent.getSource().getParent().getParent().getSelectedItem()) {
+				var oModel = oEvent.getSource().getModel();
+				var oItem = oEvent.getSource().getParent().getParent().getSelectedItem();
+				var oModelObject = oEvent.getSource().getModel("Items").getObject(oItem.getBindingContextPath());
+				if (!oModelObject.NEWENTRY) {
+					sap.m.MessageToast.show(this.getView().getModel("i18n").getResourceBundle().getText("notnewentry"));
+					return;
+				}
+				var oModel1 = this.getView().getModel("Items");
+				var aArray = oModel1.getData().results;
+				var bEntryFound = false,
+					iIndex;
+				aArray.forEach(function (entry, id) {
+					if (entry.key === oModelObject.key) {
+						bEntryFound = true;
+						iIndex = id;
+					}
+				});
+				if (bEntryFound) {
+					aArray.splice(iIndex, 1);
+					this.getView().getModel("Items").refresh(true);
+				}
+				var oTable = sap.ui.core.Fragment.byId("idFragGrpDialog", "RmaSoItemTable");
+				oTable.removeSelections(true);
+			} else {
+				sap.m.MessageToast.show(this.getView().getModel("i18n").getResourceBundle().getText("selectitem"));
+			}
+		},
 
 	});
 });
