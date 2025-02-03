@@ -15,17 +15,24 @@
 							<smartField:SmartField value="{cc_grpid}" editable="false">
 							</smartField:SmartField>
 						</smartForm:GroupElement>
+						     <smartForm:GroupElement>
+							<smartField:SmartField value="{cc_extid}" textInEditModeSource="ValueList">
+							<smartField:configuration>
+									<smartField:Configuration displayBehaviour="idAndDescription" ></smartField:Configuration>
+								</smartField:configuration>
+							</smartField:SmartField>
+						</smartForm:GroupElement>
 							 <smartForm:GroupElement>
 							<smartField:SmartField value="{cc_desc}" editable="true">
 							</smartField:SmartField>
 						</smartForm:GroupElement>
-						<smartForm:GroupElement>
+						<!-- <smartForm:GroupElement>
 							<smartField:SmartField value="{cc_stdt}">
 								<smartField:configuration>
 									<smartField:Configuration controlType="datePicker"></smartField:Configuration>
 								</smartField:configuration>
 							</smartField:SmartField>
-						</smartForm:GroupElement>
+						</smartForm:GroupElement> -->
 						<smartForm:GroupElement>
 							<smartField:SmartField value="{cc_endt}">
 								<smartField:configuration>
@@ -33,13 +40,7 @@
 								</smartField:configuration>
 							</smartField:SmartField>
 						</smartForm:GroupElement>
-                        <smartForm:GroupElement>
-							<smartField:SmartField value="{cc_extid}" textInEditModeSource="ValueList">
-							<smartField:configuration>
-									<smartField:Configuration displayBehaviour="idAndDescription" ></smartField:Configuration>
-								</smartField:configuration>
-							</smartField:SmartField>
-						</smartForm:GroupElement>
+                   
 					</smartForm:Group>
 				</smartForm:SmartForm>	
 			<Table id="RmaSoItemTable" inset="false" items="{ path: 'Items>/results' }" mode="SingleSelectLeft">

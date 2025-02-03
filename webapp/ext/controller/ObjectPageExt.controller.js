@@ -166,7 +166,7 @@ sap.ui.define([
 										"CGDC.CIS-AD-Pricing-Maintenance::sap.suite.ui.generic.template.ObjectPage.view.Details::xCGDCxI_CNC_MAIN--AddData::Section"
 									);
 									addSection.setVisible(true);
-									if (that.additionalData === 'X') {
+									if (that.additionalData === 'X'  || that.additionalData === undefined) {
 										addSection.setVisible(false);
 									} else {
 										let allVisiblieFields = oAddDataForm.getVisibleProperties();
@@ -481,6 +481,7 @@ sap.ui.define([
 				properties: {
 					cc_grpid: '',
 					cc_desc: "",
+					cc_extid :"",
 					cc_stdt:null,
 					cc_endt : null,
 					cc_ernam :"",
@@ -498,10 +499,110 @@ sap.ui.define([
 			this._performResetChanges(oModelContexts,"/CC_Group_Header");
 		},
 		onGroupDialogOkButton : function(oEvent){
-			this.oGroupDialog.close();
-			sap.m.MessageToast.show("Development is in Progress");
 			var oModelContexts = oEvent.getSource().getModel().mContexts;
-			this._performResetChanges(oModelContexts,"/CC_Group_Header");
+			let responsivetable = sap.ui.getCore().byId(
+				"CGDC.CIS-AD-Pricing-Maintenance::sap.suite.ui.generic.template.ObjectPage.view.Details::xCGDCxI_CONDITON_CATALOG--ItemDetails::responsiveTable"
+			);
+			//responsivetable.removeSelections(true);
+			var oForm = sap.ui.core.Fragment.byId("idFragGrpDialog", "idmbismartform1");
+			var oObject = oForm.getBindingContext().getObject();
+			var oModel1 = this.getView().getModel("Items");
+			var aArray = oModel1.getData().results;
+			var oDemoModel = this.getOwnerComponent().getModel("demoapp");
+			var oTableData = btoa(JSON.stringify(aArray));
+			var sCcdoc = this.getView().getBindingContext().getObject().cc_docno;
+			var sPath = "/Crt_Group", that = this;
+			var sUrlParameters = {
+				cc_docno : this.getView().getBindingContext().getObject().cc_docno,
+				DraftUUID : "00000000-0000-0000-0000-000000000000",
+				IsActiveEntity : false,
+				key1 : "",
+				CC_GRPID : "",
+				cc_desc : oObject.cc_desc,
+				cc_extid : oObject.cc_extid,
+				CC_ENDT : oObject.cc_endt,
+				Value : oTableData
+
+			};
+				this.oGroupDialog.close();
+				this._performResetChanges(oModelContexts,"/CC_Group_Header");
+			// this.postGroups(sPath,sUrlParameters).then(function (oData) {
+			// 	this.oGroupDialog.close();
+			// 	this._performResetChanges(oModelContexts,"/CC_Group_Header");
+			// 	//sap.m.MessageToast.show("Saved");
+			// }.bind(this)).catch(function (oError) {
+			// 	try {
+			// 			var text = JSON.parse(oError.responseText).error.message.value;
+			// 		} catch (e) {
+			// 			text = oError.responseText
+			// 		}
+			// 		sap.m.MessageBox.error(text);
+			// }.bind(this))
+			// rea detag
+		//	var sPath1 = "/YC_CC_HDR(cc_docno='"+sCcdoc+"',DraftUUID=guid'00000000-0000-0000-0000-000000000000',IsActiveEntity=false)";
+		// var sPath1 = "/YC_CC_HDR(cc_docno='1041',DraftUUID=guid'00000000-0000-0000-0000-000000000000',IsActiveEntity=true)";
+		// 	oDemoModel.read(sPath1, {
+		// 		success: function (odata, oResponse) {
+		// 			that.etag = oResponse.headers.etag;
+		// 			this.postGroups(sPath,sUrlParameters).then(function (oData) {
+		// 		this.oGroupDialog.close();
+		// 		this._performResetChanges(oModelContexts,"/CC_Group_Header");
+		// 		//sap.m.MessageToast.show("Saved");
+		// 	}.bind(this)).catch(function (oError) {
+		// 		try {
+		// 				var text = JSON.parse(oError.responseText).error.message.value;
+		// 			} catch (e) {
+		// 				text = oError.responseText
+		// 			}
+		// 			sap.m.MessageBox.error(text);
+		// 	}.bind(this))
+		// 		//	that.performupdate(oModel, oObject);
+		// 		},
+		// 		error: function (oError) {
+		// 			try {
+		// 				var text = JSON.parse(oError.responseText).error.message.value;
+		// 			} catch (e) {
+		// 				text = oError.responseText
+		// 			}
+		// 			sap.m.MessageBox.error(text);
+
+		// 		}
+		// 	});
+			
+		 },
+		postGroups : function(sPath,sUrlParameters){
+			var that = this;
+			return new Promise(function (resolve, reject) {
+				var oModel = this.getOwnerComponent().getModel("demoapp");
+			//	oModel.oHeaders["If-Match"] = that.etag;
+				that.showBusyIndicator();
+				oModel.callFunction(sPath, {
+					method: "POST",
+					urlParameters : sUrlParameters,
+					success: function (oData,oResponse) {
+						that.hideBusyIndicator();
+						resolve(oResponse);
+					},
+					error: function (oError) {
+						that.hideBusyIndicator();
+						reject(oError);
+					}
+				});
+			}.bind(this))
+		},
+		showBusyIndicator: function () {
+			if (!this._busyIndicator) {
+				this._busyIndicator = new BusyDialog({
+					showCancelButton: false
+				});
+				this._busyIndicator.open();
+			}
+		},
+		hideBusyIndicator: function () {
+			if (this._busyIndicator) {
+				this._busyIndicator.close();
+				this._busyIndicator = null;
+			}
 		},
 		_performResetChanges : function(oModelContexts,sPath){
 			var oModel = this.getView().getModel();
