@@ -1,527 +1,2482 @@
-<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
-	<edmx:Reference Uri="../../catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMON',Version='0001',SAP__Origin='')/$value"><edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common"/></edmx:Reference>
-	<edmx:Reference Uri="../../catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_UI',Version='0001',SAP__Origin='')/$value"><edmx:Include Namespace="com.sap.vocabularies.UI.v1" Alias="UI"/></edmx:Reference>
-	<edmx:Reference
-		Uri="../../catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMUNICATION',Version='0001',SAP__Origin='')/$value"><edmx:Include Namespace="com.sap.vocabularies.Communication.v1" Alias="Communication"/></edmx:Reference>
-	<edmx:Reference
-		Uri="../../catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_PERSONALDATA',Version='0001',SAP__Origin='')/$value"><edmx:Include Namespace="com.sap.vocabularies.PersonalData.v1" Alias="PersonalData"/></edmx:Reference>
-	<edmx:Reference Uri="../../catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_VALIDATION',Version='0001',SAP__Origin='')/$value"><edmx:Include Namespace="Org.OData.Validation.V1" Alias="Validation"/></edmx:Reference>
-	<edmx:Reference Uri="../../catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_ANALYTICS',Version='0001',SAP__Origin='')/$value"><edmx:Include Namespace="com.sap.vocabularies.Analytics.v1" Alias="Analytics"/></edmx:Reference>
-	<edmx:Reference Uri="../../catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_HTML5',Version='0001',SAP__Origin='')/$value"><edmx:Include Namespace="com.sap.vocabularies.HTML5.v1" Alias="HTML5"/></edmx:Reference>
-	<edmx:Reference Uri="../../../cgdc/ui_pricing_maint/$metadata"><edmx:Include Namespace="UI_PRICING_MAINT" Alias="SAP"/></edmx:Reference>
-	<edmx:DataServices>
-		<Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="com.sap.cgdc.ui_pricing_maint_van.v1">
-			<Annotations Target="cds_xcgdcxc_pricing_maint_def.xCGDCxI_CNC_MAINType/Kappl1"><Annotation Term="UI.Hidden"/></Annotations>
-			<Annotations Target="cds_xcgdcxc_pricing_maint_def.xCGDCxI_CNC_MAINType/Kfrst1"><Annotation Term="UI.Hidden"/></Annotations>
-			<Annotations Target="cds_xcgdcxc_pricing_maint_def.xCGDCxI_CNC_MAINType/Datbi1"><Annotation Term="UI.Hidden"/></Annotations>
-			<Annotations Target="cds_xcgdcxc_pricing_maint_def.xCGDCxI_CNC_MAINType/Datab1"><Annotation Term="UI.Hidden"/></Annotations>
-			<Annotations Target="cds_xcgdcxc_pricing_maint_def.xCGDCxI_CNC_MAINType/Kbstat1"><Annotation Term="UI.Hidden"/></Annotations>
-			<Annotations Target="cds_xcgdcxc_pricing_maint_def.xCGDCxI_CNC_MAINType/Vkorg1"><Annotation Term="UI.Hidden"/></Annotations>
-			<Annotations Target="cds_xcgdcxc_pricing_maint_def.xCGDCxI_CNC_MAINType/Vtweg1"><Annotation Term="UI.Hidden"/></Annotations>
-			<Annotations Target="cds_xcgdcxc_pricing_maint_def.xCGDCxI_CNC_MAINType/Spart1"><Annotation Term="UI.Hidden"/></Annotations>
-			<Annotations Target="cds_xcgdcxc_pricing_maint_def.xCGDCxI_CNC_MAINType/Kbetr1"><Annotation Term="UI.Hidden"/></Annotations>
-			<Annotations Target="cds_xcgdcxc_pricing_maint_def.xCGDCxI_CNC_MAINType/Kwert1"><Annotation Term="UI.Hidden"/></Annotations>
-			<Annotations Target="cds_xcgdcxc_pricing_maint_def.xCGDCxI_CNC_MAINType/Kopos1"><Annotation Term="UI.Hidden"/></Annotations>
-			<Annotations Target="cds_xcgdcxc_pricing_maint_def.xCGDCxI_CNC_MAINType/Konwa1"><Annotation Term="UI.Hidden"/></Annotations>
-			<Annotations Target="cds_xcgdcxc_pricing_maint_def.xCGDCxI_CNC_MAINType/Kunnr1"><Annotation Term="UI.Hidden"/></Annotations>
-			<Annotations Target="cds_xcgdcxc_pricing_maint_def.xCGDCxI_CNC_MAINType/Kdgrp1"><Annotation Term="UI.Hidden"/></Annotations>
-			<Annotations Target="cds_xcgdcxc_pricing_maint_def.xCGDCxI_CNC_MAINType/Pltyp1"><Annotation Term="UI.Hidden"/></Annotations>
-			<Annotations Target="cds_xcgdcxc_pricing_maint_def.xCGDCxI_CNC_MAINType/Konda1"><Annotation Term="UI.Hidden"/></Annotations>
-			<Annotations Target="cds_xcgdcxc_pricing_maint_def.xCGDCxI_CNC_MAINType/Kondm1"><Annotation Term="UI.Hidden"/></Annotations>
-			<Annotations Target="cds_xcgdcxc_pricing_maint_def.xCGDCxI_CNC_MAINType/Waerk1"><Annotation Term="UI.Hidden"/></Annotations>
-			<Annotations Target="cds_xcgdcxc_pricing_maint_def.xCGDCxI_CNC_MAINType/Matnr1"><Annotation Term="UI.Hidden"/></Annotations>
-			<Annotations Target="cds_xcgdcxc_pricing_maint_def.xCGDCxI_CNC_MAINType/Bwtar1"><Annotation Term="UI.Hidden"/></Annotations>
-			<Annotations Target="cds_xcgdcxc_pricing_maint_def.xCGDCxI_CNC_MAINType/Charg1"><Annotation Term="UI.Hidden"/></Annotations>
-			<Annotations Target="cds_xcgdcxc_pricing_maint_def.xCGDCxI_CNC_MAINType/Prodh1"><Annotation Term="UI.Hidden"/></Annotations>
-			<Annotations Target="cds_xcgdcxc_pricing_maint_def.xCGDCxI_CNC_MAINType/Meins1"><Annotation Term="UI.Hidden"/></Annotations>
-			<Annotations Target="cds_xcgdcxc_pricing_maint_def.xCGDCxI_CNC_MAINType/Bonus1"><Annotation Term="UI.Hidden"/></Annotations>
-			<Annotations Target="cds_xcgdcxc_pricing_maint_def.xCGDCxI_CNC_MAINType/Ebonu1"><Annotation Term="UI.Hidden"/></Annotations>
-			<Annotations Target="cds_xcgdcxc_pricing_maint_def.xCGDCxI_CNC_MAINType/Provg1"><Annotation Term="UI.Hidden"/></Annotations>
-			<Annotations Target="cds_xcgdcxc_pricing_maint_def.xCGDCxI_CNC_MAINType/Aland1"><Annotation Term="UI.Hidden"/></Annotations>
-			<Annotations Target="cds_xcgdcxc_pricing_maint_def.xCGDCxI_CNC_MAINType/Wkreg1"><Annotation Term="UI.Hidden"/></Annotations>
-			<Annotations Target="cds_xcgdcxc_pricing_maint_def.xCGDCxI_CNC_MAINType/Wkcou1"><Annotation Term="UI.Hidden"/></Annotations>
-			<Annotations Target="cds_xcgdcxc_pricing_maint_def.xCGDCxI_CNC_MAINType/Wkcty1"><Annotation Term="UI.Hidden"/></Annotations>
-			<Annotations Target="cds_xcgdcxc_pricing_maint_def.xCGDCxI_CNC_MAINType/Lland1"><Annotation Term="UI.Hidden"/></Annotations>
-			<Annotations Target="cds_xcgdcxc_pricing_maint_def.xCGDCxI_CNC_MAINType/Regio1"><Annotation Term="UI.Hidden"/></Annotations>
-			<Annotations Target="cds_xcgdcxc_pricing_maint_def.xCGDCxI_CNC_MAINType/Counc1"><Annotation Term="UI.Hidden"/></Annotations>
-			<Annotations Target="cds_xcgdcxc_pricing_maint_def.xCGDCxI_CNC_MAINType/Cityc1"><Annotation Term="UI.Hidden"/></Annotations>
-			<Annotations Target="cds_xcgdcxc_pricing_maint_def.xCGDCxI_CNC_MAINType/Taxm11"><Annotation Term="UI.Hidden"/></Annotations>
-			<Annotations Target="cds_xcgdcxc_pricing_maint_def.xCGDCxI_CNC_MAINType/Taxm21"><Annotation Term="UI.Hidden"/></Annotations>
-			<Annotations Target="cds_xcgdcxc_pricing_maint_def.xCGDCxI_CNC_MAINType/Taxm31"><Annotation Term="UI.Hidden"/></Annotations>
-			<Annotations Target="cds_xcgdcxc_pricing_maint_def.xCGDCxI_CNC_MAINType/Taxm41"><Annotation Term="UI.Hidden"/></Annotations>
-			<Annotations Target="cds_xcgdcxc_pricing_maint_def.xCGDCxI_CNC_MAINType/Taxk51"><Annotation Term="UI.Hidden"/></Annotations>
-			<Annotations Target="cds_xcgdcxc_pricing_maint_def.xCGDCxI_CNC_MAINType/Taxk61"><Annotation Term="UI.Hidden"/></Annotations>
-			<Annotations Target="cds_xcgdcxc_pricing_maint_def.xCGDCxI_CNC_MAINType/Taxk71"><Annotation Term="UI.Hidden"/></Annotations>
-			<Annotations Target="cds_xcgdcxc_pricing_maint_def.xCGDCxI_CNC_MAINType/Taxk81"><Annotation Term="UI.Hidden"/></Annotations>
-			<Annotations Target="cds_xcgdcxc_pricing_maint_def.xCGDCxI_CNC_MAINType/Taxk91"><Annotation Term="UI.Hidden"/></Annotations>
-			<Annotations Target="cds_xcgdcxc_pricing_maint_def.xCGDCxI_CNC_MAINType/Lifnr1"><Annotation Term="UI.Hidden"/></Annotations>
-			<Annotations Target="cds_xcgdcxc_pricing_maint_def.xCGDCxI_CNC_MAINType/Matkl1"><Annotation Term="UI.Hidden"/></Annotations>
-			<Annotations Target="cds_xcgdcxc_pricing_maint_def.xCGDCxI_CNC_MAINType/Ekorg1"><Annotation Term="UI.Hidden"/></Annotations>
-			<Annotations Target="cds_xcgdcxc_pricing_maint_def.xCGDCxI_CNC_MAINType/Esokz1"><Annotation Term="UI.Hidden"/></Annotations>
-			<Annotations Target="cds_xcgdcxc_pricing_maint_def.xCGDCxI_CNC_MAINType/Werks1"><Annotation Term="UI.Hidden"/></Annotations>
-			<Annotations Target="cds_xcgdcxc_pricing_maint_def.xCGDCxI_CNC_MAINType/Reswk1"><Annotation Term="UI.Hidden"/></Annotations>
-			<Annotations Target="cds_xcgdcxc_pricing_maint_def.xCGDCxI_CNC_MAINType/Kolif1"><Annotation Term="UI.Hidden"/></Annotations>
-			<Annotations Target="cds_xcgdcxc_pricing_maint_def.xCGDCxI_CNC_MAINType/Ltsnr1"><Annotation Term="UI.Hidden"/></Annotations>
-			<Annotations Target="cds_xcgdcxc_pricing_maint_def.xCGDCxI_CNC_MAINType/Wglif1"><Annotation Term="UI.Hidden"/></Annotations>
-			<Annotations Target="cds_xcgdcxc_pricing_maint_def.xCGDCxI_CNC_MAINType/Mwskz1"><Annotation Term="UI.Hidden"/></Annotations>
-			<Annotations Target="cds_xcgdcxc_pricing_maint_def.xCGDCxI_CNC_MAINType/Werkv1"><Annotation Term="UI.Hidden"/></Annotations>
-			<Annotations Target="cds_xcgdcxc_pricing_maint_def.xCGDCxI_CNC_MAINType/Wagrp1"><Annotation Term="UI.Hidden"/></Annotations>
-			<Annotations Target="cds_xcgdcxc_pricing_maint_def.xCGDCxI_CNC_MAINType/Vrkme1"><Annotation Term="UI.Hidden"/></Annotations>
-			<Annotations Target="cds_xcgdcxc_pricing_maint_def.xCGDCxI_CNC_MAINType/Ean111"><Annotation Term="UI.Hidden"/></Annotations>
-			<Annotations Target="cds_xcgdcxc_pricing_maint_def.xCGDCxI_CNC_MAINType/Eannr1"><Annotation Term="UI.Hidden"/></Annotations>
-			<Annotations Target="cds_xcgdcxc_pricing_maint_def.xCGDCxI_CNC_MAINType/Gsber1"><Annotation Term="UI.Hidden"/></Annotations>
-			<Annotations Target="cds_xcgdcxc_pricing_maint_def.xCGDCxI_CNC_MAINType/Auart1"><Annotation Term="UI.Hidden"/></Annotations>
-			<Annotations Target="cds_xcgdcxc_pricing_maint_def.xCGDCxI_CNC_MAINType/Autyp1"><Annotation Term="UI.Hidden"/></Annotations>
-			<Annotations Target="cds_xcgdcxc_pricing_maint_def.xCGDCxI_CNC_MAINType/Zschl1"><Annotation Term="UI.Hidden"/></Annotations>
-			<Annotations Target="cds_xcgdcxc_pricing_maint_def.xCGDCxI_CNC_MAINType/Aufza1"><Annotation Term="UI.Hidden"/></Annotations>
-			<Annotations Target="cds_xcgdcxc_pricing_maint_def.xCGDCxI_CNC_MAINType/Kostv1"><Annotation Term="UI.Hidden"/></Annotations>
-			<Annotations Target="cds_xcgdcxc_pricing_maint_def.xCGDCxI_CNC_MAINType/Meein1"><Annotation Term="UI.Hidden"/></Annotations>
-			<Annotations Target="cds_xcgdcxc_pricing_maint_def.xCGDCxI_CNC_MAINType/Kokrs1"><Annotation Term="UI.Hidden"/></Annotations>
-			<Annotations Target="cds_xcgdcxc_pricing_maint_def.xCGDCxI_CNC_MAINType/Kostl1"><Annotation Term="UI.Hidden"/></Annotations>
-			<Annotations Target="cds_xcgdcxc_pricing_maint_def.xCGDCxI_CNC_MAINType/Kosar1"><Annotation Term="UI.Hidden"/></Annotations>
-			<Annotations Target="cds_xcgdcxc_pricing_maint_def.xCGDCxI_CNC_MAINType/Kosza1"><Annotation Term="UI.Hidden"/></Annotations>
-			<Annotations Target="cds_xcgdcxc_pricing_maint_def.xCGDCxI_CNC_MAINType/Infnr1"><Annotation Term="UI.Hidden"/></Annotations>
-			<Annotations Target="cds_xcgdcxc_pricing_maint_def.xCGDCxI_CNC_MAINType/Evrtn1"><Annotation Term="UI.Hidden"/></Annotations>
-			<Annotations Target="cds_xcgdcxc_pricing_maint_def.xCGDCxI_CNC_MAINType/Evrtp1"><Annotation Term="UI.Hidden"/></Annotations>
-			<Annotations Target="cds_xcgdcxc_pricing_maint_def.xCGDCxI_CNC_MAINType/Inco11"><Annotation Term="UI.Hidden"/></Annotations>
-			<Annotations Target="cds_xcgdcxc_pricing_maint_def.xCGDCxI_CNC_MAINType/Inco21"><Annotation Term="UI.Hidden"/></Annotations>
-			<Annotations Target="cds_xcgdcxc_pricing_maint_def.xCGDCxI_CNC_MAINType/Bukrs1"><Annotation Term="UI.Hidden"/></Annotations>
-			<Annotations Target="cds_xcgdcxc_pricing_maint_def.xCGDCxI_CNC_MAINType/Rldnr1"><Annotation Term="UI.Hidden"/></Annotations>
-			<Annotations Target="cds_xcgdcxc_pricing_maint_def.xCGDCxI_CNC_MAINType/Mtart1"><Annotation Term="UI.Hidden"/></Annotations>
-			<Annotations Target="cds_xcgdcxc_pricing_maint_def.xCGDCxI_CNC_MAINType/Llief1"><Annotation Term="UI.Hidden"/></Annotations>
-			<Annotations Target="cds_xcgdcxc_pricing_maint_def.xCGDCxI_CNC_MAINType/Lifre1"><Annotation Term="UI.Hidden"/></Annotations>
-			<Annotations Target="cds_xcgdcxc_pricing_maint_def.xCGDCxI_CNC_MAINType/Ekkol1"><Annotation Term="UI.Hidden"/></Annotations>
-			<Annotations Target="cds_xcgdcxc_pricing_maint_def.xCGDCxI_CNC_MAINType/Ekkoa1"><Annotation Term="UI.Hidden"/></Annotations>
-			<Annotations Target="cds_xcgdcxc_pricing_maint_def.xCGDCxI_CNC_MAINType/Bstme1"><Annotation Term="UI.Hidden"/></Annotations>
-			<Annotations Target="cds_xcgdcxc_pricing_maint_def.xCGDCxI_CNC_MAINType/Wghie1"><Annotation Term="UI.Hidden"/></Annotations>
-			<Annotations Target="cds_xcgdcxc_pricing_maint_def.xCGDCxI_CNC_MAINType/Taxim1"><Annotation Term="UI.Hidden"/></Annotations>
-			<Annotations Target="cds_xcgdcxc_pricing_maint_def.xCGDCxI_CNC_MAINType/Taxik1"><Annotation Term="UI.Hidden"/></Annotations>
-			<Annotations Target="cds_xcgdcxc_pricing_maint_def.xCGDCxI_CNC_MAINType/Taxiw1"><Annotation Term="UI.Hidden"/></Annotations>
-			<Annotations Target="cds_xcgdcxc_pricing_maint_def.xCGDCxI_CNC_MAINType/Taxil1"><Annotation Term="UI.Hidden"/></Annotations>
-			<Annotations Target="cds_xcgdcxc_pricing_maint_def.xCGDCxI_CNC_MAINType/Taxir1"><Annotation Term="UI.Hidden"/></Annotations>
-			<Annotations Target="cds_xcgdcxc_pricing_maint_def.xCGDCxI_CNC_MAINType/Txjcd1"><Annotation Term="UI.Hidden"/></Annotations>
-			<Annotations Target="cds_xcgdcxc_pricing_maint_def.xCGDCxI_CNC_MAINType/Erkrs1"><Annotation Term="UI.Hidden"/></Annotations>
-			<Annotations Target="cds_xcgdcxc_pricing_maint_def.xCGDCxI_CNC_MAINType/Plikz1"><Annotation Term="UI.Hidden"/></Annotations>
-			<Annotations Target="cds_xcgdcxc_pricing_maint_def.xCGDCxI_CNC_MAINType/Versi1"><Annotation Term="UI.Hidden"/></Annotations>
-			<Annotations Target="cds_xcgdcxc_pricing_maint_def.xCGDCxI_CNC_MAINType/Versn1"><Annotation Term="UI.Hidden"/></Annotations>
-			<Annotations Target="cds_xcgdcxc_pricing_maint_def.xCGDCxI_CNC_MAINType/Vrgar1"><Annotation Term="UI.Hidden"/></Annotations>
-			<Annotations Target="cds_xcgdcxc_pricing_maint_def.xCGDCxI_CNC_MAINType/Fkart1"><Annotation Term="UI.Hidden"/></Annotations>
-			<Annotations Target="cds_xcgdcxc_pricing_maint_def.xCGDCxI_CNC_MAINType/Vkorgau1"><Annotation Term="UI.Hidden"/></Annotations>
-			<Annotations Target="cds_xcgdcxc_pricing_maint_def.xCGDCxI_CNC_MAINType/Hien1r"><Annotation Term="UI.Hidden"/></Annotations>
-			<Annotations Target="cds_xcgdcxc_pricing_maint_def.xCGDCxI_CNC_MAINType/Varcond1"><Annotation Term="UI.Hidden"/></Annotations>
-			<Annotations Target="cds_xcgdcxc_pricing_maint_def.xCGDCxI_CNC_MAINType/Land11"><Annotation Term="UI.Hidden"/></Annotations>
-			<Annotations Target="cds_xcgdcxc_pricing_maint_def.xCGDCxI_CNC_MAINType/Zterm1"><Annotation Term="UI.Hidden"/></Annotations>
-			<Annotations Target="cds_xcgdcxc_pricing_maint_def.xCGDCxI_CNC_MAINType/Gzolx1"><Annotation Term="UI.Hidden"/></Annotations>
-			<Annotations Target="cds_xcgdcxc_pricing_maint_def.xCGDCxI_CNC_MAINType/Pwggr1"><Annotation Term="UI.Hidden"/></Annotations>
-			<Annotations Target="cds_xcgdcxc_pricing_maint_def.xCGDCxI_CNC_MAINType/Vbeln1"><Annotation Term="UI.Hidden"/></Annotations>
-			<Annotations Target="cds_xcgdcxc_pricing_maint_def.xCGDCxI_CNC_MAINType/Posnr1"><Annotation Term="UI.Hidden"/></Annotations>
-			<Annotations Target="cds_xcgdcxc_pricing_maint_def.xCGDCxI_CNC_MAINType/Aubel1"><Annotation Term="UI.Hidden"/></Annotations>
-			<Annotations Target="cds_xcgdcxc_pricing_maint_def.xCGDCxI_CNC_MAINType/Aupos1"><Annotation Term="UI.Hidden"/></Annotations>
-			<Annotations Target="cds_xcgdcxc_pricing_maint_def.xCGDCxI_CNC_MAINType/Cuobj1"><Annotation Term="UI.Hidden"/></Annotations>
-			<Annotations Target="cds_xcgdcxc_pricing_maint_def.xCGDCxI_CNC_MAINType/Upmat1"><Annotation Term="UI.Hidden"/></Annotations>
-			<Annotations Target="cds_xcgdcxc_pricing_maint_def.xCGDCxI_CNC_MAINType/Ukonm1"><Annotation Term="UI.Hidden"/></Annotations>
-			<Annotations Target="cds_xcgdcxc_pricing_maint_def.xCGDCxI_CNC_MAINType/Anzsn1"><Annotation Term="UI.Hidden"/></Annotations>
-			<Annotations Target="cds_xcgdcxc_pricing_maint_def.xCGDCxI_CNC_MAINType/Vbtyp1"><Annotation Term="UI.Hidden"/></Annotations>
-			<Annotations Target="cds_xcgdcxc_pricing_maint_def.xCGDCxI_CNC_MAINType/Auart_sd1"><Annotation Term="UI.Hidden"/></Annotations>
-			<Annotations Target="cds_xcgdcxc_pricing_maint_def.xCGDCxI_CNC_MAINType/Fktyp1"><Annotation Term="UI.Hidden"/></Annotations>
-			<Annotations Target="cds_xcgdcxc_pricing_maint_def.xCGDCxI_CNC_MAINType/xcgdcxseid1"><Annotation Term="UI.Hidden"/></Annotations>
-			<Annotations Target="cds_xcgdcxc_pricing_maint_def.xCGDCxI_CNC_MAINType/xcgdcxcustpn1"><Annotation Term="UI.Hidden"/></Annotations>
-			<Annotations Target="cds_xcgdcxc_pricing_maint_def.xCGDCxI_CNC_MAINType/mfrpn1"><Annotation Term="UI.Hidden"/></Annotations>
-			<Annotations Target="cds_xcgdcxc_pricing_maint_def.xCGDCxI_CNC_MAINType/xcgdcxnsn1"><Annotation Term="UI.Hidden"/></Annotations>
-			<Annotations Target="cds_xcgdcxc_pricing_maint_def.xCGDCxI_CNC_MAINType/xcgdcxnomcl1"><Annotation Term="UI.Hidden"/></Annotations>
-			<Annotations Target="cds_xcgdcxc_pricing_maint_def.xCGDCxI_CNC_MAINType/xcgdcxuidind1"><Annotation Term="UI.Hidden"/></Annotations>
-			<Annotations Target="cds_xcgdcxc_pricing_maint_def.xCGDCxI_CNC_MAINType/xcgdcxuidval1"><Annotation Term="UI.Hidden"/></Annotations>
-			<Annotations Target="cds_xcgdcxc_pricing_maint_def.xCGDCxI_CNC_MAINType/xcgdcxshpdac1"><Annotation Term="UI.Hidden"/></Annotations>
-			<Annotations Target="cds_xcgdcxc_pricing_maint_def.xCGDCxI_CNC_MAINType/xcgdcxshppatno1"><Annotation Term="UI.Hidden"/></Annotations>
-			<Annotations Target="cds_xcgdcxc_pricing_maint_def.xCGDCxI_CNC_MAINType/xcgdcxmarkdac1"><Annotation Term="UI.Hidden"/></Annotations>
-			<Annotations Target="cds_xcgdcxc_pricing_maint_def.xCGDCxI_CNC_MAINType/xcgdcxmrkshppat1"><Annotation Term="UI.Hidden"/></Annotations>
-			<Annotations Target="cds_xcgdcxc_pricing_maint_def.xCGDCxI_CNC_MAINType/xcgdcxlinsp1"><Annotation Term="UI.Hidden"/></Annotations>
-			<Annotations Target="cds_xcgdcxc_pricing_maint_def.xCGDCxI_CNC_MAINType/xcgdcxlacpt1"><Annotation Term="UI.Hidden"/></Annotations>
-			<Annotations Target="cds_xcgdcxc_pricing_maint_def.xCGDCxI_CNC_MAINType/xcgdcxfobpt1"><Annotation Term="UI.Hidden"/></Annotations>
-			<Annotations Target="cds_xcgdcxc_pricing_maint_def.xCGDCxI_CNC_MAINType/xcgdcxno_bill1"><Annotation Term="UI.Hidden"/></Annotations>
-			<Annotations Target="cds_xcgdcxc_pricing_maint_def.xCGDCxI_CNC_MAINType/xcgdcxso_block1"><Annotation Term="UI.Hidden"/></Annotations>
-			<Annotations Target="cds_xcgdcxc_pricing_maint_def.xCGDCxI_CNC_MAINType/xcgdcxno_wawf1"><Annotation Term="UI.Hidden"/></Annotations>
-			<Annotations Target="cds_xcgdcxc_pricing_maint_def.xCGDCxI_CNC_MAINType/xcgdcxcmbval1"><Annotation Term="UI.Hidden"/></Annotations>
-			<Annotations Target="cds_xcgdcxc_pricing_maint_def.xCGDCxI_CNC_MAINType/xcgdcxclin_wawf1"><Annotation Term="UI.Hidden"/></Annotations>
-			<Annotations Target="cds_xcgdcxc_pricing_maint_def.xCGDCxI_CNC_MAINType/Addrnumber1"><Annotation Term="UI.Hidden"/></Annotations>
-			<Annotations Target="cds_xcgdcxc_pricing_maint_def.xCGDCxI_CNC_MAINType/Name11"><Annotation Term="UI.Hidden"/></Annotations>
-			<Annotations Target="cds_xcgdcxc_pricing_maint_def.xCGDCxI_CNC_MAINType/City11"><Annotation Term="UI.Hidden"/></Annotations>
-			<Annotations Target="cds_xcgdcxc_pricing_maint_def.xCGDCxI_CNC_MAINType/PostCode11"><Annotation Term="UI.Hidden"/></Annotations>
-			<Annotations Target="cds_xcgdcxc_pricing_maint_def.xCGDCxI_CNC_MAINType/CityCode1"><Annotation Term="UI.Hidden"/></Annotations>
-			<Annotations Target="cds_xcgdcxc_pricing_maint_def.xCGDCxI_CNC_MAINType/PoBox1"><Annotation Term="UI.Hidden"/></Annotations>
-			<Annotations Target="cds_xcgdcxc_pricing_maint_def.xCGDCxI_CNC_MAINType/Transpzone1"><Annotation Term="UI.Hidden"/></Annotations>
-			<Annotations Target="cds_xcgdcxc_pricing_maint_def.xCGDCxI_CNC_MAINType/Stree1t"><Annotation Term="UI.Hidden"/></Annotations>
-			<Annotations Target="cds_xcgdcxc_pricing_maint_def.xCGDCxI_CNC_MAINType/HouseNum11"><Annotation Term="UI.Hidden"/></Annotations>
-			<Annotations Target="cds_xcgdcxc_pricing_maint_def.xCGDCxI_CNC_MAINType/Building1"><Annotation Term="UI.Hidden"/></Annotations>
-			<Annotations Target="cds_xcgdcxc_pricing_maint_def.xCGDCxI_CNC_MAINType/Floor1"><Annotation Term="UI.Hidden"/></Annotations>
-			<Annotations Target="cds_xcgdcxc_pricing_maint_def.xCGDCxI_CNC_MAINType/Roomnumber1"><Annotation Term="UI.Hidden"/></Annotations>
-			<Annotations Target="cds_xcgdcxc_pricing_maint_def.xCGDCxI_CNC_MAINType/Country1"><Annotation Term="UI.Hidden"/></Annotations>
-			<Annotations Target="cds_xcgdcxc_pricing_maint_def.xCGDCxI_CNC_MAINType/Region1"><Annotation Term="UI.Hidden"/></Annotations>
-			<Annotations Target="cds_xcgdcxc_pricing_maint_def.xCGDCxI_CNC_MAINType/Langu1"><Annotation Term="UI.Hidden"/></Annotations>
-			<Annotations Target="cds_xcgdcxc_pricing_maint_def.xCGDCxI_CNC_MAINType">
-				<Annotation Term="UI.Facets">
-					<Collection>
-						<Record Type="UI.ReferenceFacet"><PropertyValue Property="Label" String="Home"/><PropertyValue Property="ID" String="Home"/><PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#Home"/></Record>
-					</Collection>
-				</Annotation>
-				<Annotation Term="UI.HeaderFacets">
-					<Collection>
-						<Record Type="UI.ReferenceFacet"><PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#HeaderData"/></Record>
-						<Record Type="UI.ReferenceFacet"><PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#Details"/></Record>
-						<Record Type="UI.ReferenceFacet"><PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#SalesOrg"/></Record>
-					</Collection>
-				</Annotation>
-				<Annotation Term="UI.FieldGroup" Qualifier="Details">
-					<Record>
-						<PropertyValue Property="Data">
-							<Collection>
-								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="Datab"/><Annotation Term="UI.Hidden" Path="Datab1"/></Record>
-								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="Datbi"/><Annotation Term="UI.Hidden" Path="Datbi1"/></Record>
-								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="Kotab"/></Record>
-							</Collection>
-						</PropertyValue>
-					</Record>
-				</Annotation>
-				<Annotation Term="UI.FieldGroup" Qualifier="HeaderData">
-					<Record>
-						<PropertyValue Property="Data">
-							<Collection>
-								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="Vkorg"/><Annotation Term="UI.Hidden" Path="Vkorg1"/></Record>
-								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="Kschl"/></Record>
-							</Collection>
-						</PropertyValue>
-					</Record>
-				</Annotation>
-				<Annotation Term="UI.FieldGroup" Qualifier="Home">
-					<Record>
-						<PropertyValue Property="Data">
-							<Collection>
-								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="Langu"/><Annotation Term="UI.Hidden" Path="Langu1"/></Record>
-								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="Region"/><Annotation Term="UI.Hidden" Path="Region1"/></Record>
-								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="Country"/><Annotation Term="UI.Hidden" Path="Country1"/></Record>
-								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="Roomnumber"/><Annotation Term="UI.Hidden" Path="Roomnumber1"/></Record>
-								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="Floor"/><Annotation Term="UI.Hidden" Path="Floor1"/></Record>
-								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="Building"/><Annotation Term="UI.Hidden" Path="Building1"/></Record>
-								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="HouseNum1"/><Annotation Term="UI.Hidden" Path="HouseNum11"/></Record>
-								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="Street"/></Record>
-								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="Transpzone"/><Annotation Term="UI.Hidden" Path="Transpzone1"/></Record>
-								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="Pobox"/></Record>
-								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="CityCode"/><Annotation Term="UI.Hidden" Path="CityCode1"/></Record>
-								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="PostCode1"/><Annotation Term="UI.Hidden" Path="PostCode11"/></Record>
-								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="City1"/><Annotation Term="UI.Hidden" Path="City11"/></Record>
-								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="Name1"/><Annotation Term="UI.Hidden" Path="Name11"/></Record>
-								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="Addrnumber"/><Annotation Term="UI.Hidden" Path="Addrnumber1"/></Record>
-								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="xcgdcxclin_wawf"/><Annotation Term="UI.Hidden" Path="xcgdcxclin_wawf1"/></Record>
-								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="xcgdcxcmbval"/><Annotation Term="UI.Hidden" Path="xcgdcxcmbval1"/></Record>
-								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="xcgdcxno_wawf"/><Annotation Term="UI.Hidden" Path="xcgdcxno_wawf1"/></Record>
-								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="xcgdcxso_block"/><Annotation Term="UI.Hidden" Path="xcgdcxso_block1"/></Record>
-								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="xcgdcxno_bill"/><Annotation Term="UI.Hidden" Path="xcgdcxno_bill1"/></Record>
-								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="xcgdcxfobpt"/><Annotation Term="UI.Hidden" Path="xcgdcxfobpt1"/></Record>
-								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="xcgdcxlacpt"/><Annotation Term="UI.Hidden" Path="xcgdcxlacpt1"/></Record>
-								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="xcgdcxlinsp"/><Annotation Term="UI.Hidden" Path="xcgdcxlinsp1"/></Record>
-								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="xcgdcxmrkshppat"/><Annotation Term="UI.Hidden" Path="xcgdcxmrkshppat1"/></Record>
-								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="xcgdcxmarkdac"/><Annotation Term="UI.Hidden" Path="xcgdcxmarkdac1"/></Record>
-								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="xcgdcxshppatno"/><Annotation Term="UI.Hidden" Path="xcgdcxshppatno1"/></Record>
-								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="xcgdcxshpdac"/><Annotation Term="UI.Hidden" Path="xcgdcxshpdac1"/></Record>
-								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="xcgdcxuidval"/><Annotation Term="UI.Hidden" Path="xcgdcxuidval1"/></Record>
-								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="xcgdcxuidind"/><Annotation Term="UI.Hidden" Path="xcgdcxuidind1"/></Record>
-								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="xcgdcxnomcl"/><Annotation Term="UI.Hidden" Path="xcgdcxnomcl1"/></Record>
-								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="xcgdcxnsn"/><Annotation Term="UI.Hidden" Path="xcgdcxnsn1"/></Record>
-								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="mfrpn"/><Annotation Term="UI.Hidden" Path="mfrpn1"/></Record>
-								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="xcgdcxcustpn"/><Annotation Term="UI.Hidden" Path="xcgdcxcustpn1"/></Record>
-								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="xcgdcxseid"/><Annotation Term="UI.Hidden" Path="xcgdcxseid1"/></Record>
-								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="Fktyp"/><Annotation Term="UI.Hidden" Path="Fktyp1"/></Record>
-								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="Auart_sd"/><Annotation Term="UI.Hidden" Path="Auart_sd1"/></Record>
-								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="Vbtyp"/><Annotation Term="UI.Hidden" Path="Vbtyp1"/></Record>
-								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="Anzsn"/><Annotation Term="UI.Hidden" Path="Anzsn1"/></Record>
-								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="Ukonm"/><Annotation Term="UI.Hidden" Path="Ukonm1"/></Record>
-								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="Upmat"/><Annotation Term="UI.Hidden" Path="Upmat1"/></Record>
-								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="Cuobj"/><Annotation Term="UI.Hidden" Path="Cuobj1"/></Record>
-								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="Aupos"/><Annotation Term="UI.Hidden" Path="Aupos1"/></Record>
-								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="Aubel"/><Annotation Term="UI.Hidden" Path="Aubel1"/></Record>
-								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="Pwggr"/><Annotation Term="UI.Hidden" Path="Pwggr1"/></Record>
-								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="Gzolx"/><Annotation Term="UI.Hidden" Path="Gzolx1"/></Record>
-								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="Zterm"/><Annotation Term="UI.Hidden" Path="Zterm1"/></Record>
-								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="Land1"/><Annotation Term="UI.Hidden" Path="Land11"/></Record>
-								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="Varcond"/><Annotation Term="UI.Hidden" Path="Varcond1"/></Record>
-								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="Hienr"/></Record>
-								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="Vkorgau"/><Annotation Term="UI.Hidden" Path="Vkorgau1"/></Record>
-								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="Fkart"/><Annotation Term="UI.Hidden" Path="Fkart1"/></Record>
-								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="Vrgar"/><Annotation Term="UI.Hidden" Path="Vrgar1"/></Record>
-								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="Versn"/><Annotation Term="UI.Hidden" Path="Versn1"/></Record>
-								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="Versi"/><Annotation Term="UI.Hidden" Path="Versi1"/></Record>
-								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="Plikz"/><Annotation Term="UI.Hidden" Path="Plikz1"/></Record>
-								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="Erkrs"/><Annotation Term="UI.Hidden" Path="Erkrs1"/></Record>
-								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="Txjcd"/><Annotation Term="UI.Hidden" Path="Txjcd1"/></Record>
-								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="Taxir"/><Annotation Term="UI.Hidden" Path="Taxir1"/></Record>
-								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="Taxil"/><Annotation Term="UI.Hidden" Path="Taxil1"/></Record>
-								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="Taxiw"/><Annotation Term="UI.Hidden" Path="Taxiw1"/></Record>
-								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="Taxik"/><Annotation Term="UI.Hidden" Path="Taxik1"/></Record>
-								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="Taxim"/><Annotation Term="UI.Hidden" Path="Taxim1"/></Record>
-								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="Wghie"/><Annotation Term="UI.Hidden" Path="Wghie1"/></Record>
-								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="Bstme"/><Annotation Term="UI.Hidden" Path="Bstme1"/></Record>
-								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="Ekkoa"/><Annotation Term="UI.Hidden" Path="Ekkoa1"/></Record>
-								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="Ekkol"/><Annotation Term="UI.Hidden" Path="Ekkol1"/></Record>
-								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="Lifre"/><Annotation Term="UI.Hidden" Path="Lifre1"/></Record>
-								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="Llief"/><Annotation Term="UI.Hidden" Path="Llief1"/></Record>
-								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="Mtart"/><Annotation Term="UI.Hidden" Path="Mtart1"/></Record>
-								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="Rldnr"/><Annotation Term="UI.Hidden" Path="Rldnr1"/></Record>
-								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="Bukrs"/><Annotation Term="UI.Hidden" Path="Bukrs1"/></Record>
-								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="Inco2"/><Annotation Term="UI.Hidden" Path="Inco21"/></Record>
-								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="Inco1"/><Annotation Term="UI.Hidden" Path="Inco11"/></Record>
-								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="Evrtp"/><Annotation Term="UI.Hidden" Path="Evrtp1"/></Record>
-								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="Evrtn"/><Annotation Term="UI.Hidden" Path="Evrtn1"/></Record>
-								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="Infnr"/><Annotation Term="UI.Hidden" Path="Infnr1"/></Record>
-								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="Kosza"/><Annotation Term="UI.Hidden" Path="Kosza1"/></Record>
-								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="Kosar"/><Annotation Term="UI.Hidden" Path="Kosar1"/></Record>
-								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="Kostl"/><Annotation Term="UI.Hidden" Path="Kostl1"/></Record>
-								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="Kokrs"/><Annotation Term="UI.Hidden" Path="Kokrs1"/></Record>
-								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="Meein"/><Annotation Term="UI.Hidden" Path="Meein1"/></Record>
-								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="Kostv"/><Annotation Term="UI.Hidden" Path="Kostv1"/></Record>
-								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="Aufza"/><Annotation Term="UI.Hidden" Path="Aufza1"/></Record>
-								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="Zschl"/><Annotation Term="UI.Hidden" Path="Zschl1"/></Record>
-								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="Autyp"/><Annotation Term="UI.Hidden" Path="Autyp1"/></Record>
-								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="Auart"/><Annotation Term="UI.Hidden" Path="Auart1"/></Record>
-								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="Gsber"/><Annotation Term="UI.Hidden" Path="Gsber1"/></Record>
-								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="Eannr"/><Annotation Term="UI.Hidden" Path="Eannr1"/></Record>
-								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="Ean11"/><Annotation Term="UI.Hidden" Path="Ean111"/></Record>
-								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="Vrkme"/><Annotation Term="UI.Hidden" Path="Vrkme1"/></Record>
-								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="Wagrp"/><Annotation Term="UI.Hidden" Path="Wagrp1"/></Record>
-								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="Werkv"/><Annotation Term="UI.Hidden" Path="Werkv1"/></Record>
-								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="Mwskz"/><Annotation Term="UI.Hidden" Path="Mwskz1"/></Record>
-								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="Wglif"/><Annotation Term="UI.Hidden" Path="Wglif1"/></Record>
-								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="Ltsnr"/><Annotation Term="UI.Hidden" Path="Ltsnr1"/></Record>
-								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="Kolif"/><Annotation Term="UI.Hidden" Path="Kolif1"/></Record>
-								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="Reswk"/><Annotation Term="UI.Hidden" Path="Reswk1"/></Record>
-								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="Werks"/><Annotation Term="UI.Hidden" Path="Werks1"/></Record>
-								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="Esokz"/><Annotation Term="UI.Hidden" Path="Esokz1"/></Record>
-								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="Ekorg"/><Annotation Term="UI.Hidden" Path="Ekorg1"/></Record>
-								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="Matkl"/><Annotation Term="UI.Hidden" Path="Matkl1"/></Record>
-								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="Lifnr"/><Annotation Term="UI.Hidden" Path="Lifnr1"/></Record>
-								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="Taxk9"/><Annotation Term="UI.Hidden" Path="Taxk91"/></Record>
-								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="Taxk8"/><Annotation Term="UI.Hidden" Path="Taxk81"/></Record>
-								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="Taxk7"/><Annotation Term="UI.Hidden" Path="Taxk71"/></Record>
-								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="Taxk6"/><Annotation Term="UI.Hidden" Path="Taxk61"/></Record>
-								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="Taxk5"/><Annotation Term="UI.Hidden" Path="Taxk51"/></Record>
-								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="Taxm4"/><Annotation Term="UI.Hidden" Path="Taxm41"/></Record>
-								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="Taxm3"/><Annotation Term="UI.Hidden" Path="Taxm31"/></Record>
-								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="Taxm2"/><Annotation Term="UI.Hidden" Path="Taxm21"/></Record>
-								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="Taxm1"/><Annotation Term="UI.Hidden" Path="Taxm11"/></Record>
-								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="Cityc"/><Annotation Term="UI.Hidden" Path="Cityc1"/></Record>
-								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="Counc"/><Annotation Term="UI.Hidden" Path="Counc1"/></Record>
-								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="Regio"/><Annotation Term="UI.Hidden" Path="Regio1"/></Record>
-								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="Lland"/><Annotation Term="UI.Hidden" Path="Lland1"/></Record>
-								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="Wkcty"/><Annotation Term="UI.Hidden" Path="Wkcty1"/></Record>
-								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="Wkcou"/><Annotation Term="UI.Hidden" Path="Wkcou1"/></Record>
-								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="Wkreg"/><Annotation Term="UI.Hidden" Path="Wkreg1"/></Record>
-								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="Aland"/><Annotation Term="UI.Hidden" Path="Aland1"/></Record>
-								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="Provg"/><Annotation Term="UI.Hidden" Path="Provg1"/></Record>
-								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="Ebonu"/><Annotation Term="UI.Hidden" Path="Ebonu1"/></Record>
-								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="Bonus"/><Annotation Term="UI.Hidden" Path="Bonus1"/></Record>
-								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="Meins"/><Annotation Term="UI.Hidden" Path="Meins1"/></Record>
-								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="Prodh"/><Annotation Term="UI.Hidden" Path="Prodh1"/></Record>
-								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="Charg"/><Annotation Term="UI.Hidden" Path="Charg1"/></Record>
-								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="Bwtar"/><Annotation Term="UI.Hidden" Path="Bwtar1"/></Record>
-								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="Matnr"/><Annotation Term="UI.Hidden" Path="Matnr1"/></Record>
-								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="Waerk"/><Annotation Term="UI.Hidden" Path="Waerk1"/></Record>
-								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="Kondm"/><Annotation Term="UI.Hidden" Path="Kondm1"/></Record>
-								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="Konda"/><Annotation Term="UI.Hidden" Path="Konda1"/></Record>
-								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="Pltyp"/><Annotation Term="UI.Hidden" Path="Pltyp1"/></Record>
-								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="Kdgrp"/><Annotation Term="UI.Hidden" Path="Kdgrp1"/></Record>
-								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="Kunnr"/><Annotation Term="UI.Hidden" Path="Kunnr1"/></Record>
-								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="Konwa"/><Annotation Term="UI.Hidden" Path="Konwa1"/></Record>
-								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="Kopos"/><Annotation Term="UI.Hidden" Path="Kopos1"/></Record>
-								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="Kwert"/><Annotation Term="UI.Hidden" Path="Kwert1"/></Record>
-								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="Kbetr"/><Annotation Term="UI.Hidden" Path="Kbetr1"/></Record>
-								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="Vtweg"/><Annotation Term="UI.Hidden" Path="Vtweg1"/></Record>
-								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="Kbstat"/><Annotation Term="UI.Hidden" Path="Kbstat1"/></Record>
-								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="Kfrst"/><Annotation Term="UI.Hidden" Path="Kfrst1"/></Record>
-								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="Kappl"/><Annotation Term="UI.Hidden" Path="Kappl1"/></Record>
-								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="Vbeln"/><Annotation Term="UI.Hidden" Path="Vbeln1"/></Record>
-								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="Knumh"/></Record>
-								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="Pmprf"/></Record>
-								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="Posnr"/><Annotation Term="UI.Hidden" Path="Posnr1"/></Record>
-							</Collection>
-						</PropertyValue>
-					</Record>
-				</Annotation>
-				<Annotation Term="UI.HeaderInfo">
-					<Record><PropertyValue Property="TypeName" String="Rate"/><PropertyValue Property="TypeNamePlural" String="Rates"/>
-						<PropertyValue Property="Title">
-							<Record Type="UI.DataField"><PropertyValue Property="Label" String="Rates"/></Record>
-						</PropertyValue>
-					</Record>
-				</Annotation>
-				<Annotation Term="UI.LineItem">
-					<Collection>
-						<Record Type="UI.DataField"><PropertyValue Property="Value" Path="Datab"/></Record>
-						<Record Type="UI.DataField"><PropertyValue Property="Value" Path="Datbi"/></Record>
-						<Record Type="UI.DataField"><PropertyValue Property="Value" Path="Vbeln"/></Record>
-						<Record Type="UI.DataField"><PropertyValue Property="Value" Path="Knumh"/></Record>
-						<Record Type="UI.DataField"><PropertyValue Property="Value" Path="Kschl"/></Record>
-					</Collection>
-				</Annotation>
-				<Annotation Term="UI.SelectionFields">
-					<Collection>
-						<PropertyPath>Pmprf</PropertyPath>
-					</Collection>
-				</Annotation>
-			</Annotations>
-			<Annotations Target="cds_xcgdcxc_pricing_maint_def.xCGDCxI_CONDITON_CATALOGType/Delete_mc"><Annotation Term="UI.Hidden"/></Annotations>
-			<Annotations Target="cds_xcgdcxc_pricing_maint_def.xCGDCxI_CONDITON_CATALOGType/Update_mc"><Annotation Term="UI.Hidden"/></Annotations>
-			<Annotations Target="cds_xcgdcxc_pricing_maint_def.xCGDCxI_CONDITON_CATALOGType/toCncMain_oc"><Annotation Term="UI.Hidden"/></Annotations>
-			<Annotations Target="cds_xcgdcxc_pricing_maint_def.xCGDCxI_CONDITON_CATALOGType/Subct">
-				<Annotation Term="Common.Text" Path="Descr"><Annotation Term="UI.TextArrangement" EnumMember="UI.TextArrangementType/TextLast"/></Annotation>
-			</Annotations>
-			<Annotations Target="cds_xcgdcxc_pricing_maint_def.xCGDCxI_CONDITON_CATALOGType">
-				<Annotation Term="UI.Facets">
-					<Collection>
-						<Record Type="UI.ReferenceFacet"><PropertyValue Property="Label" String="Overview"/><PropertyValue Property="ID" String="General"/><PropertyValue Property="Target" AnnotationPath="@UI.Identification"/></Record>
-						<Record Type="UI.ReferenceFacet"><PropertyValue Property="ID" String="ItemDetails"/><PropertyValue Property="Target" AnnotationPath="toCncMain/@UI.LineItem"/></Record>
-					</Collection>
-				</Annotation>
-				<Annotation Term="UI.HeaderFacets">
-					<Collection>
-						<Record Type="UI.ReferenceFacet"><PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#HeaderData"/></Record>
-						<Record Type="UI.ReferenceFacet"><PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#Details"/></Record>
-					</Collection>
-				</Annotation>
-				<Annotation Term="UI.FieldGroup" Qualifier="Details">
-					<Record>
-						<PropertyValue Property="Data">
-							<Collection>
-								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="Kotab"/></Record>
-							</Collection>
-						</PropertyValue>
-					</Record>
-				</Annotation>
-				<Annotation Term="UI.FieldGroup" Qualifier="HeaderData">
-					<Record>
-						<PropertyValue Property="Data">
-							<Collection>
-								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="Kschl"/></Record>
-							</Collection>
-						</PropertyValue>
-					</Record>
-				</Annotation>
-				<Annotation Term="UI.FieldGroup" Qualifier="QFBasicInfo">
-					<Record>
-						<PropertyValue Property="Data">
-							<Collection>
-								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="Subct"/></Record>
-							</Collection>
-						</PropertyValue>
-					</Record>
-				</Annotation>
-				<Annotation Term="UI.HeaderInfo">
-					<Record><PropertyValue Property="TypeName" String="Condition Catalog"/><PropertyValue Property="TypeNamePlural" String="Condition Catalog"/>
-						<PropertyValue Property="Title">
-							<Record Type="UI.DataField"><PropertyValue Property="Label" String="Condition Catalog"/><PropertyValue Property="Value" Path="Descr"/></Record>
-						</PropertyValue>
-					</Record>
-				</Annotation>
-				<Annotation Term="UI.Identification">
-					<Collection>
-						<Record Type="UI.DataField"><PropertyValue Property="Value" Path="Subct"/></Record>
-					</Collection>
-				</Annotation>
-				<Annotation Term="UI.LineItem">
-					<Collection>
-						<Record Type="UI.DataField"><PropertyValue Property="Value" Path="Kschl"/></Record>
-						<Record Type="UI.DataField"><PropertyValue Property="Value" Path="Kotab"/></Record>
-						<Record Type="UI.DataField"><PropertyValue Property="Value" Path="Descr"/></Record>
-						<Record Type="UI.DataField"><PropertyValue Property="Label" String="Record Count"/><PropertyValue Property="Value" Path="RecCount"/></Record>
-					</Collection>
-				</Annotation>
-				<Annotation Term="UI.SelectionFields">
-					<Collection>
-						<PropertyPath>Pmprf</PropertyPath>
-						<PropertyPath>Vbeln</PropertyPath>
-					</Collection>
-				</Annotation>
-			</Annotations>
-			<Annotations Target="cds_xcgdcxc_pricing_maint_def.xCGDCxI_PRICING_MAINType/Subct">
-				<Annotation Term="Common.Text" Path="Descr"><Annotation Term="UI.TextArrangement" EnumMember="UI.TextArrangementType/TextLast"/></Annotation>
-			</Annotations>
-			<Annotations Target="cds_xcgdcxc_pricing_maint_def.xCGDCxI_PRICING_MAINType">
-				<Annotation Term="UI.Facets">
-					<Collection>
-						<Record Type="UI.ReferenceFacet"><PropertyValue Property="Label" String="VisibiltyControl"/><PropertyValue Property="ID" String="VisibiltyControlItem"/><PropertyValue Property="Target" AnnotationPath="toControl/@UI.LineItem"/><Annotation Term="UI.Hidden"/></Record>
-						<Record Type="UI.ReferenceFacet"><PropertyValue Property="Label" String="Overview"/><PropertyValue Property="ID" String="General"/><PropertyValue Property="Target" AnnotationPath="@UI.Identification"/></Record>
-						<Record Type="UI.ReferenceFacet"><PropertyValue Property="ID" String="ItemDetails"/><PropertyValue Property="Target" AnnotationPath="toCondCat/@UI.LineItem"/></Record>
-					</Collection>
-				</Annotation>
-				<Annotation Term="UI.HeaderFacets">
-					<Collection>
-						<Record Type="UI.ReferenceFacet"><PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#HeaderData"/></Record>
-						<Record Type="UI.ReferenceFacet"><PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#Details"/></Record>
-					</Collection>
-				</Annotation>
-				<Annotation Term="UI.FieldGroup" Qualifier="Details">
-					<Record>
-						<PropertyValue Property="Data">
-							<Collection>
-								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="Kotab"/></Record>
-							</Collection>
-						</PropertyValue>
-					</Record>
-				</Annotation>
-				<Annotation Term="UI.FieldGroup" Qualifier="HeaderData">
-					<Record>
-						<PropertyValue Property="Data">
-							<Collection>
-								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="Kschl"/></Record>
-							</Collection>
-						</PropertyValue>
-					</Record>
-				</Annotation>
-				<Annotation Term="UI.FieldGroup" Qualifier="QFBasicInfo">
-					<Record>
-						<PropertyValue Property="Data">
-							<Collection>
-								<Record Type="UI.DataField"><PropertyValue Property="Value" Path="Subct"/></Record>
-							</Collection>
-						</PropertyValue>
-					</Record>
-				</Annotation>
-				<Annotation Term="UI.HeaderInfo">
-					<Record><PropertyValue Property="TypeName" String="Pricing Scenario"/><PropertyValue Property="TypeNamePlural" String="Pricing Scenarios"/>
-						<PropertyValue Property="Title">
-							<Record Type="UI.DataField"><PropertyValue Property="Label" String="Pricing Scenarios"/><PropertyValue Property="Value" Path="Descr"/></Record>
-						</PropertyValue>
-					</Record>
-				</Annotation>
-				<Annotation Term="UI.Identification">
-					<Collection>
-						<Record Type="UI.DataField"><PropertyValue Property="Value" Path="Subct"/></Record>
-					</Collection>
-				</Annotation>
-				<Annotation Term="UI.LineItem">
-					<Collection>
-						<Record Type="UI.DataField"><PropertyValue Property="Value" Path="Subct"/></Record>
-						<Record Type="UI.DataField"><PropertyValue Property="Value" Path="Vbeln"/></Record>
-					</Collection>
-				</Annotation>
-				<Annotation Term="UI.SelectionFields">
-					<Collection>
-						<PropertyPath>Pmprf</PropertyPath>
-						<PropertyPath>Vbeln</PropertyPath>
-					</Collection>
-				</Annotation>
-			</Annotations>
-			<Annotations Target="cds_xcgdcxc_pricing_maint_def.xCGDCxI_PRICING_VISIBLEType">
-				<Annotation Term="UI.Identification">
-					<Collection>
-						<Record Type="UI.DataField"><PropertyValue Property="Value" Path="Knumh"/></Record>
-						<Record Type="UI.DataField"><PropertyValue Property="Value" Path="Vbeln"/></Record>
-					</Collection>
-				</Annotation>
-				<Annotation Term="UI.LineItem">
-					<Collection>
-						<Record Type="UI.DataField"><PropertyValue Property="Value" Path="Vbeln"/></Record>
-					</Collection>
-				</Annotation>
-			</Annotations>
-		</Schema>
-	</edmx:DataServices>
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="4.0" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+    <edmx:Reference Uri="../../catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMON',Version='0001',SAP__Origin='')/$value">
+        <edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="../../catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_UI',Version='0001',SAP__Origin='')/$value">
+        <edmx:Include Namespace="com.sap.vocabularies.UI.v1" Alias="UI"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="../../catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMUNICATION',Version='0001',SAP__Origin='')/$value">
+        <edmx:Include Namespace="com.sap.vocabularies.Communication.v1" Alias="Communication"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="../../catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_PERSONALDATA',Version='0001',SAP__Origin='')/$value">
+        <edmx:Include Namespace="com.sap.vocabularies.PersonalData.v1" Alias="PersonalData"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="../../catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_VALIDATION',Version='0001',SAP__Origin='')/$value">
+        <edmx:Include Namespace="Org.OData.Validation.V1" Alias="Validation"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="../../catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_ANALYTICS',Version='0001',SAP__Origin='')/$value">
+        <edmx:Include Namespace="com.sap.vocabularies.Analytics.v1" Alias="Analytics"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="../../catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_HTML5',Version='0001',SAP__Origin='')/$value">
+        <edmx:Include Namespace="com.sap.vocabularies.HTML5.v1" Alias="HTML5"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="../../../cgdc/ui_pricing_maint/$metadata">
+        <edmx:Include Namespace="UI_PRICING_MAINT" Alias="SAP"/>
+    </edmx:Reference>
+    <edmx:DataServices>
+        <Schema Namespace="com.sap.cgdc.ui_pricing_maint_van.v1" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/xcgdcxafee_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/xcgdcxcafd_clin_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/xcgdcxcasseg_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/xcgdcxcegroup_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/xcgdcxchrgn_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/xcgdcxciex_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/xcgdcxcline_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/xcgdcxclin_wawf_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/xcgdcxclrqt_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/xcgdcxcmbval_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/xcgdcxcmcty_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/xcgdcxcom_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/xcgdcxcost_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/xcgdcxctsh_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/xcgdcxcwth_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/xcgdcxdefin_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/xcgdcxeline_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/xcgdcxffee_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/xcgdcxfiex_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/xcgdcxfixfee_calc_mthd_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/xcgdcxfobpt_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/xcgdcxfrng_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/xcgdcxfwth_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/xcgdcxga_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/xcgdcxhdwe_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/xcgdcxifee_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/xcgdcxincfee_calc_mthd_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/xcgdcxincrd_yr_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/xcgdcxkstar_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/xcgdcxlacpt_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/xcgdcxlinsp_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/xcgdcxloh_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/xcgdcxlstar_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/xcgdcxmfoh_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/xcgdcxmthn_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/xcgdcxno_bill_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/xcgdcxno_wawf_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/xcgdcxnvad_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/xcgdcxorge_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/xcgdcxorgh_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/xcgdcxorgi_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/xcgdcxpbpgp_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/xcgdcxpernr_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/xcgdcxprot_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/xcgdcxpspid_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/xcgdcxpspnr_lead_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/xcgdcxqty_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/xcgdcxsdf1_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/xcgdcxsdf2_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/xcgdcxsdf3_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/xcgdcxsdf4_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/xcgdcxsdf5_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/xcgdcxsdf6_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/xcgdcxseid_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/xcgdcxsosta_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/xcgdcxso_block_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/xcgdcxsrvorg_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/xcgdcxtrns_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/xcgdcxuidind_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/xcgdcxuidval_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/xcgdcxvadd_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/xcgdcxwbsl1_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/xcgdcxwbsl2_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/xcgdcxwbsl3_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/xcgdcxwbsl4_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/xcgdcxwbsl5_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/xcgdcxwbsl6_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/aland_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/annual_premium_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/anzsn_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/auart_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/auart_sd_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/aubel_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/aufza_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/aupos_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/autyp_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/bonus_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/bstme_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/bucagr_id_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/bugrp_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/bukrs_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/bwtar_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/category_id_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/cc_docnoentry_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/cc_grpid_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/charg_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/cityc_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/counc_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/ctrtst_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/ctrtst_id_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/cuobj_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/datab_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/datbi_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/ean11_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/eannr_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/ebonu_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/ekkoa_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/ekkol_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/ekorg_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/erkrs_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/esokz_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/evrtn_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/evrtp_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/fkart_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/fktyp_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/gsber_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/gzolx_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/hienr_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/inco1_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/inco2_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/industry_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/infnr_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/kappl_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/kbetr_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/kbstat_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/kdgrp_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/kexcl_d_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/kfrst_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/kokrs_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/kolif_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/konda_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/kondm_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/konwa_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/kopos_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/kosar_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/kostl_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/kostv_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/kosza_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/kunnr_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/kwert_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/land1_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/laufzeit_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/lifnr_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/lifre_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/lland_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/llief_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/ltsnr_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/matkl_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/matnr_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/meein_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/meins_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/mganrentry_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/mgkum_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/mtart_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/mwskz_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/name_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/plikz_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/pltyp_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/pltyp_d_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/prodh_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/provg_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/pwggr_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/p_cacsappl_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/p_ctrt_xl_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/p_state_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/p_version_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/regio_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/rem_buscase_typ_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/reswk_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/rldnr_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/serialnr_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/spart_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/ssparte_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/taxik_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/taxil_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/taxim_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/taxir_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/taxiw_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/taxk5_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/taxk6_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/taxk7_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/taxk8_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/taxk9_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/taxm1_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/taxm2_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/taxm3_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/taxm4_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/ttarif_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/txjcd_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/txjcd_sf_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/ukonm_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/upmat_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/varcond_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/vbelnentry_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/vbtyp_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/versi_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/versn_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/vkorg_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/vkorgau_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/vorname_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/vrgar_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/vrkme_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/vsnr_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/Vtext_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/vtweg_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/waerk_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/wagrp_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/werks_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/werkv_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/wghie_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/wglif_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/wkcou_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/wkcty_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/wkreg_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/wty_hours_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/wty_months_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/zschl_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/zterm_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/Delete_mc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/Update_mc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/toScales_oc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/zz_eng_part_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType">
+                <Annotation Term="UI.HeaderFacets">
+                    <Collection>
+                        <Record Type="UI.ReferenceFacet">
+                            <PropertyValue Property="Label" String="Condition Type"/>
+                            <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#HeaderData"/>
+                        </Record>
+                        <Record Type="UI.ReferenceFacet">
+                            <PropertyValue Property="Label" String="Condition Table"/>
+                            <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#Details"/>
+                        </Record>
+                        <Record Type="UI.ReferenceFacet">
+                            <PropertyValue Property="Label" String="Release Status"/>
+                            <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#ReleaseStatus"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="UI.Facets">
+                    <Collection>
+                        <Record Type="UI.ReferenceFacet">
+                            <PropertyValue Property="Label" String="General Information"/>
+                            <PropertyValue Property="ID" String="Home"/>
+                            <PropertyValue Property="Target" AnnotationPath="@UI.Identification#GeneralInfo"/>
+                        </Record>
+                        <Record Type="UI.ReferenceFacet">
+                            <PropertyValue Property="Label" String="Price Details"/>
+                            <PropertyValue Property="ID" String="Price"/>
+                            <PropertyValue Property="Target" AnnotationPath="@UI.Identification#Home"/>
+                        </Record>
+                        <Record Type="UI.ReferenceFacet">
+                            <PropertyValue Property="Label" String="Additional Data"/>
+                            <PropertyValue Property="ID" String="AddData"/>
+                            <PropertyValue Property="Target" AnnotationPath="@UI.Identification#AddData"/>
+                        </Record>
+                        <Record Type="UI.ReferenceFacet">
+                            <PropertyValue Property="ID" String="ItemDetails"/>
+                            <PropertyValue Property="Target" AnnotationPath="toScales/@UI.LineItem"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="UI.FieldGroup" Qualifier="Details">
+                    <Record>
+                        <PropertyValue Property="Data">
+                            <Collection>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="kotab"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.FieldGroup" Qualifier="HeaderData">
+                    <Record>
+                        <PropertyValue Property="Data">
+                            <Collection>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="kschl"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.FieldGroup" Qualifier="ReleaseStatus">
+                    <Record>
+                        <PropertyValue Property="Data">
+                            <Collection>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="kfrst"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.HeaderInfo">
+                    <Record>
+                        <PropertyValue Property="TypeName" String="Condition Record"/>
+                        <PropertyValue Property="Title">
+                            <Record Type="UI.DataField">
+                                <PropertyValue Property="Label" String="Condition Record"/>
+                            </Record>
+                        </PropertyValue>
+                        <PropertyValue Property="Description">
+                            <Record Type="UI.DataField">
+                                <PropertyValue Property="Value" Path="knumh"/>
+                            </Record>
+                        </PropertyValue>
+                    </Record>
+                    <Annotation Term="Core.Messages">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="message" String="UI.HEADERINFO: TypeNamePlural is mandatory"/>
+                                <PropertyValue Property="severity" String="error"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Annotation>
+                <Annotation Term="UI.Identification" Qualifier="AddData">
+                    <Collection>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="xcgdcxso_block"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="xcgdcxlacpt"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="xcgdcxlinsp"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="xcgdcxuidval"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="xcgdcxseid"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="xcgdcxclin_wawf"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="xcgdcxcmbval"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="xcgdcxno_wawf"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="xcgdcxno_bill"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="xcgdcxfobpt"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="UI.Identification" Qualifier="GeneralInfo">
+                    <Collection>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="pmprf"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="kschl"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="vkorg"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="kotab"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="knumh"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="cc_docnoentry"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="mganrentry"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="vbelnentry"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="xcgdcxsosta"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="xcgdcxqty"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="xcgdcxcafd_clin"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="xcgdcxcasseg"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="xcgdcxeline"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="cc_docno"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="mganr"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="posnr"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="kfrst"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="datbi"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="datab"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="kbstat"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="vtweg"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="lifnr"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="UI.Identification" Qualifier="Home">
+                    <Collection>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="loevm_ko"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="kmein"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="krech"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="auart"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="kbetr"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="zz_eng_part"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="kwert"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="cc_grpid"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="spart"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="kopos"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="kunnr"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="kdgrp"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="pltyp"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="xcgdcxuidind"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="konda"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="kondm"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="waerk"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="matnr"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="bwtar"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="charg"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="prodh"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="meins"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="bonus"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="ebonu"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="provg"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="aland"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="wkreg"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="wkcou"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="wkcty"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="lland"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="regio"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="counc"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="cityc"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="taxm1"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="txjcd_sf"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="p_state"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="p_cacsappl"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="p_ctrt_xl"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="p_version"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="rem_buscase_typ"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="ctrtst"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="bucagr_id"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="ctrtst_id"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="annual_premium"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="laufzeit"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="vsnr"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="vorname"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="name"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="ttarif"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="ssparte"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="industry"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="category_id"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="xcgdcxcline"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="xcgdcxpspnr_lead"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="xcgdcxsrvorg"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="xcgdcxpspid"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="xcgdcxlstar"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="xcgdcxwbsl6"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="xcgdcxwbsl5"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="xcgdcxwbsl4"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="xcgdcxwbsl3"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="xcgdcxwbsl2"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="xcgdcxwbsl1"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="xcgdcxkstar"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="wty_hours"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="wty_months"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="serialnr"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="xcgdcxchrgn"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="xcgdcxincfee_calc_mthd"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="xcgdcxfixfee_calc_mthd"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="xcgdcxclrqt"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="xcgdcxpbpgp"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="xcgdcxcegroup"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="xcgdcxdefin"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="xcgdcxpernr"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="xcgdcxorge"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="xcgdcxorgi"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="xcgdcxorgh"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="xcgdcxincrd_yr"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="xcgdcxcmcty"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="mgkum"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="bugrp"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="kexcl_d"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="pltyp_d"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="xcgdcxctsh"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="xcgdcxprot"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="xcgdcxmfoh"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="xcgdcxsdf6"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="xcgdcxsdf5"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="xcgdcxsdf4"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="xcgdcxsdf3"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="xcgdcxsdf2"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="xcgdcxsdf1"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="xcgdcxcwth"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="xcgdcxtrns"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="xcgdcxnvad"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="xcgdcxvadd"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="xcgdcxhdwe"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="xcgdcxfwth"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="xcgdcxfiex"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="xcgdcxciex"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="xcgdcxafee"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="xcgdcxifee"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="xcgdcxffee"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="xcgdcxcom"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="xcgdcxga"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="xcgdcxmthn"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="xcgdcxloh"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="xcgdcxfrng"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="xcgdcxcost"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="fktyp"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="auart_sd"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="vbtyp"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="anzsn"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="ukonm"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="upmat"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="cuobj"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="aupos"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="aubel"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="pwggr"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="gzolx"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="zterm"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="land1"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="varcond"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="hienr"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="vkorgau"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="fkart"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="vrgar"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="versn"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="versi"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="plikz"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="erkrs"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="txjcd"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="taxir"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="taxil"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="taxiw"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="taxik"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="taxim"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="wghie"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="bstme"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="ekkoa"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="ekkol"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="lifre"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="llief"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="mtart"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="rldnr"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="bukrs"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="inco2"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="inco1"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="evrtp"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="evrtn"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="infnr"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="kosza"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="kosar"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="kostl"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="kokrs"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="meein"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="kostv"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="aufza"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="zschl"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="autyp"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="gsber"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="eannr"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="ean11"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="vrkme"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="wagrp"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="werkv"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="mwskz"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="wglif"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="ltsnr"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="kolif"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="reswk"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="werks"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="esokz"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="ekorg"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="matkl"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="taxk9"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="taxk8"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="taxk7"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="taxk6"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="taxk5"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="taxm4"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="taxm3"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="taxm2"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="UI.LineItem">
+                    <Collection>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="ekorg"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="kschl"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="wkcty"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="wkcou"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="vkorg"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="xcgdcxsosta"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="xcgdcxqty"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="xcgdcxeline"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="cc_docno"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="mganr"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="kotab"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="vbeln"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="posnr"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="datbi"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="datab"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="zz_eng_part"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="kwert"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="waerk"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="cc_grpid"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="xcgdcxclin_wawf"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="xcgdcxcmbval"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="xcgdcxno_wawf"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="xcgdcxso_block"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="xcgdcxno_bill"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="xcgdcxfobpt"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="xcgdcxlacpt"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="xcgdcxlinsp"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="xcgdcxuidval"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="xcgdcxuidind"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="xcgdcxseid"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="txjcd_sf"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="p_state"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="p_cacsappl"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="p_ctrt_xl"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="p_version"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="rem_buscase_typ"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="ctrtst"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="bucagr_id"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="ctrtst_id"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="annual_premium"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="laufzeit"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="vsnr"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="vorname"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="name"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="ttarif"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="ssparte"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="industry"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="category_id"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="xcgdcxcline"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="xcgdcxpspnr_lead"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="xcgdcxsrvorg"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="xcgdcxpspid"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="xcgdcxlstar"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="xcgdcxwbsl6"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="xcgdcxwbsl5"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="xcgdcxwbsl4"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="xcgdcxwbsl3"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="xcgdcxwbsl2"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="xcgdcxwbsl1"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="xcgdcxkstar"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="wty_hours"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="wty_months"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="serialnr"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="xcgdcxchrgn"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="xcgdcxincfee_calc_mthd"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="xcgdcxfixfee_calc_mthd"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="xcgdcxclrqt"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="xcgdcxpbpgp"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="xcgdcxcegroup"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="xcgdcxdefin"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="xcgdcxpernr"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="xcgdcxorge"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="xcgdcxorgi"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="xcgdcxorgh"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="xcgdcxincrd_yr"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="xcgdcxcmcty"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="mgkum"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="bugrp"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="kexcl_d"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="pltyp_d"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="xcgdcxctsh"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="xcgdcxprot"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="xcgdcxmfoh"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="xcgdcxsdf6"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="xcgdcxsdf5"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="xcgdcxsdf4"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="xcgdcxsdf3"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="xcgdcxsdf2"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="xcgdcxsdf1"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="xcgdcxcwth"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="xcgdcxtrns"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="xcgdcxnvad"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="xcgdcxvadd"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="xcgdcxhdwe"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="xcgdcxfwth"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="xcgdcxfiex"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="xcgdcxciex"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="xcgdcxafee"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="xcgdcxifee"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="xcgdcxffee"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="xcgdcxcom"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="xcgdcxga"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="xcgdcxmthn"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="xcgdcxloh"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="xcgdcxfrng"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="xcgdcxcost"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Criticality" Path="loevmInd"/>
+                            <PropertyValue Property="CriticalityRepresentation" EnumMember="UI.CriticalityRepresentationType/WithoutIcon"/>
+                            <PropertyValue Property="Value" Path="loevm_ko"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="kmein"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="krech"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="fktyp"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="auart_sd"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="vbtyp"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="anzsn"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="ukonm"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="upmat"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="cuobj"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="aupos"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="aubel"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="pwggr"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="gzolx"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="zterm"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="land1"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="varcond"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="hienr"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="vkorgau"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="fkart"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="vrgar"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="versn"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="versi"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="plikz"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="erkrs"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="txjcd"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="taxir"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="taxil"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="taxiw"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="taxik"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="taxim"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="wghie"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="bstme"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="ekkoa"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="ekkol"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="lifre"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="llief"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="mtart"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="rldnr"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="bukrs"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="inco2"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="inco1"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="evrtp"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="evrtn"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="infnr"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="kosza"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="kosar"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="kostl"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="kokrs"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="meein"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="kostv"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="aufza"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="zschl"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="autyp"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="auart"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="gsber"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="eannr"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="ean11"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="vrkme"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="wagrp"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="werkv"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="mwskz"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="wglif"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="ltsnr"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="kolif"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="reswk"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="werks"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="esokz"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="matkl"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="lifnr"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="taxk9"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="taxk8"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="taxk7"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="kfrst"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="pmprf"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="taxk6"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="taxk5"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="taxm4"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="taxm3"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="taxm2"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="taxm1"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="cityc"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="counc"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="regio"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="lland"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="wkreg"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="aland"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="provg"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="ebonu"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="bonus"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="meins"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="prodh"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="charg"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="bwtar"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="matnr"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="kondm"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="konda"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="pltyp"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="kdgrp"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="spart"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="kunnr"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="kopos"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="kbetr"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="vtweg"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="kbstat"/>
+                        </Record>
+                    </Collection>
+                    <Annotation Term="UI.Criticality" Path="loevmInd"/>
+                </Annotation>
+                <Annotation Term="UI.SelectionFields">
+                    <Collection>
+                        <PropertyPath>pmprf</PropertyPath>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CONDITON_CATALOGType/Crt_Group_ac">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CONDITON_CATALOGType/toCncMain_oc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CONDITON_CATALOGType">
+                <Annotation Term="UI.HeaderFacets">
+                    <Collection>
+                        <Record Type="UI.ReferenceFacet">
+                            <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#HeaderData"/>
+                        </Record>
+                        <Record Type="UI.ReferenceFacet">
+                            <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#Details"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="UI.Facets">
+                    <Collection>
+                        <Record Type="UI.ReferenceFacet">
+                            <PropertyValue Property="Label" String="Overview"/>
+                            <PropertyValue Property="ID" String="General"/>
+                            <PropertyValue Property="Target" AnnotationPath="@UI.Identification"/>
+                        </Record>
+                        <Record Type="UI.ReferenceFacet">
+                            <PropertyValue Property="ID" String="ItemDetails"/>
+                            <PropertyValue Property="Target" AnnotationPath="toCncMain/@UI.LineItem"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="UI.FieldGroup" Qualifier="QFBasicInfo">
+                    <Record>
+                        <PropertyValue Property="Data">
+                            <Collection>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="Kotab"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.HeaderInfo">
+                    <Record>
+                        <PropertyValue Property="TypeName" String="Condition Catalog"/>
+                        <PropertyValue Property="TypeNamePlural" String="Condition Catalog"/>
+                        <PropertyValue Property="Title">
+                            <Record Type="UI.DataField">
+                                <PropertyValue Property="Label" String="Condition Catalog"/>
+                                <PropertyValue Property="Value" Path="Kotab"/>
+                            </Record>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.Identification">
+                    <Collection>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="Kotab"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="UI.LineItem">
+                    <Collection>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="Kschl"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="Kotab"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="Record Count"/>
+                            <PropertyValue Property="Value" Path="RecCount"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="UI.SelectionFields">
+                    <Collection>
+                        <PropertyPath>Pmprf</PropertyPath>
+                        <PropertyPath>Vbeln</PropertyPath>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_PRICING_MAINType/Subct">
+                <Annotation Term="Common.Text" Path="Descr">
+                    <Annotation Term="UI.TextArrangement" EnumMember="UI.TextArrangementType/TextLast"/>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_PRICING_MAINType">
+                <Annotation Term="UI.HeaderFacets">
+                    <Collection>
+                        <Record Type="UI.ReferenceFacet">
+                            <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#HeaderData"/>
+                        </Record>
+                        <Record Type="UI.ReferenceFacet">
+                            <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#Details"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="UI.Facets">
+                    <Collection>
+                        <Record Type="UI.ReferenceFacet">
+                            <PropertyValue Property="Label" String="Overview"/>
+                            <PropertyValue Property="ID" String="General"/>
+                            <PropertyValue Property="Target" AnnotationPath="@UI.Identification"/>
+                        </Record>
+                        <Record Type="UI.ReferenceFacet">
+                            <PropertyValue Property="ID" String="ItemDetails"/>
+                            <PropertyValue Property="Target" AnnotationPath="toCondCat/@UI.LineItem"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="UI.FieldGroup" Qualifier="QFBasicInfo">
+                    <Record>
+                        <PropertyValue Property="Data">
+                            <Collection>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="Subct"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.HeaderInfo">
+                    <Record>
+                        <PropertyValue Property="TypeName" String="Pricing Scenario"/>
+                        <PropertyValue Property="TypeNamePlural" String="Pricing Scenarios"/>
+                        <PropertyValue Property="Title">
+                            <Record Type="UI.DataField">
+                                <PropertyValue Property="Label" String="Pricing Scenarios"/>
+                                <PropertyValue Property="Value" Path="Descr"/>
+                            </Record>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.Identification">
+                    <Collection>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="Subct"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="UI.LineItem">
+                    <Collection>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="Subct"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="UI.SelectionFields">
+                    <Collection>
+                        <PropertyPath>Pmprf</PropertyPath>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_Pricing_ScalesType/Delete_mc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_Pricing_ScalesType/Update_mc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_Pricing_ScalesType">
+                <Annotation Term="UI.HeaderFacets">
+                    <Collection>
+                        <Record Type="UI.ReferenceFacet">
+                            <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#HeaderData"/>
+                        </Record>
+                        <Record Type="UI.ReferenceFacet">
+                            <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#Details"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="UI.Facets">
+                    <Collection>
+                        <Record Type="UI.ReferenceFacet">
+                            <PropertyValue Property="Label" String="Overview"/>
+                            <PropertyValue Property="ID" String="General"/>
+                            <PropertyValue Property="Target" AnnotationPath="@UI.Identification"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="UI.HeaderInfo">
+                    <Record>
+                        <PropertyValue Property="TypeName" String="Scales"/>
+                        <PropertyValue Property="TypeNamePlural" String="Scales"/>
+                        <PropertyValue Property="Title">
+                            <Record Type="UI.DataField">
+                                <PropertyValue Property="Label" String="Scales"/>
+                                <PropertyValue Property="Value" String="">
+                                    <Annotation Term="Core.Messages">
+                                        <Collection>
+                                            <Record>
+                                                <PropertyValue Property="code" String="SADL_GW_EXP_VOCAN-001"/>
+                                                <PropertyValue Property="message" String="Property 'Descr' of annotation 'UI.HEADERINFO.TITLE' in proj./view '/CGDC/I_Pricing_Scales' not found"/>
+                                                <PropertyValue Property="severity" String="error"/>
+                                            </Record>
+                                        </Collection>
+                                    </Annotation>
+                                </PropertyValue>
+                            </Record>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.Identification">
+                    <Collection>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="vbeln"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="knumh"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="kotab"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="kschl"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="cc_docno"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="mganr"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="kopos"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="Klfn1"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="kbetr"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="UI.LineItem">
+                    <Collection>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="cc_docno"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="mganr"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="vbeln"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="knumh"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="kotab"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="kschl"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="kopos"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="Klfn1"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="konwa"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="kbetr"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xcgdcxi_pricing_t_keyType">
+                <Annotation Term="UI.LineItem">
+                    <Collection>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="FIELDNAME"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="PrimaryKey"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="DataType"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="UI.SelectionFields">
+                    <Collection>
+                        <PropertyPath>TABNAME</PropertyPath>
+                        <PropertyPath>KSCHL</PropertyPath>
+                        <PropertyPath>VBELN</PropertyPath>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.I_Customer_VHType/BPAddrCityName">
+                <Annotation Term="UI.HiddenFilter"/>
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.I_Customer_VHType/BPAddrStreetName">
+                <Annotation Term="UI.HiddenFilter"/>
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.I_Customer_VHType/CustomerAccountGroup">
+                <Annotation Term="UI.HiddenFilter"/>
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.I_Customer_VHType/AuthorizationGroup">
+                <Annotation Term="UI.HiddenFilter"/>
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.I_Customer_VHType/IsBusinessPurposeCompleted">
+                <Annotation Term="UI.HiddenFilter"/>
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.I_Customer_VHType/BusinessPartnerType">
+                <Annotation Term="UI.HiddenFilter"/>
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.I_Customer_VHType/DataControllerSet">
+                <Annotation Term="UI.HiddenFilter"/>
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.I_Customer_VHType/DataController1">
+                <Annotation Term="UI.HiddenFilter"/>
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.I_Customer_VHType/DataController2">
+                <Annotation Term="UI.HiddenFilter"/>
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.I_Customer_VHType/DataController3">
+                <Annotation Term="UI.HiddenFilter"/>
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.I_Customer_VHType/DataController4">
+                <Annotation Term="UI.HiddenFilter"/>
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.I_Customer_VHType/DataController5">
+                <Annotation Term="UI.HiddenFilter"/>
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.I_Customer_VHType/DataController6">
+                <Annotation Term="UI.HiddenFilter"/>
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.I_Customer_VHType/DataController7">
+                <Annotation Term="UI.HiddenFilter"/>
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.I_Customer_VHType/DataController8">
+                <Annotation Term="UI.HiddenFilter"/>
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.I_Customer_VHType/DataController9">
+                <Annotation Term="UI.HiddenFilter"/>
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.I_Customer_VHType/DataController10">
+                <Annotation Term="UI.HiddenFilter"/>
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.I_Customer_VHType/IsCompetitor">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.I_SupplierType/DataControllerSet">
+                <Annotation Term="UI.HiddenFilter"/>
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.I_SupplierType/DataController1">
+                <Annotation Term="UI.HiddenFilter"/>
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.I_SupplierType/DataController2">
+                <Annotation Term="UI.HiddenFilter"/>
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.I_SupplierType/DataController3">
+                <Annotation Term="UI.HiddenFilter"/>
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.I_SupplierType/DataController4">
+                <Annotation Term="UI.HiddenFilter"/>
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.I_SupplierType/DataController5">
+                <Annotation Term="UI.HiddenFilter"/>
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.I_SupplierType/DataController6">
+                <Annotation Term="UI.HiddenFilter"/>
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.I_SupplierType/DataController7">
+                <Annotation Term="UI.HiddenFilter"/>
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.I_SupplierType/DataController8">
+                <Annotation Term="UI.HiddenFilter"/>
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.I_SupplierType/DataController9">
+                <Annotation Term="UI.HiddenFilter"/>
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.I_SupplierType/DataController10">
+                <Annotation Term="UI.HiddenFilter"/>
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.CC_Group_VHType">
+                <Annotation Term="UI.LineItem">
+                    <Collection>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="Fieldname"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+        </Schema>
+    </edmx:DataServices>
 </edmx:Edmx>

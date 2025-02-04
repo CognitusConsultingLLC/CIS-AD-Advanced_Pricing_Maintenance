@@ -20,7 +20,8 @@
                     "annotations": [
                         "_CGDC_UI_PRICING_MAINT_VAN"
                     ],
-                    "localUri": "localService/metadata.xml"
+                    "localUri": "localService/metadata.xml",
+                    "odataVersion": "2.0"
                 }
             },
             "_CGDC_UI_PRICING_MAINT_VAN": {
@@ -29,10 +30,6 @@
                 "settings": {
                     "localUri": "localService/_CGDC_UI_PRICING_MAINT_VAN.xml"
                 }
-            },
-            "CCHDR" :{
-                "uri": "/sap/opu/odata/sap/YUI_CC_HDR/",
-				"type": "OData"
             }
         },
         "offline": false,
@@ -110,7 +107,6 @@
                     "defaultCountMode": "Inline",
                     "refreshAfterChange": false,
                     "metadataUrlParams": {
-                        "sap-value-list": "none"
                     }
                 }
             },
@@ -131,17 +127,6 @@
                     "defaultCountMode": "Request"
                 },
                 "preload": true
-            },
-            "demoapp": {
-                "type": "sap.ui.model.odata.v2.ODataModel",
-				"settings": {
-					"defaultOperationMode": "Server",
-					"defaultBindingMode": "OneWay",
-					"defaultCountMode": "Request"
-				},
-				"dataSource": "CCHDR",
-				"preload": true
-
             }
         },
         "extends": {
@@ -152,26 +137,26 @@
                         "sap.ui.generic.app": {
                             "xCGDCxI_CONDITON_CATALOG": {
                                 "EntitySet": "xCGDCxI_CONDITON_CATALOG",
-                                "Sections":{
-                                    "ItemDetails":{
-                                        "id" :"ItemDetails",
-                                        "Actions" :{
-                                            "ImportUpload" :{
-                                                "id" : "ImportUpload",
-                                                "text" : "{@i18n>import}",
-                                                "press" : "onImportToExcel",
+                                "Sections": {
+                                    "ItemDetails": {
+                                        "id": "ItemDetails",
+                                        "Actions": {
+                                            "ImportUpload": {
+                                                "id": "ImportUpload",
+                                                "text": "{@i18n>import}",
+                                                "press": "onImportToExcel",
                                                 "requiresSelection": false
                                             },
-                                            "ExcelUpload" :{
-                                                "id" : "ExcelUpload",
-                                                "text" : "{@i18n>upload}",
-                                                "press" : "onExcelUpload",
+                                            "ExcelUpload": {
+                                                "id": "ExcelUpload",
+                                                "text": "{@i18n>upload}",
+                                                "press": "onExcelUpload",
                                                 "requiresSelection": false
                                             },
-                                            "Groups" :{
-                                                "id" : "Groups",
-                                                "text" : "{@i18n>groups}",
-                                                "press" : "onPressGrops",
+                                            "Groups": {
+                                                "id": "Groups",
+                                                "text": "{@i18n>groups}",
+                                                "press": "onPressGrops",
                                                 "requiresSelection": false
                                             }
                                         }

@@ -25,14 +25,16 @@ sap.ui.define([
 							if (that.object.Kotab) {
 								that.aTable = that.object.Kotab;
 								that.Kschl = that.object.Kschl;
+								that.Vbeln = that.object.Vbeln;
 
 							}
 							if (that.object.kotab) {
 								that.aTable = that.object.kotab;
 								that.Kschl = that.object.kschl;
+								that.Vbeln = that.object.Vbeln;
 
 							}
-							that.setTableColumnData(that.aTable, that.Kschl);
+							that.setTableColumnData(that.aTable, that.Kschl,that.Vbeln);
 							let edit = sap.ui.getCore().byId(
 								"CGDC.CIS-AD-Pricing-Maintenance::sap.suite.ui.generic.template.ObjectPage.view.Details::xCGDCxI_CNC_MAIN--edit");
 							if (edit) {
@@ -264,10 +266,16 @@ sap.ui.define([
 				let xlsx_content = e.currentTarget.result;
 	
 				let workbook = XLSX.read(xlsx_content, { type: 'binary' });
+			//let workbook = XLSX.read(xlsx_content);
 				Object.keys(workbook.Sheets.Sheet1).map(function (k) {
-					if(workbook.Sheets.Sheet1[k].w && workbook.Sheets.Sheet1[k].w.split("/").length > 1){
-						workbook.Sheets.Sheet1[k].v = new Date(workbook.Sheets.Sheet1[k].w); //new Date(workbook.Sheets.Sheet1[k].w.split("/")[1] +'-'+ workbook.Sheets.Sheet1[k].w.split("/")[0] +'-'+ workbook.Sheets.Sheet1[k].w.split("/")[2]);
+					if(workbook.Sheets.Sheet1[k].w && workbook.Sheets.Sheet1[k].w.split("/").length > 1 && Number.isInteger(workbook.Sheets.Sheet1[k].v)){
+						var iDay = XLSX.SSF.parse_date_code(workbook.Sheets.Sheet1[k].v).d;
+						var iMonth = XLSX.SSF.parse_date_code(workbook.Sheets.Sheet1[k].v).m;
+						var iYear = XLSX.SSF.parse_date_code(workbook.Sheets.Sheet1[k].v).y;
+						workbook.Sheets.Sheet1[k].v = new Date(iMonth+"-"+iDay+"-"+iYear);
+					//	workbook.Sheets.Sheet1[k].v = new Date(workbook.Sheets.Sheet1[k].w); //new Date(workbook.Sheets.Sheet1[k].w.split("/")[1] +'-'+ workbook.Sheets.Sheet1[k].w.split("/")[0] +'-'+ workbook.Sheets.Sheet1[k].w.split("/")[2]);
 					}
+					
 				})
 				// here reading only the excel file sheet- Sheet1
 				var excelData = XLSX.utils.sheet_to_row_object_array(workbook.Sheets["Sheet1"]);
@@ -499,97 +507,56 @@ sap.ui.define([
 			this._performResetChanges(oModelContexts,"/CC_Group_Header");
 		},
 		onGroupDialogOkButton : function(oEvent){
+			if(this.GroupCode === 2){
+				this.oGroupDialog.close();
+				sap.m.MessageToast.show("Development in progress for Mintaining the Group");
+				return;
+			}
 			var oModelContexts = oEvent.getSource().getModel().mContexts;
 			let responsivetable = sap.ui.getCore().byId(
 				"CGDC.CIS-AD-Pricing-Maintenance::sap.suite.ui.generic.template.ObjectPage.view.Details::xCGDCxI_CONDITON_CATALOG--ItemDetails::responsiveTable"
 			);
-			//responsivetable.removeSelections(true);
 			var oForm = sap.ui.core.Fragment.byId("idFragGrpDialog", "idmbismartform1");
 			var oObject = oForm.getBindingContext().getObject();
 			var oModel1 = this.getView().getModel("Items");
 			var aArray = oModel1.getData().results;
-			var oDemoModel = this.getOwnerComponent().getModel("demoapp");
+			for (var i = 0; i < aArray.length; i++) {
+					delete aArray[i].key;
+					delete aArray[i].NEWENTRY;
+				//	delete aArray[i].modified;
+			}
 			var oTableData = btoa(JSON.stringify(aArray));
 			var sCcdoc = this.getView().getBindingContext().getObject().cc_docno;
 			var sPath = "/Crt_Group", that = this;
-			var sUrlParameters = {
-				cc_docno : this.getView().getBindingContext().getObject().cc_docno,
-				DraftUUID : "00000000-0000-0000-0000-000000000000",
-				IsActiveEntity : false,
-				key1 : "",
-				CC_GRPID : "",
-				cc_desc : oObject.cc_desc,
-				cc_extid : oObject.cc_extid,
-				CC_ENDT : oObject.cc_endt,
-				Value : oTableData
-
-			};
-				this.oGroupDialog.close();
-				this._performResetChanges(oModelContexts,"/CC_Group_Header");
-			// this.postGroups(sPath,sUrlParameters).then(function (oData) {
-			// 	this.oGroupDialog.close();
-			// 	this._performResetChanges(oModelContexts,"/CC_Group_Header");
-			// 	//sap.m.MessageToast.show("Saved");
-			// }.bind(this)).catch(function (oError) {
-			// 	try {
-			// 			var text = JSON.parse(oError.responseText).error.message.value;
-			// 		} catch (e) {
-			// 			text = oError.responseText
-			// 		}
-			// 		sap.m.MessageBox.error(text);
-			// }.bind(this))
-			// rea detag
-		//	var sPath1 = "/YC_CC_HDR(cc_docno='"+sCcdoc+"',DraftUUID=guid'00000000-0000-0000-0000-000000000000',IsActiveEntity=false)";
-		// var sPath1 = "/YC_CC_HDR(cc_docno='1041',DraftUUID=guid'00000000-0000-0000-0000-000000000000',IsActiveEntity=true)";
-		// 	oDemoModel.read(sPath1, {
-		// 		success: function (odata, oResponse) {
-		// 			that.etag = oResponse.headers.etag;
-		// 			this.postGroups(sPath,sUrlParameters).then(function (oData) {
-		// 		this.oGroupDialog.close();
-		// 		this._performResetChanges(oModelContexts,"/CC_Group_Header");
-		// 		//sap.m.MessageToast.show("Saved");
-		// 	}.bind(this)).catch(function (oError) {
-		// 		try {
-		// 				var text = JSON.parse(oError.responseText).error.message.value;
-		// 			} catch (e) {
-		// 				text = oError.responseText
-		// 			}
-		// 			sap.m.MessageBox.error(text);
-		// 	}.bind(this))
-		// 		//	that.performupdate(oModel, oObject);
-		// 		},
-		// 		error: function (oError) {
-		// 			try {
-		// 				var text = JSON.parse(oError.responseText).error.message.value;
-		// 			} catch (e) {
-		// 				text = oError.responseText
-		// 			}
-		// 			sap.m.MessageBox.error(text);
-
-		// 		}
-		// 	});
-			
-		 },
-		postGroups : function(sPath,sUrlParameters){
-			var that = this;
-			return new Promise(function (resolve, reject) {
-				var oModel = this.getOwnerComponent().getModel("demoapp");
-			//	oModel.oHeaders["If-Match"] = that.etag;
-				that.showBusyIndicator();
-				oModel.callFunction(sPath, {
-					method: "POST",
-					urlParameters : sUrlParameters,
-					success: function (oData,oResponse) {
-						that.hideBusyIndicator();
-						resolve(oResponse);
-					},
-					error: function (oError) {
-						that.hideBusyIndicator();
-						reject(oError);
-					}
+			var oCurrObject = this.getView().getBindingContext().getObject();			
+			this.showBusyIndicator();
+				var oPromise = this.extensionAPI.invokeActions(sPath,this.getView().getBindingContext(),{
+					Pmprf : oCurrObject.Pmprf,
+					Kschl : oCurrObject.Kschl,
+					Kotab : oCurrObject.Kotab,
+					Vbeln : oCurrObject.Vbeln,
+					mganr : oCurrObject.mganr,
+					cc_docno : oCurrObject.cc_docno,
+					Subct : oCurrObject.Subct,
+					Counter : oCurrObject.Counter,
+					key1 : "X",
+					CC_GRPID : "",
+					CC_DESC : oObject.cc_desc,
+					CC_EXTID : oObject.cc_extid,
+					CC_ENDT : oObject.cc_endt,
+					Value : oTableData
 				});
-			}.bind(this))
-		},
+				oPromise.then(
+					function (aResponse) {
+						that.hideBusyIndicator();
+						that.oGroupDialog.close();
+						that._performResetChanges(oModelContexts,"/CC_Group_Header");
+					//	that._onGroupCreateRestoreSuccess(that, aResponse);
+					},
+					function (oError) {
+						that.hideBusyIndicator();
+					});			
+		 },
 		showBusyIndicator: function () {
 			if (!this._busyIndicator) {
 				this._busyIndicator = new BusyDialog({
@@ -603,6 +570,47 @@ sap.ui.define([
 				this._busyIndicator.close();
 				this._busyIndicator = null;
 			}
+		},
+		onValueHelpRequested : function(oEvent){
+			if (!this.oVHDialog) {
+				this.oVHDialog = sap.ui.xmlfragment("idFragVhDialog",
+					"CGDC.CIS-AD-Pricing-Maintenance.ext.fragments.VHDialog", this);
+				this.getView().addDependent(this.oVHDialog);
+			}
+			this.oVHDialog.open();
+		},
+		onSelectionChangeFieldName : function(oEvent){
+			//oEvent.getParameters().listItem.getBindingContext().getObject().Fieldname
+		},
+		onAfterOpenFieldNameDialog : function(oEvent){
+			var oCurrObject = this.getView().getBindingContext().getObject();
+			var oFilterBar = oEvent.getSource().getContent()[0];
+			var oFilter = {
+				"Pmprf": oCurrObject.Pmprf,
+				"Kschl": oCurrObject.Kschl,
+				"Kotab": oCurrObject.Kotab //oData.EquipmentNo
+			};
+			oFilterBar.setFilterData(oFilter);
+			
+		},
+		onClickGo : function(oEvent){
+			var oSmartTable = oEvent.getSource().getParent().getContent()[1];
+			oSmartTable.rebindTable();
+		},
+		onBeforeRebindFieldNameSTVH : function(oEvent){
+			 var oSmartBar = oEvent.getSource().getParent().getContent()[0];
+			 var aFilters = oSmartBar.getFilters()[0].aFilters;
+			 var binding = oEvent.getParameter("bindingParams");
+			 binding.filters = [];
+			 binding.filters.push(aFilters);
+			// var oCurrObject = this.getView().getBindingContext().getObject();
+			
+			// var aFilter = new sap.ui.model.Filter("Pmprf", sap.ui.model.FilterOperator.EQ, oCurrObject.Pmprf);
+			// var aFilter1 = new sap.ui.model.Filter("Kschl", sap.ui.model.FilterOperator.EQ, oCurrObject.Kschl);
+			// var aFilter2 = new sap.ui.model.Filter("Kotab", sap.ui.model.FilterOperator.EQ, oCurrObject.Kotab);
+			// binding.filters.push(aFilter);
+			// binding.filters.push(aFilter1);
+			// binding.filters.push(aFilter2);
 		},
 		_performResetChanges : function(oModelContexts,sPath){
 			var oModel = this.getView().getModel();

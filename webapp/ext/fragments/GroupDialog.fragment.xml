@@ -33,13 +33,13 @@
 								</smartField:configuration>
 							</smartField:SmartField>
 						</smartForm:GroupElement> -->
-						<smartForm:GroupElement>
+						<!-- <smartForm:GroupElement>
 							<smartField:SmartField value="{cc_endt}">
 								<smartField:configuration>
 									<smartField:Configuration controlType="datePicker"></smartField:Configuration>
 								</smartField:configuration>
 							</smartField:SmartField>
-						</smartForm:GroupElement>
+						</smartForm:GroupElement> -->
                    
 					</smartForm:Group>
 				</smartForm:SmartForm>	
@@ -71,9 +71,17 @@
 					<ColumnListItem vAlign="Middle">
 						<cells>
 							<Input value="{Items>fieldname}"/>
+							<!-- <Input value="{Items>fieldname}" valueHelpRequest="onValueHelpRequested" showValueHelp="true"/> -->
+								<!-- <ComboBox
+								items="{
+									path: '/YI_CC_GRP_FIELD_F4',
+									sorter: { path: 'fieldname' }
+								}">
+								<core:Item key="{fieldname}" text="{fieldname}" />
+							</ComboBox> -->
 							<Input value="{Items>operator}"/>
 							<Input value="{Items>value}"/>
-							<Input value="{Items>cc_set}"/>	
+							<Input value="{Items>cc_set}" width="5rem"/>	
 						</cells>
 					</ColumnListItem>
 				</items>
