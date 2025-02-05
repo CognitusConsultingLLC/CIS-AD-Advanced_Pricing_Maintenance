@@ -6,7 +6,8 @@
 	<Dialog title="{i18n>fielnameVH}" class="" horizontalScrolling="false" afterOpen="onAfterOpenFieldNameDialog">
 		<content>
         		<smartFilterBar:SmartFilterBar id="smartFilterBarfielname" entitySet="CC_Group_VH" search="onClickGo"
-						persistencyKey="SmartFilterPKey" enableBasicSearch="false">
+						persistencyKey="SmartFilterPKey" enableBasicSearch="false"
+						initialise="onInitialiseSmartFilterVHDialog">
 							<smartFilterBar:layoutData>
 							<FlexItemData shrinkFactor="0" />
 						</smartFilterBar:layoutData>
@@ -22,7 +23,7 @@
 					</smartFilterBar:SmartFilterBar>
                 <smartTable:SmartTable id="projecttablefieldname" entitySet="CC_Group_VH" smartFilterId="smartFilterBarfielname"
 				tableType="ResponsiveTable" showVariantManagement="false" useVariantManagement="false" showTablePersonalisation="true" header="{i18n>fields}"
-				showRowCount="true" persistencyKey="SmartTableAnalytical_Explored" enableAutoBinding="true" useExportToExcel="false"
+				showRowCount="true" persistencyKey="SmartTableAnalytical_Explored" enableAutoBinding="false" useExportToExcel="false"
 				placeToolbarInTable="true" enableAutoColumnWidth="true" class="sapUiResponsiveMargin" demandPopin="true"
 				busyIndicatorDelay="0" ignoreFromPersonalisation="" requestAtLeastFields=""
                 initiallyVisibleFields="Pmprf,Kschl,Kotab,Sequn,Fieldname" beforeRebindTable="onBeforeRebindFieldNameSTVH">

@@ -1,0 +1,45 @@
+<core:FragmentDefinition
+	xmlns="sap.ui.comp.valuehelpdialog"
+	xmlns:core="sap.ui.core"
+	xmlns:m="sap.m"
+	xmlns:fb="sap.ui.comp.filterbar"
+    xmlns:smartFilterBar="sap.ui.comp.smartfilterbar">
+	<ValueHelpDialog
+		title="Value"
+		ok=".onValueHelpOkPressValue"
+		cancel=".onValueHelpCancelPress2"
+		afterClose=".onValueHelpAfterCloseValue"
+		afterOpen ="onValueHelpBeforeOpenValue"
+		key="MaintenanceOrder"
+		descriptionKey="MaintenanceOrder"
+		supportMultiselect="false"
+		tokenDisplayBehaviour="descriptionAndId"
+	>
+			<filterBar>
+                <!-- <smartFilterBar:SmartFilterBar entitySet="CC_Group_VH" search="onClickGo"
+						persistencyKey="SmartFilterPKey" enableBasicSearch="false"
+						initialise="onInitialiseSmartFilterVHDialog">
+							<smartFilterBar:layoutData>
+							<m:FlexItemData shrinkFactor="0" />
+						</smartFilterBar:layoutData>
+						<smartFilterBar:controlConfiguration>
+							<smartFilterBar:ControlConfiguration groupId="_BASIC" key="Fieldname" visibleInAdvancedArea="true"></smartFilterBar:ControlConfiguration>
+						</smartFilterBar:controlConfiguration>
+					</smartFilterBar:SmartFilterBar> -->
+			<!-- <fb:FilterBar advancedMode="true" search=".onFilterBarSearch" showClearOnFB="true" clear="onFilterBarClear">
+				<fb:filterGroupItems> 
+					<fb:FilterGroupItem
+						groupName="__$INTERNAL$"
+						name="Pspid"
+						label="{i18n>Pspid}"
+						visibleInFilterBar="true"
+					>
+						<fb:control>
+							<m:Input name="Pspid" change="onFilterBarSearch"/>
+						</fb:control>
+					</fb:FilterGroupItem>
+				</fb:filterGroupItems>
+			</fb:FilterBar> -->
+		</filterBar>
+	</ValueHelpDialog>
+</core:FragmentDefinition>

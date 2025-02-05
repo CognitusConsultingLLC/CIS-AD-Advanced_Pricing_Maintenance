@@ -329,6 +329,13 @@ sap.ui.define([
 					})
 					if(value[oColumn.FIELDNAME] !== undefined && value[oColumn.FIELDNAME] !== ''){
 					if(oField.type === "Edm.DateTime"){
+						// if(Number.isInteger(value[oColumn.FIELDNAME]) || value[oColumn.FIELDNAME].split(".").length > 1){
+						// var iDay = XLSX.SSF.parse_date_code(value[oColumn.FIELDNAME]).d;
+						// var iMonth = XLSX.SSF.parse_date_code(value[oColumn.FIELDNAME]).m;
+						// var iYear = XLSX.SSF.parse_date_code(value[oColumn.FIELDNAME]).y;
+						// value[oColumn.FIELDNAME] =  new Date(iMonth+"-"+iDay+"-"+iYear);
+							
+						// }
 						if(isNaN(new Date(value[oColumn.FIELDNAME]).getTime())){
 							if(value[oColumn.FIELDNAME].split(".").length > 1 ){
 							oObject[oColumn.FIELDNAME] = new Date(value[oColumn.FIELDNAME].split(".")[1] +'-'+ value[oColumn.FIELDNAME].split(".")[0] +'-'+ value[oColumn.FIELDNAME].split(".")[2]);
@@ -571,7 +578,154 @@ sap.ui.define([
 				this._busyIndicator = null;
 			}
 		},
+		onValueHelpRequested1 : function(oEvent){
+		//	this.oSource = oEvent.getSource();
+			this.iIndex = parseInt(oEvent.getSource().sId.split("-")[4]);
+			var oCurrObject = this.getView().getBindingContext().getObject();
+			var that = this;
+			var oView = this.getView();
+			var oCols = {
+				"cols" : []
+			};
+			var oFieldsEntityType = this.getView().getModel().getServiceMetadata().dataServices.schema[0].entityType.find(x => x.name === 'CC_Group_VHType');
+				oFieldsEntityType.property.forEach((field,fieldIndex)=>{
+					var oCol={};
+					oCol["template"] = field.name;
+					field.extensions.forEach((oExtension,extIndex)=>{
+						if(oExtension.name === "label"){
+							oCol["label"] = oExtension.value;
+						}
+					})
+					oCols.cols.push(oCol);
+					});
+			var omodel = new sap.ui.model.json.JSONModel(oCols);
+			var aCols = oCols.cols;
+			Fragment.load({
+				name: "CGDC.CIS-AD-Pricing-Maintenance.ext.fragments.FieldNameVh",
+				controller: this
+			}).then(function (oValueHelpDialog) {
+				this._oValueHelpDialog = sap.ui.xmlfragment(oView.getId(), "CGDC.CIS-AD-Pricing-Maintenance.ext.fragments.FieldNameVh", this);
+				this.getView().addDependent(this._oValueHelpDialog);
+				this._oValueHelpDialog.getTableAsync().then(function (oTable) {
+					oTable.setModel(this.getView().getModel());
+					oTable.setModel(omodel, "columns");
+					var aSorter = new sap.ui.model.Sorter("Pspnr", false, false);
+					var aFilters = [];
+					// aFilters.push(new sap.ui.model.Filter("Pmprf", sap.ui.model.FilterOperator.EQ, oCurrObject.Pmprf));
+					// aFilters.push(new sap.ui.model.Filter("Kschl", sap.ui.model.FilterOperator.EQ, oCurrObject.Kschl));
+					// aFilters.push(new sap.ui.model.Filter("Kotab", sap.ui.model.FilterOperator.EQ, oCurrObject.Kotab));
+					if (oTable.bindRows) {
+						oTable.bindAggregation("rows", {
+							path: "/CC_Group_VH",
+							filters : aFilters
+						});
+					}
+
+					if (oTable.bindItems) {
+						oTable.bindAggregation("items", {
+							path: "/CC_Group_VH",
+							filters : aFilters,
+							template: function () {
+								return new sap.m.ColumnListItem({
+									cells: aCols.map(function (column) {
+										return new sap.m.Label({
+											text: "{" + column.template + "}"
+										});
+									})
+								});
+							}
+						});
+					}
+					if (oTable.getBinding()) {
+						oTable.getBinding().attachDataReceived(function (oEvent) {
+							oView.setBusy(false);
+						}.bind(this));
+						oTable.getBinding().attachDataRequested(function (oEvent) {
+							oView.setBusy(true);
+						}.bind(this));
+					}
+					this._oValueHelpDialog.update();
+					this.onClickGo();
+				}.bind(this));
+				this._oValueHelpDialog.open();
+			}.bind(this));
+		},
+		onValueHelpRequestedValue : function(oEvent){
+			var oObect = oEvent.getSource().getModel("Items").getObject(oEvent.getSource().getParent().getBindingContextPath());
+			var oCurrObject = this.getView().getBindingContext().getObject();
+			var that = this;
+			var oView = this.getView();
+			var oCols = {
+				"cols" : [{
+					"label" :"MaintenanceOrder",
+					"template" :"MaintenanceOrder"
+				}]
+			};
+			var omodel = new sap.ui.model.json.JSONModel(oCols);
+			var aCols = oCols.cols;
+			Fragment.load({
+				name: "CGDC.CIS-AD-Pricing-Maintenance.ext.fragments.ValueVh",
+				controller: this
+			}).then(function (oValueHelpDialog) {
+				this._oValueHelpDialog2 = sap.ui.xmlfragment(oView.getId(), "CGDC.CIS-AD-Pricing-Maintenance.ext.fragments.ValueVh", this);
+				this.getView().addDependent(this._oValueHelpDialog);
+				this._oValueHelpDialog2.getTableAsync().then(function (oTable) {
+					oTable.setModel(this.getView().getModel());
+					oTable.setModel(omodel, "columns");
+					var aSorter = new sap.ui.model.Sorter("Pspnr", false, false);
+					var aFilters = [];
+					// aFilters.push(new sap.ui.model.Filter("Pmprf", sap.ui.model.FilterOperator.EQ, oCurrObject.Pmprf));
+					// aFilters.push(new sap.ui.model.Filter("Kschl", sap.ui.model.FilterOperator.EQ, oCurrObject.Kschl));
+					// aFilters.push(new sap.ui.model.Filter("Kotab", sap.ui.model.FilterOperator.EQ, oCurrObject.Kotab));
+					if (oTable.bindRows) {
+						oTable.bindAggregation("rows", {
+							path: "/I_MaintenanceOrderStdVH",
+							filters : aFilters
+						});
+					}
+
+					if (oTable.bindItems) {
+						oTable.bindAggregation("items", {
+							path: "/I_MaintenanceOrderStdVH",
+							filters : aFilters,
+							template: function () {
+								return new sap.m.ColumnListItem({
+									cells: aCols.map(function (column) {
+										return new sap.m.Label({
+											text: "{" + column.template + "}"
+										});
+									})
+								});
+							}
+						});
+					}
+					if (oTable.getBinding()) {
+						oTable.getBinding().attachDataReceived(function (oEvent) {
+							oView.setBusy(false);
+						}.bind(this));
+						oTable.getBinding().attachDataRequested(function (oEvent) {
+							oView.setBusy(true);
+						}.bind(this));
+					}
+					this._oValueHelpDialog2.update();
+					this.onClickGo();
+				}.bind(this));
+				this._oValueHelpDialog2.open();
+			}.bind(this));
+		},
+		onValueHelpCancelPress2: function (oEvent) {
+			oEvent.getSource().close();
+		},
+		onValueHelpOkPressWp: function (oEvent) {
+		//	this.getView().getModel("Items").setProperty("/fieldname", oEvent.getParameters("newValue").newValue);
+		//oEvent.getParameters().tokens[0]
+		var oRecrod = oEvent.getSource().getModel("Items").getData().results[this.iIndex];
+		oRecrod.fieldname = oEvent.getParameters().tokens[0].getKey();
+		oEvent.getSource().getModel("Items").refresh(true);
+		this._oValueHelpDialog.close();
+		},
 		onValueHelpRequested : function(oEvent){
+			this.iIndex = parseInt(oEvent.getSource().sId.split("-")[4]);
 			if (!this.oVHDialog) {
 				this.oVHDialog = sap.ui.xmlfragment("idFragVhDialog",
 					"CGDC.CIS-AD-Pricing-Maintenance.ext.fragments.VHDialog", this);
@@ -580,29 +734,111 @@ sap.ui.define([
 			this.oVHDialog.open();
 		},
 		onSelectionChangeFieldName : function(oEvent){
-			//oEvent.getParameters().listItem.getBindingContext().getObject().Fieldname
+			var sFieldName = oEvent.getParameters().listItem.getBindingContext().getObject().Fieldname;
+			var oRecrod = oEvent.getSource().getModel("Items").getData().results[this.iIndex];
+			oRecrod.fieldname = sFieldName;
+			oEvent.getSource().getModel("Items").refresh(true);
+			this.oVHDialog.close();
 		},
-		onAfterOpenFieldNameDialog : function(oEvent){
+		onInitialiseSmartFilterVHDialog : function(oEvent){
+			
 			var oCurrObject = this.getView().getBindingContext().getObject();
-			var oFilterBar = oEvent.getSource().getContent()[0];
+			var oFilterBar = oEvent.getSource();
+			oFilterBar.getVariantManagement().setVisible(false);
 			var oFilter = {
 				"Pmprf": oCurrObject.Pmprf,
 				"Kschl": oCurrObject.Kschl,
 				"Kotab": oCurrObject.Kotab //oData.EquipmentNo
 			};
+		//	oFilterBar.setFilterData([]);
 			oFilterBar.setFilterData(oFilter);
-			
+			// var oSmartTable = sap.ui.core.Fragment.byId("idFragVhDialog", "projecttablefieldname");
+			// oSmartTable.rebindTable();
+			 var aFilters = [];
+			 this._oValueHelpDialog.getTable().getBinding().filter([]);
+			// 		aFilters.push(new sap.ui.model.Filter("Pmprf", sap.ui.model.FilterOperator.EQ, oCurrObject.Pmprf));
+			// 		aFilters.push(new sap.ui.model.Filter("Kschl", sap.ui.model.FilterOperator.EQ, oCurrObject.Kschl));
+			// 		aFilters.push(new sap.ui.model.Filter("Kotab", sap.ui.model.FilterOperator.EQ, oCurrObject.Kotab));
+			var aFilters = oFilterBar.getFilters().length ? oFilterBar.getFilters()[0].aFilters : [];
+			aFilters.forEach(function(filter1,index){
+				if(filter1.aFilters){
+					filter1.aFilters.forEach(function(filter2,index2){
+						aFilters.push(filter2);
+					})
+				}else{
+					aFilters.push(filter1);
+				}
+			 })
+			 this._oValueHelpDialog.getTable().getBinding().filter(aFilters);
+		},
+		onSuggest: function (oEvent) {
+			var oFieldsEntityType = this.getView().getModel().getServiceMetadata().dataServices.schema[0].entityType.find(x => x.name === 'CC_Group_VHType');
+			var that = this;
+			this.aCells = [];
+			oFieldsEntityType.property.forEach((field,fieldIndex)=>{
+				that.aCells.push(new sap.m.Label({
+							text : '{'+field.name+'}'
+						})
+				);
+			})
+			this.iIndex2 = parseInt(oEvent.getSource().sId.split("-")[4]);
+			var oCurrObject = this.getView().getBindingContext().getObject();
+			var sTerm = oEvent.getParameter("suggestValue");
+			var aFilter = [];
+			if (oEvent.getSource().getCustomData()[0].getValue() === "Group") {
+				aFilter.push(new sap.ui.model.Filter("Fieldname", sap.ui.model.FilterOperator.Contains, sTerm));
+			} else {
+				aFilter.push(new sap.ui.model.Filter("Fieldname", sap.ui.model.FilterOperator.Contains, sTerm));
+			}
+				aFilter.push(new sap.ui.model.Filter("Pmprf", sap.ui.model.FilterOperator.EQ, oCurrObject.Pmprf));
+				aFilter.push(new sap.ui.model.Filter("Kschl", sap.ui.model.FilterOperator.EQ, oCurrObject.Kschl));
+				aFilter.push(new sap.ui.model.Filter("Kotab", sap.ui.model.FilterOperator.EQ, oCurrObject.Kotab));
+			oEvent.getSource().getBinding("suggestionRows").filter(aFilter);
+			oEvent.getSource().setFilterSuggests(false);
+		},
+		onSuggestionItemSelected: function (oEvent) {
+			if (oEvent.getParameters("selectedRow").selectedRow) {
+				//	oEvent.getSource().setValueState("None");
+				var oObject = oEvent.getSource().getModel().getObject(oEvent.getParameter("selectedRow").getBindingContextPath());
+			//	var sKey = oEvent.getSource().getModel("Items").getObject(oEvent.getSource().getParent().getParent().getBindingContextPath()).key;
+				var oModel1 = this.getView().getModel("Items");
+				var oRecrod = oEvent.getSource().getModel("Items").getData().results[this.iIndex2];
+			oRecrod.fieldname = oObject.Fieldname;
+			oModel1.refresh(true);
+			}
 		},
 		onClickGo : function(oEvent){
-			var oSmartTable = oEvent.getSource().getParent().getContent()[1];
-			oSmartTable.rebindTable();
+			// var oSmartTable = oEvent.getSource().getParent().getContent()[1];
+			// oSmartTable.rebindTable();
+		//	this._oValueHelpDialog.getTable().getBinding().filter([]);
+			var oSmartBar =this._oValueHelpDialog.getFilterBar();
+			var aFilters = oSmartBar.getFilters().length ? oSmartBar.getFilters()[0].aFilters : [];
+			// aFilters.forEach(function(filter1,index){
+			// 	if(filter1.aFilters){
+			// 	filter1.aFilters.forEach(function(filter2,index2){
+			// 		aFilters.push(filter2);
+			// 	})
+			// }else{
+			// 	aFilters.push(filter1);
+			// }
+			//  })
+			
+			 this._oValueHelpDialog.getTable().getBinding().filter(aFilters);
+			//  if(aFilters.length === 0){
+			//  this._oValueHelpDialog.getTable().getBinding().sFilterParams = '';
+			//  }
 		},
 		onBeforeRebindFieldNameSTVH : function(oEvent){
 			 var oSmartBar = oEvent.getSource().getParent().getContent()[0];
-			 var aFilters = oSmartBar.getFilters()[0].aFilters;
+			 var aFilters = oSmartBar.getFilters().length ? oSmartBar.getFilters()[0].aFilters : [];
 			 var binding = oEvent.getParameter("bindingParams");
 			 binding.filters = [];
-			 binding.filters.push(aFilters);
+			 aFilters.forEach(function(filter1,index){
+				filter1.aFilters.forEach(function(filter2,index2){
+					binding.filters.push(filter2);
+				})
+			 })
+			// binding.filters.push(aFilters);
 			// var oCurrObject = this.getView().getBindingContext().getObject();
 			
 			// var aFilter = new sap.ui.model.Filter("Pmprf", sap.ui.model.FilterOperator.EQ, oCurrObject.Pmprf);
@@ -642,6 +878,70 @@ sap.ui.define([
 				results: aArray
 			});
 			oModel1.refresh(true);
+			var oTable = sap.ui.core.Fragment.byId("idFragGrpDialog", "RmaSoItemTable");
+			var oItems = oTable.getItems(), aColumns = [],that = this;this.aCells= [];this.aRows=[];
+			var oFieldsEntityType = this.getView().getModel().getServiceMetadata().dataServices.schema[0].entityType.find(x => x.name === 'CC_Group_VHType');
+			oFieldsEntityType.property.forEach((field,fieldIndex)=>{
+				field.extensions.forEach((oExtension,extIndex)=>{
+					if(oExtension.name === "label"){
+						aColumns.push(new sap.m.Column({
+							hAlign:"Begin",
+							popinDisplay: "Inline",
+							demandPopin: false,
+							header :[
+								new sap.m.Label({
+									text : oExtension.value
+								})
+							]
+						}));
+					}
+				})
+				that.aCells.push(new sap.m.Label({
+							text : '{'+field.name+'}'
+						})
+				);
+			})
+				oItems.forEach((oItem, itemindex)=>{
+					oItem.getCells().forEach((oCell,cellindex)=>{
+						if(oCell.getCustomData().length !== 0 && oCell.getCustomData()[0].getValue() === "FieldName"){
+							aColumns.forEach((oColumn,columnindex)=>{
+								oCell.addSuggestionColumn(oColumn);
+							})
+							// aRows.forEach((oRow,rowindex)=>{
+							// 	oCell.addSuggestionRow(oRow);
+							// })
+						}
+					})
+				})
+		},
+		factoryforsuggeestionRows : function(oEvent,index,key){
+			return new sap.m.ColumnListItem({
+				cells :[
+					new sap.m.Label({
+						text : '{Pmprf}'
+					}),
+					new sap.m.Label({
+						text : '{Kschl}'
+					}),
+					new sap.m.Label({
+						text : '{Kotab}'
+					}),
+					new sap.m.Label({
+						text : '{Sequn}'
+					}),
+					new sap.m.Label({
+						text : '{Fieldname}'
+					})
+				]
+			})
+
+			// var oClumnlist = new sap.m.ColumnListItem({
+			// 	cells:[]
+			// });
+			// this.aCells.forEach((arow,rowindex)=>{
+			// 	oClumnlist.addCell(arow);
+			// });
+			// return oClumnlist;
 		},
 		onDelRowSoItem: function (oEvent) {
 			if (oEvent.getSource().getParent().getParent().getSelectedItem()) {

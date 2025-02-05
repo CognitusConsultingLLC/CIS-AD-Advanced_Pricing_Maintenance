@@ -54,34 +54,46 @@
 					</OverflowToolbar>
 				</headerToolbar>
 				<columns>
-					<Column minScreenWidth="Tablet" demandPopin="true" width="15em">
+					<Column minScreenWidth="Tablet" demandPopin="true">
 						<Text text="{/#CC_Group_ItemType/fieldname/@sap:label}"/>
 					</Column>
-					<Column minScreenWidth="Tablet" demandPopin="true">
+					<Column minScreenWidth="Tablet" demandPopin="true" width="5rem">
 						<Text text="{/#CC_Group_ItemType/operator/@sap:label}"/>
 					</Column>
 					<Column minScreenWidth="Tablet" demandPopin="true">
 						<Text text="{/#CC_Group_ItemType/value/@sap:label}"/>
 					</Column>
-					<Column minScreenWidth="Tablet" demandPopin="true">
+					<Column minScreenWidth="Tablet" demandPopin="true" width="5rem">
 						<Text text="{/#CC_Group_ItemType/cc_set/@sap:label}"/>
 					</Column>
 				</columns>
 				<items>
 					<ColumnListItem vAlign="Middle">
 						<cells>
-							<Input value="{Items>fieldname}"/>
+							<!-- <Input value="{Items>fieldname}"/> -->
 							<!-- <Input value="{Items>fieldname}" valueHelpRequest="onValueHelpRequested" showValueHelp="true"/> -->
-								<!-- <ComboBox
-								items="{
-									path: '/YI_CC_GRP_FIELD_F4',
-									sorter: { path: 'fieldname' }
-								}">
-								<core:Item key="{fieldname}" text="{fieldname}" />
-							</ComboBox> -->
-							<Input value="{Items>operator}"/>
-							<Input value="{Items>value}"/>
-							<Input value="{Items>cc_set}" width="5rem"/>	
+							<Input value="{Items>fieldname}" valueHelpRequest="onValueHelpRequested1" showValueHelp="true"
+							showTableSuggestionValueHelp="true" showSuggestion="true" suggestionRows="{path : '/CC_Group_VH',factory:'.factoryforsuggeestionRows'}"
+							suggest=".onSuggest" suggestionItemSelected="onSuggestionItemSelected" enableTableAutoPopinMode="false"
+							app:customData="FieldName" maxSuggestionWidth="640px">
+
+							<!-- <suggestionColumns>
+										<Column hAlign="Begin" popinDisplay="Inline" demandPopin="true">
+											<Label text="Fieldname"/>
+										</Column>
+									</suggestionColumns> -->
+									<!-- <suggestionRows>
+										<ColumnListItem>
+											<cells>
+													<Label text="{Fieldname}"/>
+				
+											</cells>
+										</ColumnListItem>
+									</suggestionRows> -->
+									</Input>
+							<Input value="{Items>operator}" />
+							<Input value="{Items>value}" valueHelpRequest="onValueHelpRequestedValue" showValueHelp="true"/>
+							<Input value="{Items>cc_set}"/>	
 						</cells>
 					</ColumnListItem>
 				</items>
