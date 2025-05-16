@@ -1,0 +1,108 @@
+<core:FragmentDefinition xmlns:core="sap.ui.core" xmlns:t="sap.ui.table" xmlns:f="sap.ui.layout.form" xmlns:c="sap.ui.core" xmlns="sap.m"
+	xmlns:smartList="sap.ui.comp.smartlist" xmlns:smartForm="sap.ui.comp.smartform"
+	xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1" xmlns:l="sap.ui.layout"
+	xmlns:smartField="sap.ui.comp.smartfield" xmlns:smartTable="sap.ui.comp.smarttable">
+	<Dialog title="" class="" horizontalScrolling="false">
+		<content>
+			<VBox>
+				<smartForm:SmartForm id="idmbismartform1" app:defaultCheckBoxDisplayBehaviour="OnOff" editable="true" editTogglable="false"
+					editToggled="handleEditToggled" class="sapUiNoMarginTopBottom">
+					<smartForm:layout>
+						<smartForm:ColumnLayout columnsM="1" columnsL="2" columnsXL="3"/>
+					</smartForm:layout>
+					<smartForm:Group>
+						 <smartForm:GroupElement>
+							<smartField:SmartField value="{cc_grpid}" editable="false">
+							</smartField:SmartField>
+						</smartForm:GroupElement>
+						     <smartForm:GroupElement>
+							<smartField:SmartField value="{cc_extid}" textInEditModeSource="ValueList">
+							<smartField:configuration>
+									<smartField:Configuration displayBehaviour="idAndDescription" ></smartField:Configuration>
+								</smartField:configuration>
+							</smartField:SmartField>
+						</smartForm:GroupElement>
+							 <smartForm:GroupElement>
+							<smartField:SmartField value="{cc_desc}" editable="true">
+							</smartField:SmartField>
+						</smartForm:GroupElement>
+						<!-- <smartForm:GroupElement>
+							<smartField:SmartField value="{cc_stdt}">
+								<smartField:configuration>
+									<smartField:Configuration controlType="datePicker"></smartField:Configuration>
+								</smartField:configuration>
+							</smartField:SmartField>
+						</smartForm:GroupElement> -->
+						<!-- <smartForm:GroupElement>
+							<smartField:SmartField value="{cc_endt}">
+								<smartField:configuration>
+									<smartField:Configuration controlType="datePicker"></smartField:Configuration>
+								</smartField:configuration>
+							</smartField:SmartField>
+						</smartForm:GroupElement> -->
+                   
+					</smartForm:Group>
+				</smartForm:SmartForm>	
+			<Table id="RmaSoItemTable" inset="false" items="{ path: 'Items>/results' }" mode="SingleSelectLeft">
+				<headerToolbar>
+					<OverflowToolbar>
+						<content>
+							<Title text="Items ({=${Items>/results}.length})"/>
+							<Button text="{i18n>addrow}" press="onAddRowSoItem"/>
+							<Button text="{i18n>delrow}" press="onDelRowSoItem"/>
+						</content>
+					</OverflowToolbar>
+				</headerToolbar>
+				<columns>
+					<Column minScreenWidth="Tablet" demandPopin="true">
+						<Text text="{/#CC_Group_ItemType/fieldname/@sap:label}"/>
+					</Column>
+					<Column minScreenWidth="Tablet" demandPopin="true" width="5rem">
+						<Text text="{/#CC_Group_ItemType/operator/@sap:label}"/>
+					</Column>
+					<Column minScreenWidth="Tablet" demandPopin="true">
+						<Text text="{/#CC_Group_ItemType/value/@sap:label}"/>
+					</Column>
+					<Column minScreenWidth="Tablet" demandPopin="true" width="5rem">
+						<Text text="{/#CC_Group_ItemType/cc_set/@sap:label}"/>
+					</Column>
+				</columns>
+				<items>
+					<ColumnListItem vAlign="Middle">
+						<cells>
+							<!-- <Input value="{Items>fieldname}"/> -->
+							<!-- <Input value="{Items>fieldname}" valueHelpRequest="onValueHelpRequested" showValueHelp="true"/> -->
+							<Input value="{Items>fieldname}" valueHelpRequest="onValueHelpRequested1" showValueHelp="true"
+							showTableSuggestionValueHelp="true" showSuggestion="true" suggestionRows="{path : '/CC_Group_VH',factory:'.factoryforsuggeestionRows'}"
+							suggest=".onSuggest" suggestionItemSelected="onSuggestionItemSelected" enableTableAutoPopinMode="false"
+							app:customData="FieldName" maxSuggestionWidth="640px">
+
+							<!-- <suggestionColumns>
+										<Column hAlign="Begin" popinDisplay="Inline" demandPopin="true">
+											<Label text="Fieldname"/>
+										</Column>
+									</suggestionColumns> -->
+									<!-- <suggestionRows>
+										<ColumnListItem>
+											<cells>
+													<Label text="{Fieldname}"/>
+				
+											</cells>
+										</ColumnListItem>
+									</suggestionRows> -->
+									</Input>
+							<Input value="{Items>operator}" />
+							<Input value="{Items>value}" valueHelpRequest="onValueHelpRequestedValue" showValueHelp="true"/>
+							<Input value="{Items>cc_set}"/>	
+						</cells>
+					</ColumnListItem>
+				</items>
+			</Table>
+			</VBox>
+		</content>
+		<buttons>
+			<Button text="" id="idsavebutton" press="onGroupDialogOkButton" type="Emphasized"/>
+			<Button text="{i18n>close}" press="onGroupDialogClose" type="Emphasized"/>
+		</buttons>
+	</Dialog>
+</core:FragmentDefinition>

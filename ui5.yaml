@@ -1,5 +1,7 @@
 specVersion: "3.1"
+specVersion: "3.1"
 metadata:
+  name: cgdc.cis-ad-pricing-maintenance
   name: cgdc.cis-ad-pricing-maintenance
 type: application
 server:
@@ -21,6 +23,11 @@ server:
     - name: fiori-tools-appreload
       afterMiddleware: compression
       configuration:
+        port: 35729
+        path: webapp
+        delay: 300
+    - name: fiori-tools-preview
+      afterMiddleware: fiori-tools-appreload
         port: 35729
         path: webapp
         delay: 300

@@ -1,0 +1,8 @@
+<core:FragmentDefinition xmlns:core="sap.ui.core" xmlns="sap.m"
+	xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1">
+	<ActionSheet id="idactionsheet" xmlns="sap.m" xmlns:core="sap.ui.core" core:require="{ MessageToast: 'sap/m/MessageToast' }" title="{i18n>chooseaction}"
+		showCancelButton="true" placement="Top">
+		<Button text="{i18n>creategroup}" press="onCreateGroupPress(1)" />
+		<Button text="{i18n>maintgroup}" press="onCreateGroupPress(2)"/>
+	</ActionSheet>
+</core:FragmentDefinition>
