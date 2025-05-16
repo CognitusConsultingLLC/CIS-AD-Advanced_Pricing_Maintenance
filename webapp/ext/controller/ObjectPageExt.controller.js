@@ -24,14 +24,19 @@ sap.ui.define([
 							if (that.object.Kotab) {
 								that.aTable = that.object.Kotab;
 								that.Kschl = that.object.Kschl;
+								that.Pmprf = that.object.Pmprf;
 
 							}
 							if (that.object.kotab) {
 								that.aTable = that.object.kotab;
 								that.Kschl = that.object.kschl;
+								that.Pmprf = that.object.Pmprf;
 
 							}
-							that.setTableColumnData(that.aTable, that.Kschl);
+							
+							// that.showBusyIndicator();//Added by AGUSAIN to for fields visibility
+							that.setTableColumnData(that.aTable, that.Kschl, that.Pmprf);
+							// that.hideBusyIndicator();//Added by AGUSAIN to for fields visibility
 							let edit = sap.ui.getCore().byId(
 								"CGDC.CIS-AD-Pricing-Maintenance::sap.suite.ui.generic.template.ObjectPage.view.Details::xCGDCxI_CNC_MAIN--edit");
 							if (edit) {
@@ -90,7 +95,7 @@ sap.ui.define([
 				return matches;
 			},
 
-			setTableColumnData: function (Kotab, Kschl, Vbeln, mganr) {
+			setTableColumnData: function (Kotab, Kschl, Pmprf) {
 				let that = this;
 				if (this.getView().getBindingContext()) {
 					let oModel = this.getView().getModel();
@@ -98,6 +103,7 @@ sap.ui.define([
 					let oPath = '/xcgdcxi_pricing_t_key';
 					filters.push(new sap.ui.model.Filter("TABNAME", sap.ui.model.FilterOperator.EQ, Kotab));
 					filters.push(new sap.ui.model.Filter("KSCHL", sap.ui.model.FilterOperator.EQ, Kschl));
+					filters.push(new sap.ui.model.Filter("Pmprf", sap.ui.model.FilterOperator.EQ, Pmprf));
 					//	filters.push(new sap.ui.model.Filter("VBELN", sap.ui.model.FilterOperator.EQ, Vbeln));
 					//		filters.push(new sap.ui.model.Filter("MGANR", sap.ui.model.FilterOperator.EQ, mganr));
 					oModel.read(oPath, {
@@ -165,7 +171,9 @@ sap.ui.define([
 										"CGDC.CIS-AD-Pricing-Maintenance::sap.suite.ui.generic.template.ObjectPage.view.Details::xCGDCxI_CNC_MAIN--AddData::Section"
 									);
 									addSection.setVisible(true);
-									if (that.additionalData === 'X') {
+									if (that.additionalData === 'X'
+										|| that.additionalData === undefined ) //Added by AGUSAIN to hide add data tab
+										{
 										addSection.setVisible(false);
 									} else {
 										let allVisiblieFields = oAddDataForm.getVisibleProperties();
@@ -220,7 +228,22 @@ sap.ui.define([
 
 			// Filter the array to remove the elements that are in the removal set
 			return array.filter(item => !removalSet.has(item));
-		}
+		},
+		showBusyIndicator: function () {
+			if (!this._busyIndicator) {
+				this._busyIndicator = new sap.m.BusyDialog({
+					showCancelButton: false
+				});
+				this._busyIndicator.open();
+			}
+		},
+
+		hideBusyIndicator: function () {
+			if (this._busyIndicator) {
+				this._busyIndicator.close();
+				this._busyIndicator = null;
+			}
+		},
 
 	});
 });
