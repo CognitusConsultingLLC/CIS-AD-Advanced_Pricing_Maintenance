@@ -13,13 +13,13 @@ sap.ui.define([
 ], function (ControllerExtension, JSONModel, Fragment, ODataModel, Filter, FilterOperator, ListItem, Sorter, BusyDialog, UIState) {
 	"use strict";
 
-	return sap.ui.controller("CGDC.CIS-AD-Pricing-Maintenance.ext.controller.ObjectPageExt", {
+	return sap.ui.controller("cgdc.pricing.maint.ext.controller.ObjectPageExt", {
 		onInit: function () {
 			let that = this;
 			this.extensionAPI.attachPageDataLoaded(function (oEvent) {
 				{
 
-					const oToolbar = that.getView().byId("CGDC.CIS-AD-Pricing-Maintenance::sap.suite.ui.generic.template.ObjectPage.view.Details::xCGDCxI_CONDITON_CATALOG--ItemDetails::Table::Toolbar");
+					const oToolbar = that.getView().byId("cgdc.pricing.maint::sap.suite.ui.generic.template.ObjectPage.view.Details::xCGDCxI_CONDITON_CATALOG--ItemDetails::Table::Toolbar");
 					if (oToolbar) {
 						const oLabel = new sap.m.Label({
 							text: "{i18n>FilterBy}",
@@ -85,7 +85,7 @@ sap.ui.define([
 						that.setTableColumnData(that.aTable, that.Kschl, that.Pmprf);
 						// that.hideBusyIndicator();//Added by AGUSAIN to for fields visibility
 						let edit = sap.ui.getCore().byId(
-							"CGDC.CIS-AD-Pricing-Maintenance::sap.suite.ui.generic.template.ObjectPage.view.Details::xCGDCxI_CNC_MAIN--edit");
+							"cgdc.pricing.maint::sap.suite.ui.generic.template.ObjectPage.view.Details::xCGDCxI_CNC_MAIN--edit");
 						if (edit) {
 							edit.attachPress(that.editPress, that);
 						}
@@ -96,9 +96,9 @@ sap.ui.define([
 		},
 		editPress: function () {
 			if (sap.ui.getCore().byId(
-				"CGDC.CIS-AD-Pricing-Maintenance::sap.suite.ui.generic.template.ObjectPage.view.Details::xCGDCxI_CNC_MAIN--Home::Form")) {
+				"cgdc.pricing.maint::sap.suite.ui.generic.template.ObjectPage.view.Details::xCGDCxI_CNC_MAIN--Home::Form")) {
 				let createForm = sap.ui.getCore().byId(
-					"CGDC.CIS-AD-Pricing-Maintenance::sap.suite.ui.generic.template.ObjectPage.view.Details::xCGDCxI_CNC_MAIN--Home::Form");
+					"cgdc.pricing.maint::sap.suite.ui.generic.template.ObjectPage.view.Details::xCGDCxI_CNC_MAIN--Home::Form");
 				let aAllSmartfield = createForm.getSmartFields();
 				for (let i = 0; i < aAllSmartfield.length; i++) {
 					if (aAllSmartfield[i].getDataProperty().property.name == 'vbelnentry') {
@@ -115,7 +115,7 @@ sap.ui.define([
 
 		onFilterChange: function (oEvent) {
 			var sFilterKey = oEvent.getSource().getSelectedKey(); // Get selected filter type
-			var oSmartTable = sap.ui.getCore().byId("CGDC.CIS-AD-Pricing-Maintenance::sap.suite.ui.generic.template.ObjectPage.view.Details::xCGDCxI_CONDITON_CATALOG--ItemDetails::responsiveTable"); // Smart Table instance
+			var oSmartTable = sap.ui.getCore().byId("cgdc.pricing.maint::sap.suite.ui.generic.template.ObjectPage.view.Details::xCGDCxI_CONDITON_CATALOG--ItemDetails::responsiveTable"); // Smart Table instance
 			var aFilters = []; // Initialize empty filter array
 			var oCurrentDate = new Date();
 			var options = { month: "short", day: "2-digit", year: "numeric" };
@@ -198,9 +198,9 @@ sap.ui.define([
 						let tableColumn = oData.results;
 						that.getOwnerComponent().getModel("CustomFields").setData(tableColumn);
 						if (sap.ui.getCore().byId(
-							"CGDC.CIS-AD-Pricing-Maintenance::sap.suite.ui.generic.template.ObjectPage.view.Details::xCGDCxI_CNC_MAIN--Home::Form")) {
+							"cgdc.pricing.maint::sap.suite.ui.generic.template.ObjectPage.view.Details::xCGDCxI_CNC_MAIN--Home::Form")) {
 							let createForm = sap.ui.getCore().byId(
-								"CGDC.CIS-AD-Pricing-Maintenance::sap.suite.ui.generic.template.ObjectPage.view.Details::xCGDCxI_CNC_MAIN--Home::Form");
+								"cgdc.pricing.maint::sap.suite.ui.generic.template.ObjectPage.view.Details::xCGDCxI_CNC_MAIN--Home::Form");
 							let allVisiblieFields = createForm.getVisibleProperties();
 							let oRequiredFields = that.getOwnerComponent().getModel("CustomFields").getData();
 							let aRequiredFields = [];
@@ -226,9 +226,9 @@ sap.ui.define([
 						//	that.getView().getModel().refresh(true);
 
 						if (sap.ui.getCore().byId(
-							"CGDC.CIS-AD-Pricing-Maintenance::sap.suite.ui.generic.template.ObjectPage.view.Details::xCGDCxI_CNC_MAIN--Price::Form")) {
+							"cgdc.pricing.maint::sap.suite.ui.generic.template.ObjectPage.view.Details::xCGDCxI_CNC_MAIN--Price::Form")) {
 							let oPriceForm = sap.ui.getCore().byId(
-								"CGDC.CIS-AD-Pricing-Maintenance::sap.suite.ui.generic.template.ObjectPage.view.Details::xCGDCxI_CNC_MAIN--Price::Form");
+								"cgdc.pricing.maint::sap.suite.ui.generic.template.ObjectPage.view.Details::xCGDCxI_CNC_MAIN--Price::Form");
 							let allVisiblieFields = oPriceForm.getVisibleProperties();
 							let oRequiredFields = that.getOwnerComponent().getModel("CustomFields").getData();
 							let aRequiredFields = [];
@@ -250,11 +250,11 @@ sap.ui.define([
 
 						}
 						if (sap.ui.getCore().byId(
-							"CGDC.CIS-AD-Pricing-Maintenance::sap.suite.ui.generic.template.ObjectPage.view.Details::xCGDCxI_CNC_MAIN--AddData::Form")) {
+							"cgdc.pricing.maint::sap.suite.ui.generic.template.ObjectPage.view.Details::xCGDCxI_CNC_MAIN--AddData::Form")) {
 							let oAddDataForm = sap.ui.getCore().byId(
-								"CGDC.CIS-AD-Pricing-Maintenance::sap.suite.ui.generic.template.ObjectPage.view.Details::xCGDCxI_CNC_MAIN--AddData::Form");
+								"cgdc.pricing.maint::sap.suite.ui.generic.template.ObjectPage.view.Details::xCGDCxI_CNC_MAIN--AddData::Form");
 							let addSection = sap.ui.getCore().byId(
-								"CGDC.CIS-AD-Pricing-Maintenance::sap.suite.ui.generic.template.ObjectPage.view.Details::xCGDCxI_CNC_MAIN--AddData::Section"
+								"cgdc.pricing.maint::sap.suite.ui.generic.template.ObjectPage.view.Details::xCGDCxI_CNC_MAIN--AddData::Section"
 							);
 							addSection.setVisible(true);
 							if (that.additionalData === 'X'
@@ -283,13 +283,13 @@ sap.ui.define([
 							}
 						}
 						if (sap.ui.getCore().byId(
-							"CGDC.CIS-AD-Pricing-Maintenance::sap.suite.ui.generic.template.ObjectPage.view.Details::xCGDCxI_CONDITON_CATALOG--ItemDetails::Table"
+							"cgdc.pricing.maint::sap.suite.ui.generic.template.ObjectPage.view.Details::xCGDCxI_CONDITON_CATALOG--ItemDetails::Table"
 						)) {
 							let smarttable = sap.ui.getCore().byId(
-								"CGDC.CIS-AD-Pricing-Maintenance::sap.suite.ui.generic.template.ObjectPage.view.Details::xCGDCxI_CONDITON_CATALOG--ItemDetails::Table"
+								"cgdc.pricing.maint::sap.suite.ui.generic.template.ObjectPage.view.Details::xCGDCxI_CONDITON_CATALOG--ItemDetails::Table"
 							);
 							let responsivetable = sap.ui.getCore().byId(
-								"CGDC.CIS-AD-Pricing-Maintenance::sap.suite.ui.generic.template.ObjectPage.view.Details::xCGDCxI_CONDITON_CATALOG--ItemDetails::responsiveTable"
+								"cgdc.pricing.maint::sap.suite.ui.generic.template.ObjectPage.view.Details::xCGDCxI_CONDITON_CATALOG--ItemDetails::responsiveTable"
 							);
 							let oColumns = responsivetable.getColumns();
 							let aColumnId = that.extractTerms(oColumns.toString());

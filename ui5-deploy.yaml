@@ -2,7 +2,7 @@
 
 specVersion: "3.1"
 metadata:
-  name: cgdc.cis-ad-pricing-maintenance
+  name: cgdc.pricing.maint
 type: application
 builder:
   resources:
@@ -14,11 +14,11 @@ builder:
       afterTask: generateCachebusterInfo
       configuration:
         target:
-          destination: XD3-200
+          destination: XD3-200-CognitusID
           url: http://xd3:443
           client: '200'
         app:
-          name: /CGDC/FRADVPRCING
+          name: /CGDC/FR_ADVPRCING
           description: Fields Visibilites
           package: /CGDC/GC02_T3
           transport: XD3K900119

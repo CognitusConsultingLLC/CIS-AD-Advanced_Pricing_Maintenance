@@ -1,7 +1,7 @@
 {
   "_version": "1.8.0",
   "sap.app": {
-    "id": "CGDC.CIS-AD-Pricing-Maintenance",
+    "id": "cgdc.pricing.maint",
     "type": "application",
     "i18n": "i18n/i18n.properties",
     "applicationVersion": {
@@ -134,7 +134,7 @@
       "extensions": {
         "sap.ui.controllerExtensions": {
           "sap.suite.ui.generic.template.ObjectPage.view.Details": {
-            "controllerName": "CGDC.CIS-AD-Pricing-Maintenance.ext.controller.ObjectPageExt",
+            "controllerName": "cgdc.pricing.maint.ext.controller.ObjectPageExt",
             "sap.ui.generic.app": {
               "xCGDCxI_CNC_MAIN": {
                 "EntitySet": "xCGDCxI_CNC_MAIN"

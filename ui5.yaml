@@ -2,7 +2,7 @@
 
 specVersion: "3.1"
 metadata:
-  name: cgdc.cis-ad-pricing-maintenance
+  name: cgdc.pricing.maint
 type: application
 server:
   customMiddleware:
@@ -29,5 +29,5 @@ server:
     - name: fiori-tools-preview
       afterMiddleware: fiori-tools-appreload
       configuration:
-        component: CGDC.CIS-AD-Pricing-Maintenance
+        component: cgdc.pricing.maint
         ui5Theme: sap_horizon

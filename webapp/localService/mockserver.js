@@ -6,7 +6,7 @@ sap.ui.define([
 ], function (MockServer, Log, UriParameters, XMLHelper) {
 	"use strict";
 	var oMockServer,
-		_sAppModulePath = "CGDC.CIS-AD-Pricing-Maintenance/",
+		_sAppModulePath = "cgdc.pricing.maint/",
 		_sJsonFilesModulePath = _sAppModulePath + "localService/mockdata";
 
 	return {
