@@ -1,7 +1,5 @@
 specVersion: "3.1"
-specVersion: "3.1"
 metadata:
-  name: cgdc.cis-ad-pricing-maintenance
   name: cgdc.cis-ad-pricing-maintenance
 type: application
 server:
@@ -12,14 +10,15 @@ server:
         ignoreCertError: false
         backend:
           - path: /sap
-            url: http://xd2:443
-            client: "200"
-            destination: XD2-200-CognitusID
+            url: http://xd3:443
+            client: "202"
+            destination: XD3-202
         ui5:
           path:
             - /resources
             - /test-resources
           url: https://ui5.sap.com
+          version: 1.120.14
     - name: fiori-tools-appreload
       afterMiddleware: compression
       configuration:
@@ -28,11 +27,6 @@ server:
         delay: 300
     - name: fiori-tools-preview
       afterMiddleware: fiori-tools-appreload
-        port: 35729
-        path: webapp
-        delay: 300
-    - name: fiori-tools-preview
-      afterMiddleware: fiori-tools-appreload
       configuration:
         component: CGDC.CIS-AD-Pricing-Maintenance
-        ui5Theme: sap_fiori_3
+        ui5Theme: sap_horizon

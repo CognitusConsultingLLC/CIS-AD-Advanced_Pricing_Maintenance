@@ -1,0 +1,41 @@
+specVersion: "3.1"
+metadata:
+  name: cgdc.cis-ad-pricing-maintenance
+type: application
+framework:
+  name: SAPUI5
+  version: 1.120.14
+  libraries:
+    - name: sap.ui.core
+    - name: sap.ui.generic.app
+    - name: sap.suite.ui.generic.template
+    - name: sap.m
+    - name: sap.ushell
+    - name: sap.f
+    - name: sap.ui.comp
+    - name: sap.ui.table
+    - name: sap.collaboration
+    - name: themelib_sap_bluecrystal
+    - name: themelib_sap_horizon
+server:
+  customMiddleware:
+    - name: fiori-tools-proxy
+      afterMiddleware: compression
+      configuration:
+        ignoreCertError: false
+        backend:
+          - path: /sap
+            url: http://xd3:443
+            client: "202"
+            destination: XD3-202
+    - name: fiori-tools-appreload
+      afterMiddleware: compression
+      configuration:
+        port: 35729
+        path: webapp
+        delay: 300
+    - name: fiori-tools-preview
+      afterMiddleware: fiori-tools-appreload
+      configuration:
+        component: CGDC.CIS-AD-Pricing-Maintenance
+        ui5Theme: sap_horizon

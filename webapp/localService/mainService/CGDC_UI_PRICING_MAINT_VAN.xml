@@ -68,13 +68,13 @@
             <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/xcgdcxctsh_fc">
                 <Annotation Term="UI.Hidden"/>
             </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/xcgdcxcustpn_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
             <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/xcgdcxcwth_fc">
                 <Annotation Term="UI.Hidden"/>
             </Annotations>
             <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/xcgdcxdefin_fc">
-                <Annotation Term="UI.Hidden"/>
-            </Annotations>
-            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/xcgdcxeline_fc">
                 <Annotation Term="UI.Hidden"/>
             </Annotations>
             <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/xcgdcxffee_fc">
@@ -131,10 +131,16 @@
             <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/xcgdcxmthn_fc">
                 <Annotation Term="UI.Hidden"/>
             </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/xcgdcxnomcl_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
             <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/xcgdcxno_bill_fc">
                 <Annotation Term="UI.Hidden"/>
             </Annotations>
             <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/xcgdcxno_wawf_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/xcgdcxnsn_fc">
                 <Annotation Term="UI.Hidden"/>
             </Annotations>
             <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/xcgdcxnvad_fc">
@@ -227,6 +233,9 @@
             <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/xcgdcxwbsl6_fc">
                 <Annotation Term="UI.Hidden"/>
             </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/filter_ac">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
             <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/aland_fc">
                 <Annotation Term="UI.Hidden"/>
             </Annotations>
@@ -273,12 +282,6 @@
                 <Annotation Term="UI.Hidden"/>
             </Annotations>
             <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/category_id_fc">
-                <Annotation Term="UI.Hidden"/>
-            </Annotations>
-            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/cc_docnoentry_fc">
-                <Annotation Term="UI.Hidden"/>
-            </Annotations>
-            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/cc_grpid_fc">
                 <Annotation Term="UI.Hidden"/>
             </Annotations>
             <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/charg_fc">
@@ -380,6 +383,9 @@
             <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/kfrst_fc">
                 <Annotation Term="UI.Hidden"/>
             </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/kmein_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
             <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/kokrs_fc">
                 <Annotation Term="UI.Hidden"/>
             </Annotations>
@@ -410,6 +416,9 @@
             <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/kosza_fc">
                 <Annotation Term="UI.Hidden"/>
             </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/krech_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
             <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/kunnr_fc">
                 <Annotation Term="UI.Hidden"/>
             </Annotations>
@@ -434,6 +443,12 @@
             <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/llief_fc">
                 <Annotation Term="UI.Hidden"/>
             </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/loevmInd_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/loevm_ko_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
             <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/ltsnr_fc">
                 <Annotation Term="UI.Hidden"/>
             </Annotations>
@@ -449,7 +464,7 @@
             <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/meins_fc">
                 <Annotation Term="UI.Hidden"/>
             </Annotations>
-            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/mganrentry_fc">
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/mfrpn_fc">
                 <Annotation Term="UI.Hidden"/>
             </Annotations>
             <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/mgkum_fc">
@@ -471,6 +486,9 @@
                 <Annotation Term="UI.Hidden"/>
             </Annotations>
             <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/pltyp_d_fc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/posnr_fc">
                 <Annotation Term="UI.Hidden"/>
             </Annotations>
             <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/prodh_fc">
@@ -659,9 +677,6 @@
             <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/toScales_oc">
                 <Annotation Term="UI.Hidden"/>
             </Annotations>
-            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/zz_eng_part_fc">
-                <Annotation Term="UI.Hidden"/>
-            </Annotations>
             <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType">
                 <Annotation Term="UI.HeaderFacets">
                     <Collection>
@@ -776,6 +791,18 @@
                             <PropertyValue Property="Value" Path="xcgdcxseid"/>
                         </Record>
                         <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="xcgdcxnomcl"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="xcgdcxnsn"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="mfrpn"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="xcgdcxcustpn"/>
+                        </Record>
+                        <Record Type="UI.DataField">
                             <PropertyValue Property="Value" Path="xcgdcxclin_wawf"/>
                         </Record>
                         <Record Type="UI.DataField">
@@ -810,12 +837,6 @@
                             <PropertyValue Property="Value" Path="knumh"/>
                         </Record>
                         <Record Type="UI.DataField">
-                            <PropertyValue Property="Value" Path="cc_docnoentry"/>
-                        </Record>
-                        <Record Type="UI.DataField">
-                            <PropertyValue Property="Value" Path="mganrentry"/>
-                        </Record>
-                        <Record Type="UI.DataField">
                             <PropertyValue Property="Value" Path="vbelnentry"/>
                         </Record>
                         <Record Type="UI.DataField">
@@ -832,9 +853,6 @@
                         </Record>
                         <Record Type="UI.DataField">
                             <PropertyValue Property="Value" Path="xcgdcxeline"/>
-                        </Record>
-                        <Record Type="UI.DataField">
-                            <PropertyValue Property="Value" Path="cc_docno"/>
                         </Record>
                         <Record Type="UI.DataField">
                             <PropertyValue Property="Value" Path="mganr"/>
@@ -857,9 +875,6 @@
                         <Record Type="UI.DataField">
                             <PropertyValue Property="Value" Path="vtweg"/>
                         </Record>
-                        <Record Type="UI.DataField">
-                            <PropertyValue Property="Value" Path="lifnr"/>
-                        </Record>
                     </Collection>
                 </Annotation>
                 <Annotation Term="UI.Identification" Qualifier="Home">
@@ -877,16 +892,13 @@
                             <PropertyValue Property="Value" Path="auart"/>
                         </Record>
                         <Record Type="UI.DataField">
-                            <PropertyValue Property="Value" Path="kbetr"/>
-                        </Record>
-                        <Record Type="UI.DataField">
-                            <PropertyValue Property="Value" Path="zz_eng_part"/>
-                        </Record>
-                        <Record Type="UI.DataField">
                             <PropertyValue Property="Value" Path="kwert"/>
                         </Record>
                         <Record Type="UI.DataField">
-                            <PropertyValue Property="Value" Path="cc_grpid"/>
+                            <PropertyValue Property="Value" Path="kbetr"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="konwa"/>
                         </Record>
                         <Record Type="UI.DataField">
                             <PropertyValue Property="Value" Path="spart"/>
@@ -1393,6 +1405,9 @@
                             <PropertyValue Property="Value" Path="matkl"/>
                         </Record>
                         <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="lifnr"/>
+                        </Record>
+                        <Record Type="UI.DataField">
                             <PropertyValue Property="Value" Path="taxk9"/>
                         </Record>
                         <Record Type="UI.DataField">
@@ -1445,9 +1460,6 @@
                             <PropertyValue Property="Value" Path="xcgdcxeline"/>
                         </Record>
                         <Record Type="UI.DataField">
-                            <PropertyValue Property="Value" Path="cc_docno"/>
-                        </Record>
-                        <Record Type="UI.DataField">
                             <PropertyValue Property="Value" Path="mganr"/>
                         </Record>
                         <Record Type="UI.DataField">
@@ -1466,16 +1478,25 @@
                             <PropertyValue Property="Value" Path="datab"/>
                         </Record>
                         <Record Type="UI.DataField">
-                            <PropertyValue Property="Value" Path="zz_eng_part"/>
-                        </Record>
-                        <Record Type="UI.DataField">
                             <PropertyValue Property="Value" Path="kwert"/>
                         </Record>
                         <Record Type="UI.DataField">
                             <PropertyValue Property="Value" Path="waerk"/>
                         </Record>
                         <Record Type="UI.DataField">
-                            <PropertyValue Property="Value" Path="cc_grpid"/>
+                            <PropertyValue Property="Value" Path="konwa"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="xcgdcxnomcl"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="xcgdcxnsn"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="mfrpn"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="xcgdcxcustpn"/>
                         </Record>
                         <Record Type="UI.DataField">
                             <PropertyValue Property="Value" Path="xcgdcxclin_wawf"/>
@@ -2055,6 +2076,12 @@
                         <Record Type="UI.DataField">
                             <PropertyValue Property="Value" Path="kbstat"/>
                         </Record>
+                        <Record Type="UI.DataFieldForAction">
+                            <PropertyValue Property="Label" String="filter"/>
+                            <PropertyValue Property="Action" String="cds_xcgdcxui_pricing_maint.cds_xcgdcxui_pricing_maint_Entities/filter"/>
+                            <PropertyValue Property="InvocationGrouping" EnumMember="UI.OperationGroupingType/Isolated"/>
+                            <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+                        </Record>
                     </Collection>
                     <Annotation Term="UI.Criticality" Path="loevmInd"/>
                 </Annotation>
@@ -2063,9 +2090,6 @@
                         <PropertyPath>pmprf</PropertyPath>
                     </Collection>
                 </Annotation>
-            </Annotations>
-            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CONDITON_CATALOGType/Crt_Group_ac">
-                <Annotation Term="UI.Hidden"/>
             </Annotations>
             <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CONDITON_CATALOGType/toCncMain_oc">
                 <Annotation Term="UI.Hidden"/>
@@ -2144,6 +2168,35 @@
                         <PropertyPath>Vbeln</PropertyPath>
                     </Collection>
                 </Annotation>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxC_Condition_CatalogType/HasDraftEntity">
+                <Annotation Term="UI.HiddenFilter"/>
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxC_Condition_CatalogType/DraftEntityCreationDateTime">
+                <Annotation Term="UI.HiddenFilter"/>
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxC_Condition_CatalogType/DraftEntityLastChangeDateTime">
+                <Annotation Term="UI.HiddenFilter"/>
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxC_Condition_CatalogType/HasActiveEntity">
+                <Annotation Term="UI.HiddenFilter"/>
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxC_Condition_CatalogType/IsActiveEntity">
+                <Annotation Term="UI.HiddenFilter"/>
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxC_Condition_CatalogType/Edit_ac">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxC_Condition_CatalogType/Delete_mc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxC_Condition_CatalogType/Update_mc">
+                <Annotation Term="UI.Hidden"/>
             </Annotations>
             <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_PRICING_MAINType/Subct">
                 <Annotation Term="Common.Text" Path="Descr">
@@ -2280,13 +2333,10 @@
                             <PropertyValue Property="Value" Path="kschl"/>
                         </Record>
                         <Record Type="UI.DataField">
-                            <PropertyValue Property="Value" Path="cc_docno"/>
+                            <PropertyValue Property="Value" Path="kopos"/>
                         </Record>
                         <Record Type="UI.DataField">
                             <PropertyValue Property="Value" Path="mganr"/>
-                        </Record>
-                        <Record Type="UI.DataField">
-                            <PropertyValue Property="Value" Path="kopos"/>
                         </Record>
                         <Record Type="UI.DataField">
                             <PropertyValue Property="Value" Path="Klfn1"/>
@@ -2298,9 +2348,6 @@
                 </Annotation>
                 <Annotation Term="UI.LineItem">
                     <Collection>
-                        <Record Type="UI.DataField">
-                            <PropertyValue Property="Value" Path="cc_docno"/>
-                        </Record>
                         <Record Type="UI.DataField">
                             <PropertyValue Property="Value" Path="mganr"/>
                         </Record>
@@ -2424,48 +2471,43 @@
             <Annotations Target="cds_xcgdcxui_pricing_maint.I_Customer_VHType/IsCompetitor">
                 <Annotation Term="UI.Hidden"/>
             </Annotations>
-            <Annotations Target="cds_xcgdcxui_pricing_maint.I_SupplierType/DataControllerSet">
-                <Annotation Term="UI.HiddenFilter"/>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.I_DraftAdministrativeDataType/DraftUUID">
                 <Annotation Term="UI.Hidden"/>
             </Annotations>
-            <Annotations Target="cds_xcgdcxui_pricing_maint.I_SupplierType/DataController1">
-                <Annotation Term="UI.HiddenFilter"/>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.I_DraftAdministrativeDataType/DraftEntityType">
                 <Annotation Term="UI.Hidden"/>
             </Annotations>
-            <Annotations Target="cds_xcgdcxui_pricing_maint.I_SupplierType/DataController2">
-                <Annotation Term="UI.HiddenFilter"/>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.I_DraftAdministrativeDataType/DraftAccessType">
                 <Annotation Term="UI.Hidden"/>
             </Annotations>
-            <Annotations Target="cds_xcgdcxui_pricing_maint.I_SupplierType/DataController3">
-                <Annotation Term="UI.HiddenFilter"/>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.I_DraftAdministrativeDataType/ProcessingStartDateTime">
                 <Annotation Term="UI.Hidden"/>
             </Annotations>
-            <Annotations Target="cds_xcgdcxui_pricing_maint.I_SupplierType/DataController4">
-                <Annotation Term="UI.HiddenFilter"/>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.I_DraftAdministrativeDataType/InProcessByUser">
                 <Annotation Term="UI.Hidden"/>
             </Annotations>
-            <Annotations Target="cds_xcgdcxui_pricing_maint.I_SupplierType/DataController5">
-                <Annotation Term="UI.HiddenFilter"/>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.I_DraftAdministrativeDataType/DraftIsKeptByUser">
                 <Annotation Term="UI.Hidden"/>
             </Annotations>
-            <Annotations Target="cds_xcgdcxui_pricing_maint.I_SupplierType/DataController6">
-                <Annotation Term="UI.HiddenFilter"/>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.I_DraftAdministrativeDataType/EnqueueStartDateTime">
                 <Annotation Term="UI.Hidden"/>
             </Annotations>
-            <Annotations Target="cds_xcgdcxui_pricing_maint.I_SupplierType/DataController7">
-                <Annotation Term="UI.HiddenFilter"/>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.I_DraftAdministrativeDataType/DraftIsCreatedByMe">
                 <Annotation Term="UI.Hidden"/>
             </Annotations>
-            <Annotations Target="cds_xcgdcxui_pricing_maint.I_SupplierType/DataController8">
-                <Annotation Term="UI.HiddenFilter"/>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.I_DraftAdministrativeDataType/DraftIsLastChangedByMe">
                 <Annotation Term="UI.Hidden"/>
             </Annotations>
-            <Annotations Target="cds_xcgdcxui_pricing_maint.I_SupplierType/DataController9">
-                <Annotation Term="UI.HiddenFilter"/>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.I_DraftAdministrativeDataType/DraftIsProcessedByMe">
                 <Annotation Term="UI.Hidden"/>
             </Annotations>
-            <Annotations Target="cds_xcgdcxui_pricing_maint.I_SupplierType/DataController10">
-                <Annotation Term="UI.HiddenFilter"/>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.I_DraftAdministrativeDataType/CreatedByUserDescription">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.I_DraftAdministrativeDataType/LastChangedByUserDescription">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_xcgdcxui_pricing_maint.I_DraftAdministrativeDataType/InProcessByUserDescription">
                 <Annotation Term="UI.Hidden"/>
             </Annotations>
             <Annotations Target="cds_xcgdcxui_pricing_maint.CC_Group_VHType">
