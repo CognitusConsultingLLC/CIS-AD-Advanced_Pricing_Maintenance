@@ -16,7 +16,7 @@ builder:
         target:
           destination: XD3-200
           url: http://xd3:443
-          client: "200"
+          client: '200'
         app:
           name: /CGDC/FRADVPRCING
           description: Fields Visibilites
