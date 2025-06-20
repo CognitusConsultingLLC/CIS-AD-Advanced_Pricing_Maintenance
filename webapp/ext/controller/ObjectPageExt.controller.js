@@ -20,12 +20,12 @@ sap.ui.define([
 				{
 
 					const oToolbar = that.getView().byId("cgdc.pricing.maint::sap.suite.ui.generic.template.ObjectPage.view.Details::xCGDCxI_CONDITON_CATALOG--ItemDetails::Table::Toolbar");
-					if (oToolbar) {
+					if (oToolbar && !sap.ui.getCore().byId("idFilterBy")) {
 						const oLabel = new sap.m.Label({
 							text: "{i18n>FilterBy}",
 						});
 
-						const oComboBox = new sap.m.ComboBox({
+						const oComboBox = new sap.m.ComboBox("idFilterBy", {
 							change: that.onFilterChange
 						});
 						let oResourceBundle = that.getView().getModel("i18n").getResourceBundle();
@@ -113,6 +113,20 @@ sap.ui.define([
 
 		},
 
+		onBeforeRebindTableExtension: function (oEvent) {
+			const oBindingParams = oEvent.getParameter("bindingParams");
+			const oTable = oEvent.getSource(); // The SmartTable instance
+
+			// Check if this is the specific table you want to filter
+			if (oTable.getId().includes("xCGDCxI_CONDITON_CATALOG--ItemDetails::Table")) {
+				const oModel = sap.ui.getCore().getModel("customFilterModel");
+				const aFilters = oModel?.getProperty("/filters") || [];
+				oBindingParams.filters.push(...aFilters);
+			}
+
+
+		},
+
 		onFilterChange: function (oEvent) {
 			var sFilterKey = oEvent.getSource().getSelectedKey(); // Get selected filter type
 			var oSmartTable = sap.ui.getCore().byId("cgdc.pricing.maint::sap.suite.ui.generic.template.ObjectPage.view.Details::xCGDCxI_CONDITON_CATALOG--ItemDetails::responsiveTable"); // Smart Table instance
@@ -123,30 +137,32 @@ sap.ui.define([
 
 			switch (sFilterKey) {
 				case "ACTIVE_FLT":
-					// aFilters.push(new sap.ui.model.Filter("datab", "LE", sFormattedDate));
-					aFilters.push(new sap.ui.model.Filter("datbi", "EQ", sFormattedDate));
+					aFilters.push(new sap.ui.model.Filter("datab", "EQ", sFormattedDate));
 					break;
 				case "DELETE_FLT":
 					aFilters.push(new sap.ui.model.Filter("loevm_ko", "EQ", true));
 					break;
 				case "EXPIRE_FLT":
 					aFilters.push(new sap.ui.model.Filter("datab", "LT", sFormattedDate));
-					// aFilters.push(new sap.ui.model.Filter("loevm_ko", "NE", true));
 					break;
 				case "FUTURE_FLT":
-					// aFilters.push(new sap.ui.model.Filter("datab", "GT", sFormattedDate));
-					aFilters.push(new sap.ui.model.Filter("datbi", "GT", sFormattedDate));
-					// aFilters.push(new sap.ui.model.Filter("loevm_ko", "NE", true));
+					aFilters.push(new sap.ui.model.Filter("datab", "GT", sFormattedDate));
 					break;
 				case "ALL_FLT":
 					// No filters applied, show all records
 					break;
 			}
 
-			var oBinding = oSmartTable.getParent().getTable().getBinding("items");
-			if (oBinding) {
-				oBinding.filter(aFilters); // Apply filters
-			}
+
+
+			var oModel = sap.ui.getCore().getModel("customFilterModel") || new sap.ui.model.json.JSONModel();
+			oModel.setProperty("/filters", aFilters);
+			sap.ui.getCore().setModel(oModel, "customFilterModel");
+
+			// var oBinding = oSmartTable.getParent().getTable().getBinding("items");
+			// if (oBinding) {
+			// 	oBinding.filter(aFilters); // Apply filters
+			// }
 
 			oSmartTable.getParent().rebindTable();
 		},
