@@ -351,7 +351,7 @@ sap.ui.define([
 			var sObject = oEvent.getSource().getBindingContext().getObject();
 			var oCrossAppNavigator = sap.ushell.Container.getService("CrossApplicationNavigation");
 			let oResourceBundle = this.getView().getModel("i18n").getResourceBundle();
-			if (sObject.Pmprf) {
+			if (sObject.Pmprf || sObject.Knumh || sObject.Kschl || sObject.Kotab) {
 				oCrossAppNavigator.toExternal({
 					target: {
 						semanticObject: "DeliveryReleaseSchedule",
@@ -364,7 +364,7 @@ sap.ui.define([
 						Kotab: sObject.Kotab
 					}
 				})
-			}else if(sObject.pmprf){
+			}else if(sObject.pmprf || sObject.knumh || sObject.kschl || sObject.kotab){
 				oCrossAppNavigator.toExternal({
 					target: {
 						semanticObject: "DeliveryReleaseSchedule",
