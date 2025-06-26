@@ -233,9 +233,6 @@
             <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/xcgdcxwbsl6_fc">
                 <Annotation Term="UI.Hidden"/>
             </Annotations>
-            <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/filter_ac">
-                <Annotation Term="UI.Hidden"/>
-            </Annotations>
             <Annotations Target="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType/aland_fc">
                 <Annotation Term="UI.Hidden"/>
             </Annotations>
@@ -852,10 +849,10 @@
                             <PropertyValue Property="Value" Path="xcgdcxcasseg"/>
                         </Record>
                         <Record Type="UI.DataField">
-                            <PropertyValue Property="Value" Path="xcgdcxeline"/>
+                            <PropertyValue Property="Value" Path="mganr"/>
                         </Record>
                         <Record Type="UI.DataField">
-                            <PropertyValue Property="Value" Path="mganr"/>
+                            <PropertyValue Property="Value" Path="xcgdcxeline"/>
                         </Record>
                         <Record Type="UI.DataField">
                             <PropertyValue Property="Value" Path="posnr"/>
@@ -1457,10 +1454,10 @@
                             <PropertyValue Property="Value" Path="xcgdcxqty"/>
                         </Record>
                         <Record Type="UI.DataField">
-                            <PropertyValue Property="Value" Path="xcgdcxeline"/>
+                            <PropertyValue Property="Value" Path="mganr"/>
                         </Record>
                         <Record Type="UI.DataField">
-                            <PropertyValue Property="Value" Path="mganr"/>
+                            <PropertyValue Property="Value" Path="xcgdcxeline"/>
                         </Record>
                         <Record Type="UI.DataField">
                             <PropertyValue Property="Value" Path="kotab"/>
@@ -2078,7 +2075,16 @@
                         </Record>
                         <Record Type="UI.DataFieldForAction">
                             <PropertyValue Property="Label" String="filter"/>
-                            <PropertyValue Property="Action" String="cds_xcgdcxui_pricing_maint.cds_xcgdcxui_pricing_maint_Entities/filter"/>
+                            <PropertyValue Property="Action" String="">
+                                <Annotation Term="Core.Messages">
+                                    <Collection>
+                                        <Record>
+                                            <PropertyValue Property="message" String="ERROR: Mandatory Value for Action not found"/>
+                                            <PropertyValue Property="severity" String="error"/>
+                                        </Record>
+                                    </Collection>
+                                </Annotation>
+                            </PropertyValue>
                             <PropertyValue Property="InvocationGrouping" EnumMember="UI.OperationGroupingType/Isolated"/>
                             <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
                         </Record>

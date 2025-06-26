@@ -347,5 +347,40 @@ sap.ui.define([
 			}
 		},
 
+		onNavigateToMngDelvSchl: function (oEvent) {
+			var sObject = oEvent.getSource().getBindingContext().getObject();
+			var oCrossAppNavigator = sap.ushell.Container.getService("CrossApplicationNavigation");
+			let oResourceBundle = this.getView().getModel("i18n").getResourceBundle();
+			if (sObject.Pmprf) {
+				oCrossAppNavigator.toExternal({
+					target: {
+						semanticObject: "DeliveryReleaseSchedule",
+						action: "manage"
+					},
+					params: {
+						Pmprf: sObject.Pmprf,
+						// Knumh: sObject.Knumh,
+						Kschl: sObject.Kschl,
+						Kotab: sObject.Kotab
+					}
+				})
+			}else if(sObject.pmprf){
+				oCrossAppNavigator.toExternal({
+					target: {
+						semanticObject: "DeliveryReleaseSchedule",
+						action: "manage"
+					},
+					params: {
+						Pmprf: sObject.pmprf,
+						Knumh: sObject.knumh,
+						Kschl: sObject.kschl,
+						Kotab: sObject.kotab
+					}
+				})
+			}else{
+				sap.m.MessageBox.information(oResourceBundle.getText("NavigationError"));
+			}
+		}
+
 	});
 });

@@ -47,13 +47,13 @@
                     <PropertyRef Name="vbeln"/>
                     <PropertyRef Name="knumh"/>
                     <PropertyRef Name="posnr"/>
-                    <PropertyRef Name="mganr"/>
                     <PropertyRef Name="datbi"/>
                     <PropertyRef Name="kappl"/>
                     <PropertyRef Name="kfrst"/>
                     <PropertyRef Name="xcgdcxeline"/>
                     <PropertyRef Name="subct"/>
                     <PropertyRef Name="counter"/>
+                    <PropertyRef Name="mganr"/>
                 </Key>
                 <Property Name="xcgdcxafee_fc" Type="Edm.Byte" sap:label="Dyn. Field Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="xcgdcxcafd_clin_fc" Type="Edm.Byte" sap:label="Dyn. Field Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
@@ -124,7 +124,6 @@
                 <Property Name="xcgdcxwbsl4_fc" Type="Edm.Byte" sap:label="Dyn. Field Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="xcgdcxwbsl5_fc" Type="Edm.Byte" sap:label="Dyn. Field Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="xcgdcxwbsl6_fc" Type="Edm.Byte" sap:label="Dyn. Field Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
-                <Property Name="filter_ac" Type="Edm.Boolean" sap:label="Dyn. Action Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="aland_fc" Type="Edm.Byte" sap:label="Dyn. Field Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="annual_premium_fc" Type="Edm.Byte" sap:label="Dyn. Field Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="anzsn_fc" Type="Edm.Byte" sap:label="Dyn. Field Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
@@ -278,13 +277,13 @@
                 <Property Name="vbeln" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="SD Document" sap:quickinfo="Sales and Distribution Document Number" sap:creatable="false" sap:updatable="false"/>
                 <Property Name="knumh" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="Condition Record No." sap:quickinfo="Number of Condition Record" sap:creatable="false" sap:updatable="false"/>
                 <Property Name="posnr" Type="Edm.String" Nullable="false" MaxLength="6" sap:display-format="NonNegative" sap:field-control="posnr_fc" sap:label="Item (SD)" sap:quickinfo="Item number of the SD document"/>
-                <Property Name="mganr" Type="Edm.String" Nullable="false" MaxLength="20" sap:display-format="UpperCase" sap:label="Master warranty" sap:quickinfo="Master warranty number" sap:creatable="false" sap:updatable="false"/>
                 <Property Name="datbi" Type="Edm.DateTime" Nullable="false" Precision="0" sap:display-format="Date" sap:field-control="datbi_fc" sap:label="Valid To" sap:quickinfo="Validity end date of the condition record"/>
                 <Property Name="kappl" Type="Edm.String" Nullable="false" MaxLength="2" sap:display-format="UpperCase" sap:field-control="kappl_fc" sap:label="Application" sap:value-list="standard"/>
                 <Property Name="kfrst" Type="Edm.String" Nullable="false" MaxLength="1" sap:display-format="UpperCase" sap:field-control="kfrst_fc" sap:label="Release Status" sap:value-list="standard"/>
                 <Property Name="xcgdcxeline" Type="Edm.String" Nullable="false" MaxLength="11" sap:display-format="UpperCase" sap:label="ELIN" sap:quickinfo="CIS-AD: Exhibit Line Item Number (ELIN)"/>
                 <Property Name="subct" Type="Edm.String" Nullable="false" MaxLength="2" sap:label="Sub Category" sap:quickinfo="CIS-AD: Sub Category" sap:creatable="false" sap:updatable="false"/>
                 <Property Name="counter" Type="Edm.Int32" Nullable="false" sap:label="Total Record Count" sap:quickinfo="CIS-AD: Total Rec Count" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="mganr" Type="Edm.String" Nullable="false" MaxLength="20" sap:display-format="UpperCase" sap:label="Master warranty" sap:quickinfo="Master warranty number" sap:creatable="false" sap:updatable="false"/>
                 <Property Name="xcgdcxcasseg" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:field-control="xcgdcxcasseg_fc" sap:label="CAS Segment" sap:quickinfo="CIS-AD: CAS Segment"/>
                 <Property Name="xcgdcxcafd_clin" Type="Edm.String" MaxLength="8" sap:field-control="xcgdcxcafd_clin_fc" sap:label="Funding Lvl (C/S/E)"/>
                 <Property Name="xcgdcxqty" Type="Edm.String" MaxLength="15" sap:display-format="UpperCase" sap:field-control="xcgdcxqty_fc" sap:label="Quantity" sap:quickinfo="CIS-AD: Quantity"/>
@@ -513,18 +512,18 @@
                     <PropertyRef Name="Kschl"/>
                     <PropertyRef Name="Kotab"/>
                     <PropertyRef Name="Vbeln"/>
-                    <PropertyRef Name="mganr"/>
                     <PropertyRef Name="Subct"/>
                     <PropertyRef Name="Counter"/>
+                    <PropertyRef Name="mganr"/>
                 </Key>
                 <Property Name="toCncMain_oc" Type="Edm.Boolean" sap:label="Dynamic CbA-Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="Pmprf" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:label="Price Mnt. Profile" sap:quickinfo="CIS-AD: Price Maintenance Profile" sap:creatable="false" sap:updatable="false"/>
                 <Property Name="Kschl" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:text="Vtext" sap:label="Condition Type" sap:creatable="false" sap:updatable="false"/>
                 <Property Name="Kotab" Type="Edm.String" Nullable="false" MaxLength="30" sap:text="Descr" sap:label="Access" sap:quickinfo="CIS-AD: Condition Table" sap:creatable="false" sap:updatable="false"/>
                 <Property Name="Vbeln" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="SD Document" sap:quickinfo="Sales and Distribution Document Number" sap:creatable="false" sap:updatable="false"/>
-                <Property Name="mganr" Type="Edm.String" Nullable="false" MaxLength="20" sap:display-format="UpperCase" sap:label="Master warranty" sap:quickinfo="Master warranty number" sap:creatable="false" sap:updatable="false"/>
                 <Property Name="Subct" Type="Edm.String" Nullable="false" MaxLength="2" sap:label="Sub Category" sap:quickinfo="CIS-AD: Sub Category" sap:creatable="false" sap:updatable="false"/>
                 <Property Name="Counter" Type="Edm.Int32" Nullable="false" sap:label="Total Record Count" sap:quickinfo="CIS-AD: Total Rec Count" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="mganr" Type="Edm.String" Nullable="false" MaxLength="20" sap:display-format="UpperCase" sap:label="Master warranty" sap:quickinfo="Master warranty number" sap:creatable="false" sap:updatable="false"/>
                 <Property Name="RecCount" Type="Edm.String" MaxLength="10"/>
                 <Property Name="Categ" Type="Edm.String" MaxLength="2" sap:label="Category" sap:quickinfo="CIS-AD: Category"/>
                 <Property Name="Descr" Type="Edm.String" MaxLength="40"/>
@@ -576,14 +575,15 @@
                     <PropertyRef Name="Pmprf"/>
                     <PropertyRef Name="Subct"/>
                     <PropertyRef Name="Counter"/>
+                    <PropertyRef Name="kschl"/>
                 </Key>
                 <Property Name="Pmprf" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:required-in-filter="true" sap:label="Price Mnt. Profile" sap:quickinfo="CIS-AD: Price Maintenance Profile" sap:value-list="standard"/>
                 <Property Name="Subct" Type="Edm.String" Nullable="false" MaxLength="2" sap:text="Descr" sap:label="Sub Category" sap:quickinfo="CIS-AD: Sub Category"/>
                 <Property Name="Counter" Type="Edm.Int32" Nullable="false" sap:label="Total Record Count" sap:quickinfo="CIS-AD: Total Rec Count"/>
-                <Property Name="kschl" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Condition Type"/>
+                <Property Name="kschl" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:label="Condition Type"/>
+                <Property Name="mganr" Type="Edm.String" MaxLength="20" sap:display-format="UpperCase" sap:label="Master warranty" sap:quickinfo="Master warranty number"/>
                 <Property Name="kotab" Type="Edm.String" MaxLength="30" sap:label="Access" sap:quickinfo="CIS-AD: Condition Table"/>
                 <Property Name="vbeln" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="SD Document" sap:quickinfo="Sales and Distribution Document Number"/>
-                <Property Name="mganr" Type="Edm.String" MaxLength="20" sap:display-format="UpperCase" sap:label="Master warranty" sap:quickinfo="Master warranty number"/>
                 <Property Name="Categ" Type="Edm.String" MaxLength="2" sap:label="Category" sap:quickinfo="CIS-AD: Category"/>
                 <Property Name="Descr" Type="Edm.String" MaxLength="30"/>
                 <Property Name="Postn" Type="Edm.String" MaxLength="3" sap:display-format="NonNegative" sap:label="Position" sap:quickinfo="CIS-AD: Position"/>
@@ -602,13 +602,13 @@
                     <PropertyRef Name="knumh"/>
                     <PropertyRef Name="vbeln"/>
                     <PropertyRef Name="posnr"/>
-                    <PropertyRef Name="mganr"/>
                     <PropertyRef Name="datbi"/>
                     <PropertyRef Name="kappl"/>
                     <PropertyRef Name="kfrst"/>
                     <PropertyRef Name="xcgdcxeline"/>
                     <PropertyRef Name="subct"/>
                     <PropertyRef Name="counter"/>
+                    <PropertyRef Name="mganr"/>
                 </Key>
                 <Property Name="Delete_mc" Type="Edm.Boolean" sap:label="Dyn. Method Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="Update_mc" Type="Edm.Boolean" sap:label="Dyn. Method Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
@@ -618,13 +618,13 @@
                 <Property Name="knumh" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="Condition Record No." sap:quickinfo="Number of Condition Record" sap:creatable="false" sap:updatable="false"/>
                 <Property Name="vbeln" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="SD Document" sap:quickinfo="Sales and Distribution Document Number" sap:creatable="false" sap:updatable="false"/>
                 <Property Name="posnr" Type="Edm.String" Nullable="false" MaxLength="6" sap:display-format="NonNegative" sap:label="Item (SD)" sap:quickinfo="Item number of the SD document" sap:creatable="false" sap:updatable="false"/>
-                <Property Name="mganr" Type="Edm.String" Nullable="false" MaxLength="20" sap:display-format="UpperCase" sap:label="Master warranty" sap:quickinfo="Master warranty number" sap:creatable="false" sap:updatable="false"/>
                 <Property Name="datbi" Type="Edm.DateTime" Nullable="false" Precision="0" sap:display-format="Date" sap:label="Valid To" sap:quickinfo="Validity end date of the condition record" sap:creatable="false" sap:updatable="false"/>
                 <Property Name="kappl" Type="Edm.String" Nullable="false" MaxLength="2" sap:display-format="UpperCase" sap:label="Application" sap:creatable="false" sap:updatable="false"/>
                 <Property Name="kfrst" Type="Edm.String" Nullable="false" MaxLength="1" sap:display-format="UpperCase" sap:label="Release Status" sap:creatable="false" sap:updatable="false"/>
                 <Property Name="xcgdcxeline" Type="Edm.String" Nullable="false" MaxLength="11" sap:display-format="UpperCase" sap:label="ELIN" sap:quickinfo="CIS-AD: Exhibit Line Item Number (ELIN)" sap:creatable="false" sap:updatable="false"/>
                 <Property Name="subct" Type="Edm.String" Nullable="false" MaxLength="2" sap:label="Sub Category" sap:quickinfo="CIS-AD: Sub Category" sap:creatable="false" sap:updatable="false"/>
                 <Property Name="counter" Type="Edm.Int32" Nullable="false" sap:label="Total Record Count" sap:quickinfo="CIS-AD: Total Rec Count" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="mganr" Type="Edm.String" Nullable="false" MaxLength="20" sap:display-format="UpperCase" sap:label="Master warranty" sap:quickinfo="Master warranty number" sap:creatable="false" sap:updatable="false"/>
                 <Property Name="kopos" Type="Edm.String" MaxLength="2" sap:display-format="NonNegative" sap:label="Sequent. No. of Cond" sap:quickinfo="Sequential number of the condition" sap:creatable="false" sap:updatable="false"/>
                 <Property Name="Klfn1" Type="Edm.String" MaxLength="4" sap:display-format="NonNegative" sap:label="Line number" sap:quickinfo="Current number of the line scale" sap:creatable="false" sap:updatable="false"/>
                 <Property Name="konwa" Type="Edm.String" MaxLength="5" sap:display-format="UpperCase" sap:label="Condition Currency" sap:quickinfo="Condition Unit (Currency or Percentage)" sap:semantics="currency-code"/>
@@ -676,6 +676,7 @@
                     <PropertyRef Name="KSCHL"/>
                     <PropertyRef Name="Subct"/>
                     <PropertyRef Name="Counter"/>
+                    <PropertyRef Name="VBELN"/>
                 </Key>
                 <Property Name="Pmprf" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:label="Price Mnt. Profile" sap:quickinfo="CIS-AD: Price Maintenance Profile"/>
                 <Property Name="TABNAME" Type="Edm.String" Nullable="false" MaxLength="30" sap:display-format="UpperCase" sap:label="Object Name" sap:quickinfo="Name of ABAP Dictionary Object"/>
@@ -683,7 +684,7 @@
                 <Property Name="KSCHL" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:label="Condition Type"/>
                 <Property Name="Subct" Type="Edm.String" Nullable="false" MaxLength="2" sap:label="Sub Category" sap:quickinfo="CIS-AD: Sub Category"/>
                 <Property Name="Counter" Type="Edm.Int32" Nullable="false"/>
-                <Property Name="VBELN" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="SD Document" sap:quickinfo="Sales and Distribution Document Number"/>
+                <Property Name="VBELN" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="SD Document" sap:quickinfo="Sales and Distribution Document Number"/>
                 <Property Name="MGANR" Type="Edm.String" MaxLength="20" sap:display-format="UpperCase" sap:label="Master warranty" sap:quickinfo="Master warranty number"/>
                 <Property Name="DataType" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Undefined range (can be used for patch levels)" sap:heading=""/>
                 <Property Name="PrimaryKey" Type="Edm.String" MaxLength="1"/>
@@ -1160,14 +1161,16 @@
                 <End Type="cds_xcgdcxui_pricing_maint.xCGDCxI_PRICING_MAINType" Multiplicity="0..1" Role="ToRole_assoc_5D0AB1F78E59E3C5749EB75962DC5CDC"/>
                 <ReferentialConstraint>
                     <Principal Role="ToRole_assoc_5D0AB1F78E59E3C5749EB75962DC5CDC">
-                        <PropertyRef Name="Subct"/>
-                        <PropertyRef Name="Pmprf"/>
                         <PropertyRef Name="Counter"/>
+                        <PropertyRef Name="kschl"/>
+                        <PropertyRef Name="Pmprf"/>
+                        <PropertyRef Name="Subct"/>
                     </Principal>
                     <Dependent Role="FromRole_assoc_5D0AB1F78E59E3C5749EB75962DC5CDC">
-                        <PropertyRef Name="subct"/>
-                        <PropertyRef Name="pmprf"/>
                         <PropertyRef Name="counter"/>
+                        <PropertyRef Name="kschl"/>
+                        <PropertyRef Name="pmprf"/>
+                        <PropertyRef Name="subct"/>
                     </Dependent>
                 </ReferentialConstraint>
             </Association>
@@ -1178,34 +1181,34 @@
                 <End Type="cds_xcgdcxui_pricing_maint.xCGDCxI_Pricing_ScalesType" Multiplicity="*" Role="ToRole_assoc_274394B499DF4D1DFB0A7B65CCEC50FA"/>
                 <ReferentialConstraint>
                     <Principal Role="FromRole_assoc_274394B499DF4D1DFB0A7B65CCEC50FA">
-                        <PropertyRef Name="kotab"/>
-                        <PropertyRef Name="pmprf"/>
-                        <PropertyRef Name="kschl"/>
                         <PropertyRef Name="vbeln"/>
-                        <PropertyRef Name="counter"/>
-                        <PropertyRef Name="xcgdcxeline"/>
-                        <PropertyRef Name="kfrst"/>
-                        <PropertyRef Name="kappl"/>
-                        <PropertyRef Name="datbi"/>
-                        <PropertyRef Name="subct"/>
-                        <PropertyRef Name="mganr"/>
-                        <PropertyRef Name="posnr"/>
                         <PropertyRef Name="knumh"/>
+                        <PropertyRef Name="posnr"/>
+                        <PropertyRef Name="subct"/>
+                        <PropertyRef Name="datbi"/>
+                        <PropertyRef Name="kappl"/>
+                        <PropertyRef Name="kfrst"/>
+                        <PropertyRef Name="xcgdcxeline"/>
+                        <PropertyRef Name="counter"/>
+                        <PropertyRef Name="mganr"/>
+                        <PropertyRef Name="kschl"/>
+                        <PropertyRef Name="pmprf"/>
+                        <PropertyRef Name="kotab"/>
                     </Principal>
                     <Dependent Role="ToRole_assoc_274394B499DF4D1DFB0A7B65CCEC50FA">
-                        <PropertyRef Name="kotab"/>
-                        <PropertyRef Name="pmprf"/>
-                        <PropertyRef Name="kschl"/>
                         <PropertyRef Name="vbeln"/>
-                        <PropertyRef Name="counter"/>
-                        <PropertyRef Name="xcgdcxeline"/>
-                        <PropertyRef Name="kfrst"/>
-                        <PropertyRef Name="kappl"/>
-                        <PropertyRef Name="datbi"/>
-                        <PropertyRef Name="subct"/>
-                        <PropertyRef Name="mganr"/>
-                        <PropertyRef Name="posnr"/>
                         <PropertyRef Name="knumh"/>
+                        <PropertyRef Name="posnr"/>
+                        <PropertyRef Name="subct"/>
+                        <PropertyRef Name="datbi"/>
+                        <PropertyRef Name="kappl"/>
+                        <PropertyRef Name="kfrst"/>
+                        <PropertyRef Name="xcgdcxeline"/>
+                        <PropertyRef Name="counter"/>
+                        <PropertyRef Name="mganr"/>
+                        <PropertyRef Name="kschl"/>
+                        <PropertyRef Name="pmprf"/>
+                        <PropertyRef Name="kotab"/>
                     </Dependent>
                 </ReferentialConstraint>
             </Association>
@@ -1216,11 +1219,13 @@
                     <Principal Role="ToRole_assoc_E4A044C194AEC8C9B5C46AB84539373D">
                         <PropertyRef Name="Counter"/>
                         <PropertyRef Name="Subct"/>
+                        <PropertyRef Name="kschl"/>
                         <PropertyRef Name="Pmprf"/>
                     </Principal>
                     <Dependent Role="FromRole_assoc_E4A044C194AEC8C9B5C46AB84539373D">
                         <PropertyRef Name="counter"/>
                         <PropertyRef Name="subct"/>
+                        <PropertyRef Name="kschl"/>
                         <PropertyRef Name="pmprf"/>
                     </Dependent>
                 </ReferentialConstraint>
@@ -1336,14 +1341,16 @@
                 <End Type="cds_xcgdcxui_pricing_maint.xCGDCxI_CONDITON_CATALOGType" Multiplicity="*" Role="ToRole_assoc_7BC2F63A649A24EF7A3F29D5135F5879"/>
                 <ReferentialConstraint>
                     <Principal Role="FromRole_assoc_7BC2F63A649A24EF7A3F29D5135F5879">
-                        <PropertyRef Name="Counter"/>
-                        <PropertyRef Name="Subct"/>
                         <PropertyRef Name="Pmprf"/>
+                        <PropertyRef Name="kschl"/>
+                        <PropertyRef Name="Subct"/>
+                        <PropertyRef Name="Counter"/>
                     </Principal>
                     <Dependent Role="ToRole_assoc_7BC2F63A649A24EF7A3F29D5135F5879">
-                        <PropertyRef Name="Counter"/>
-                        <PropertyRef Name="Subct"/>
                         <PropertyRef Name="Pmprf"/>
+                        <PropertyRef Name="Kschl"/>
+                        <PropertyRef Name="Subct"/>
+                        <PropertyRef Name="Counter"/>
                     </Dependent>
                 </ReferentialConstraint>
             </Association>
@@ -1486,21 +1493,6 @@
                     <End EntitySet="SAP__MyDocumentDescriptions" Role="FromRole_to_Hierarchy"/>
                     <End EntitySet="SAP__HierarchySet" Role="ToRole_to_Hierarchy"/>
                 </AssociationSet>
-                <FunctionImport Name="filter" ReturnType="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType" EntitySet="xCGDCxI_CNC_MAIN" m:HttpMethod="POST" sap:action-for="cds_xcgdcxui_pricing_maint.xCGDCxI_CNC_MAINType" sap:applicable-path="filter_ac">
-                    <Parameter Name="pmprf" Type="Edm.String" Mode="In" MaxLength="4" sap:label="Price Mnt. Profile"/>
-                    <Parameter Name="kschl" Type="Edm.String" Mode="In" MaxLength="4" sap:label="Condition Type"/>
-                    <Parameter Name="kotab" Type="Edm.String" Mode="In" MaxLength="30" sap:label="Condition Table"/>
-                    <Parameter Name="vbeln" Type="Edm.String" Mode="In" MaxLength="10" sap:label="SD Document"/>
-                    <Parameter Name="knumh" Type="Edm.String" Mode="In" MaxLength="10" sap:label="Condition Record No."/>
-                    <Parameter Name="posnr" Type="Edm.String" Mode="In" MaxLength="6" sap:label="Item (SD)"/>
-                    <Parameter Name="mganr" Type="Edm.String" Mode="In" MaxLength="20" sap:label="Master warranty"/>
-                    <Parameter Name="datbi" Type="Edm.DateTime" Mode="In" Precision="0" sap:label="Valid To" sap:display-format="Date"/>
-                    <Parameter Name="kappl" Type="Edm.String" Mode="In" MaxLength="2" sap:label="Application"/>
-                    <Parameter Name="kfrst" Type="Edm.String" Mode="In" MaxLength="1" sap:label="Release Status"/>
-                    <Parameter Name="xcgdcxeline" Type="Edm.String" Mode="In" MaxLength="11" sap:label="ELIN"/>
-                    <Parameter Name="subct" Type="Edm.String" Mode="In" MaxLength="2" sap:label="Sub Category"/>
-                    <Parameter Name="counter" Type="Edm.Int32" Mode="In" sap:label="Total Record Count"/>
-                </FunctionImport>
                 <FunctionImport Name="xCGDCxC_Condition_CatalogActivate" ReturnType="cds_xcgdcxui_pricing_maint.xCGDCxC_Condition_CatalogType" EntitySet="xCGDCxC_Condition_Catalog" m:HttpMethod="POST" sap:action-for="cds_xcgdcxui_pricing_maint.xCGDCxC_Condition_CatalogType">
                     <Parameter Name="PriceProfile" Type="Edm.String" Mode="In" MaxLength="4" sap:label="Price Mnt. Profile"/>
                     <Parameter Name="ConditionType" Type="Edm.String" Mode="In" MaxLength="4" sap:label="Condition Type"/>
@@ -3354,7 +3346,6 @@
                                 <PropertyPath>xcgdcxwbsl4_fc</PropertyPath>
                                 <PropertyPath>xcgdcxwbsl5_fc</PropertyPath>
                                 <PropertyPath>xcgdcxwbsl6_fc</PropertyPath>
-                                <PropertyPath>filter_ac</PropertyPath>
                                 <PropertyPath>aland_fc</PropertyPath>
                                 <PropertyPath>annual_premium_fc</PropertyPath>
                                 <PropertyPath>anzsn_fc</PropertyPath>
@@ -3614,7 +3605,6 @@
                                 <PropertyPath>xcgdcxwbsl4_fc</PropertyPath>
                                 <PropertyPath>xcgdcxwbsl5_fc</PropertyPath>
                                 <PropertyPath>xcgdcxwbsl6_fc</PropertyPath>
-                                <PropertyPath>filter_ac</PropertyPath>
                                 <PropertyPath>aland_fc</PropertyPath>
                                 <PropertyPath>annual_premium_fc</PropertyPath>
                                 <PropertyPath>anzsn_fc</PropertyPath>

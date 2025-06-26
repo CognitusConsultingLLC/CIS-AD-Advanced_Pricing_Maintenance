@@ -13,7 +13,7 @@ server:
         backend:
           - path: /sap
             url: http://xd3:443
-            destination: XD3-202
+            destination: XD3-202-CognitusID
         ui5:
           path:
             - /resources
