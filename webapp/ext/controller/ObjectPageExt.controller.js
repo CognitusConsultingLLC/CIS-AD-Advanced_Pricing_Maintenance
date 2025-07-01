@@ -348,38 +348,39 @@ sap.ui.define([
 		},
 
 		onNavigateToMngDelvSchl: function (oEvent) {
-			var sObject = oEvent.getSource().getBindingContext().getObject();
-			var oCrossAppNavigator = sap.ushell.Container.getService("CrossApplicationNavigation");
+			if (oEvent?.getSource()?.getParent()?.getParent()?.getSelectedItems) {
+				var sObject = oEvent.getSource().getParent().getParent().getSelectedItems()[0].getBindingContext().getObject();
+			} else {
+				var sObject = oEvent.getSource().getBindingContext().getObject();
+			}
 			let oResourceBundle = this.getView().getModel("i18n").getResourceBundle();
-			if (sObject.Pmprf || sObject.Knumh || sObject.Kschl || sObject.Kotab) {
+			var oCrossAppNavigator = sap.ushell.Container.getService("CrossApplicationNavigation");
+			if (sObject.knumh) {
+
 				oCrossAppNavigator.toExternal({
 					target: {
-						semanticObject: "DeliveryReleaseSchedule",
-						action: "manage"
-					},
-					params: {
-						Pmprf: sObject.Pmprf,
-						// Knumh: sObject.Knumh,
-						Kschl: sObject.Kschl,
-						Kotab: sObject.Kotab
+						shellHash: "#DeliveryReleaseSchedule-manage?Knumh='" + sObject.knumh + "'&Kotab='" + sObject.kotab + "'&Kschl='" + sObject.kschl +
+							"'&Pmprf='" + sObject.pmprf + "'&/xCGDCxC_ConditionRecDeliveryRS(ConditionRecord='" + sObject.knumh + "',ConditionType='" + sObject.kschl +
+							"',ConditionTable='" + sObject.kotab + "',PriceProfile='" + sObject.pmprf + "',IsActiveEntity=false)"
 					}
-				})
-			}else if(sObject.pmprf || sObject.knumh || sObject.kschl || sObject.kotab){
-				oCrossAppNavigator.toExternal({
-					target: {
-						semanticObject: "DeliveryReleaseSchedule",
-						action: "manage"
-					},
-					params: {
-						Pmprf: sObject.pmprf,
-						Knumh: sObject.knumh,
-						Kschl: sObject.kschl,
-						Kotab: sObject.kotab
-					}
-				})
-			}else{
+				});
+
+				// oCrossAppNavigator.toExternal({
+				// 	target: {
+				// 		semanticObject: "DeliveryReleaseSchedule",
+				// 		action: "manage"
+				// 	},
+				// 	params: {
+				// 		Pmprf: sObject.pmprf,
+				// 		Knumh: sObject.knumh,
+				// 		Kschl: sObject.kschl,
+				// 		Kotab: sObject.kotab
+				// 	}
+				// })
+			} else {
 				sap.m.MessageBox.information(oResourceBundle.getText("NavigationError"));
 			}
+
 		}
 
 	});
