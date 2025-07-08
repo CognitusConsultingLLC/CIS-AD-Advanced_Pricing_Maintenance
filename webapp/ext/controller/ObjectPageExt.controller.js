@@ -67,6 +67,10 @@ sap.ui.define([
 
 					that.object = that.extractParameters(oEvent.context.getDeepPath());
 					that.additionalData = oEvent.context.getProperty('AddDataVis');
+
+					that.flowDown = oEvent.context.getProperty('FlowDownVis');
+					that.Scales = oEvent.context.getProperty('ScalesVis');
+
 					if (that.object) {
 						if (that.object.Kotab) {
 							that.aTable = that.object.Kotab;
@@ -298,6 +302,38 @@ sap.ui.define([
 								}
 							}
 						}
+
+						//START:Hide flowdown and scales tab
+
+						let oFlowdownForm = sap.ui.getCore().byId(
+							"cgdc.pricing.maint::sap.suite.ui.generic.template.ObjectPage.view.Details::xCGDCxI_CNC_MAIN--FlowData::Form");
+						if (oFlowdownForm) {
+							let flowDownSection = sap.ui.getCore().byId(
+								"cgdc.pricing.maint::sap.suite.ui.generic.template.ObjectPage.view.Details::xCGDCxI_CNC_MAIN--FlowData::Section"
+							);
+							flowDownSection.setVisible(true);
+							if (that.flowDown === 'X'
+								|| that.flowDown === undefined)
+							{
+								flowDownSection.setVisible(false);
+							}
+
+						}
+
+						let oScalesTable = sap.ui.getCore().byId("cgdc.pricing.maint::sap.suite.ui.generic.template.ObjectPage.view.Details::xCGDCxI_CNC_MAIN--ItemDetails::Table");
+						if (oScalesTable) {
+							let scalesSection = sap.ui.getCore().byId("cgdc.pricing.maint::sap.suite.ui.generic.template.ObjectPage.view.Details::xCGDCxI_CNC_MAIN--ItemDetails::SubSection");
+							scalesSection.setVisible(true);
+							if (that.Scales === 'X'
+								|| that.Scales === undefined) 
+							{
+								scalesSection.setVisible(false);
+							}
+
+						}
+						
+						//END:Hide flowdown and scales tab
+
 						if (sap.ui.getCore().byId(
 							"cgdc.pricing.maint::sap.suite.ui.generic.template.ObjectPage.view.Details::xCGDCxI_CONDITON_CATALOG--ItemDetails::Table"
 						)) {
