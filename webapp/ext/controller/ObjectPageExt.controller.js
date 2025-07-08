@@ -396,8 +396,7 @@ sap.ui.define([
 				oCrossAppNavigator.toExternal({
 					target: {
 						shellHash: "#DeliveryReleaseSchedule-manage?Knumh='" + sObject.knumh + "'&Kotab='" + sObject.kotab + "'&Kschl='" + sObject.kschl +
-							"'&Pmprf='" + sObject.pmprf + "'&/xCGDCxC_ConditionRecDeliveryRS(ConditionRecord='" + sObject.knumh + "',ConditionType='" + sObject.kschl +
-							"',ConditionTable='" + sObject.kotab + "',PriceProfile='" + sObject.pmprf + "',IsActiveEntity=false)"
+							"'&Pmprf='" + sObject.pmprf + "'&/xCGDCxC_ConditionRecDeliveryRS(ConditionRecordNo='" + sObject.knumh + "',IsActiveEntity=false)"
 					}
 				});
 
