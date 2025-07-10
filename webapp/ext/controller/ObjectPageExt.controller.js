@@ -70,6 +70,12 @@ sap.ui.define([
 
 					that.flowDown = oEvent.context.getProperty('FlowDownVis');
 					that.Scales = oEvent.context.getProperty('ScalesVis');
+					that.DeliveryVis = oEvent.context.getProperty('DeliveryVis');
+					if (that.DeliveryVis === 'X') {
+						sap.ui.getCore().byId('cgdc.pricing.maint::sap.suite.ui.generic.template.ObjectPage.view.Details::xCGDCxI_CONDITON_CATALOG--ActionxDeliveryReleaseAndSchedulexButtonxCondCatButton').setVisible(false);
+					}else{
+						sap.ui.getCore().byId('cgdc.pricing.maint::sap.suite.ui.generic.template.ObjectPage.view.Details::xCGDCxI_CONDITON_CATALOG--ActionxDeliveryReleaseAndSchedulexButtonxCondCatButton').setVisible(true);
+					}
 
 					if (that.object) {
 						if (that.object.Kotab) {
@@ -214,6 +220,9 @@ sap.ui.define([
 				//		filters.push(new sap.ui.model.Filter("MGANR", sap.ui.model.FilterOperator.EQ, mganr));
 				oModel.read(oPath, {
 					filters: filters,
+					urlParameters: {
+						"$top": "1000"
+					},
 					success: function (oData) {
 						let tableColumn = oData.results;
 						that.getOwnerComponent().getModel("CustomFields").setData(tableColumn);
@@ -277,8 +286,7 @@ sap.ui.define([
 								"cgdc.pricing.maint::sap.suite.ui.generic.template.ObjectPage.view.Details::xCGDCxI_CNC_MAIN--AddData::Section"
 							);
 							addSection.setVisible(true);
-							if (that.additionalData === 'X'
-								|| that.additionalData === undefined) //Added by AGUSAIN to hide add data tab
+							if (that.additionalData === 'X' || tableColumn[0].AddDataVis === 'X') //Added by AGUSAIN to hide add data tab
 							{
 								addSection.setVisible(false);
 							} else {
@@ -305,6 +313,12 @@ sap.ui.define([
 
 						//START:Hide flowdown and scales tab
 
+						if (tableColumn[0].DeliveryVis === 'X') {
+							sap.ui.getCore().byId('cgdc.pricing.maint::sap.suite.ui.generic.template.ObjectPage.view.Details::xCGDCxI_CNC_MAIN--action::ActionxDeliveryReleaseAndSchedulexButtonxHeader').setVisible(false);
+						}else{
+							sap.ui.getCore().byId('cgdc.pricing.maint::sap.suite.ui.generic.template.ObjectPage.view.Details::xCGDCxI_CNC_MAIN--action::ActionxDeliveryReleaseAndSchedulexButtonxHeader').setVisible(true);
+						}
+
 						let oFlowdownForm = sap.ui.getCore().byId(
 							"cgdc.pricing.maint::sap.suite.ui.generic.template.ObjectPage.view.Details::xCGDCxI_CNC_MAIN--FlowData::Form");
 						if (oFlowdownForm) {
@@ -312,9 +326,7 @@ sap.ui.define([
 								"cgdc.pricing.maint::sap.suite.ui.generic.template.ObjectPage.view.Details::xCGDCxI_CNC_MAIN--FlowData::Section"
 							);
 							flowDownSection.setVisible(true);
-							if (that.flowDown === 'X'
-								|| that.flowDown === undefined)
-							{
+							if (that.flowDown === 'X' || tableColumn[0].FlowDownVis === 'X') {
 								flowDownSection.setVisible(false);
 							}
 
@@ -324,14 +336,12 @@ sap.ui.define([
 						if (oScalesTable) {
 							let scalesSection = sap.ui.getCore().byId("cgdc.pricing.maint::sap.suite.ui.generic.template.ObjectPage.view.Details::xCGDCxI_CNC_MAIN--ItemDetails::SubSection");
 							scalesSection.setVisible(true);
-							if (that.Scales === 'X'
-								|| that.Scales === undefined) 
-							{
+							if (that.Scales === 'X' || tableColumn[0].ScalesVis === 'X') {
 								scalesSection.setVisible(false);
 							}
 
 						}
-						
+
 						//END:Hide flowdown and scales tab
 
 						if (sap.ui.getCore().byId(
