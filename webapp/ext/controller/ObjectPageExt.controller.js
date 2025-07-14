@@ -49,7 +49,7 @@ sap.ui.define([
 							})
 						});
 
-						oComboBox.setSelectedKey("ALL_FLT");
+						oComboBox.setSelectedKey("ACTIVE_FLT");
 
 						// Find the index of the Filter button
 						const aContent = oToolbar.getContent();
@@ -70,12 +70,6 @@ sap.ui.define([
 
 					that.flowDown = oEvent.context.getProperty('FlowDownVis');
 					that.Scales = oEvent.context.getProperty('ScalesVis');
-					that.DeliveryVis = oEvent.context.getProperty('DeliveryVis');
-					if (that.DeliveryVis === 'X') {
-						sap.ui.getCore().byId('cgdc.pricing.maint::sap.suite.ui.generic.template.ObjectPage.view.Details::xCGDCxI_CONDITON_CATALOG--ActionxDeliveryReleaseAndSchedulexButtonxCondCatButton').setVisible(false);
-					}else{
-						sap.ui.getCore().byId('cgdc.pricing.maint::sap.suite.ui.generic.template.ObjectPage.view.Details::xCGDCxI_CONDITON_CATALOG--ActionxDeliveryReleaseAndSchedulexButtonxCondCatButton').setVisible(true);
-					}
 
 					if (that.object) {
 						if (that.object.Kotab) {
@@ -121,6 +115,25 @@ sap.ui.define([
 				}
 			}
 
+		},
+
+		onAfterRendering: function () {
+			var that = this;
+			this.vbelnLength = "";
+			var oModel = this.getView().getModel();
+			oModel.metadataLoaded().then(function () {
+				var oMetadata = oModel.getServiceMetadata();
+				var aEntityTypes = oMetadata.dataServices.schema[0].entityType;
+
+				aEntityTypes.forEach(function (entity) {
+					entity.property.forEach(function (prop) {
+						if (prop.name === "Vbeln") {
+							that.vbelnLength = parseInt(prop.maxLength, 10); //converts it to the number 10, using base 10.
+							return;
+						}
+					});
+				});
+			}, this);
 		},
 
 		onBeforeRebindTableExtension: function (oEvent) {
@@ -312,12 +325,18 @@ sap.ui.define([
 						}
 
 						//START:Hide flowdown and scales tab
-
-						if (tableColumn[0].DeliveryVis === 'X') {
-							sap.ui.getCore().byId('cgdc.pricing.maint::sap.suite.ui.generic.template.ObjectPage.view.Details::xCGDCxI_CNC_MAIN--action::ActionxDeliveryReleaseAndSchedulexButtonxHeader').setVisible(false);
-						}else{
-							sap.ui.getCore().byId('cgdc.pricing.maint::sap.suite.ui.generic.template.ObjectPage.view.Details::xCGDCxI_CNC_MAIN--action::ActionxDeliveryReleaseAndSchedulexButtonxHeader').setVisible(true);
+						if (sap.ui.getCore().byId("cgdc.pricing.maint::sap.suite.ui.generic.template.ObjectPage.view.Details::xCGDCxI_CNC_MAIN--template::ObjectPage::ObjectPageHeader")) {
+							if (sap.ui.getCore().byId("cgdc.pricing.maint::sap.suite.ui.generic.template.ObjectPage.view.Details::xCGDCxI_CNC_MAIN--template::ObjectPage::ObjectPageHeader").getBindingContext().getObject().knumh) {
+								if (tableColumn[0].DeliveryButnVis === '') {
+									sap.ui.getCore().byId('cgdc.pricing.maint::sap.suite.ui.generic.template.ObjectPage.view.Details::xCGDCxI_CNC_MAIN--action::ActionxDeliveryReleaseAndSchedulexButtonxHeader').setVisible(true);
+								} else if (tableColumn[0].DeliveryButnVis === 'X') {
+									sap.ui.getCore().byId('cgdc.pricing.maint::sap.suite.ui.generic.template.ObjectPage.view.Details::xCGDCxI_CNC_MAIN--action::ActionxDeliveryReleaseAndSchedulexButtonxHeader').setVisible(false);
+								}
+							} else {
+								sap.ui.getCore().byId('cgdc.pricing.maint::sap.suite.ui.generic.template.ObjectPage.view.Details::xCGDCxI_CNC_MAIN--action::ActionxDeliveryReleaseAndSchedulexButtonxHeader').setVisible(false);
+							}
 						}
+
 
 						let oFlowdownForm = sap.ui.getCore().byId(
 							"cgdc.pricing.maint::sap.suite.ui.generic.template.ObjectPage.view.Details::xCGDCxI_CNC_MAIN--FlowData::Form");
@@ -406,25 +425,72 @@ sap.ui.define([
 				oCrossAppNavigator.toExternal({
 					target: {
 						shellHash: "#DeliveryReleaseSchedule-manage?Knumh='" + sObject.knumh + "'&Kotab='" + sObject.kotab + "'&Kschl='" + sObject.kschl +
-							"'&Pmprf='" + sObject.pmprf + "'&/xCGDCxC_ConditionRecDeliveryRS(ConditionRecordNo='" + sObject.knumh + "',IsActiveEntity=false)"
+							"'&Pmprf='" + sObject.pmprf + "'&/xCGDCxC_ConditionRecDeliveryRS(ConditionRecordNo='" + sObject.knumh + "',IsActiveEntity=true)"
 					}
 				});
 
-				// oCrossAppNavigator.toExternal({
-				// 	target: {
-				// 		semanticObject: "DeliveryReleaseSchedule",
-				// 		action: "manage"
-				// 	},
-				// 	params: {
-				// 		Pmprf: sObject.pmprf,
-				// 		Knumh: sObject.knumh,
-				// 		Kschl: sObject.kschl,
-				// 		Kotab: sObject.kotab
-				// 	}
-				// })
 			} else {
 				sap.m.MessageBox.information(oResourceBundle.getText("NavigationError"));
 			}
+
+		},
+
+		onNavigateToDocumentFlow: function (oEvent) {
+			var oSelectedItem = oEvent.getSource().getParent().getParent().getSelectedItems();
+			var sVbeln = oSelectedItem[0].getBindingContext().getObject("vbeln");
+			var sPosnr = oSelectedItem[0].getBindingContext().getObject("posnr");
+			var sElin = oSelectedItem[0].getBindingContext().getObject("xcgdcxeline");
+			var sNeline = oSelectedItem[0].getBindingContext().getObject("xcgdcxneline");
+
+			var oCrossAppNavigator = sap.ushell.Container.getService("CrossApplicationNavigation");
+			// oCrossAppNavigator.toExternal({
+			// 	target: {
+			// 		shellHash: "#CISADDocumentFlow-display&/xCGDCxC_CNCDocumentFlow(ReferenceSDDocument='" + sVbeln + "',ReferenceSDDocumentItem='" + sPosnr + "',OriginatingELIN='" + sElin + "',OriginatingNELIN='" + sNeline + "',IsActiveEntity=false)"
+			// 	}
+			// });
+
+			oCrossAppNavigator.toExternal({
+				target: {
+					semanticObject: "CISADDocumentFlow",
+					action: "display"
+				},
+				params: {
+					ReferenceSDDocument: sVbeln,
+					ReferenceSDDocumentItem: sPosnr,
+					OriginatingELIN: sElin,
+					OriginatingNELIN: sNeline
+				}
+			});
+
+		},
+
+		onNavigateToChangeLog: function (oEvent) {
+			var oSelectedItem = "";
+			var sVbeln = "";
+			var sKnumh = "";
+			var sObjectClass = "";
+			var sTabName = "";
+
+			oSelectedItem = oEvent.getSource().getParent().getParent().getSelectedItems();
+			sTabName = oSelectedItem[0].getBindingContext().getObject().extension_tab;
+			sVbeln = oSelectedItem[0].getBindingContext().getObject().vbeln.padStart(this.vbelnLength, "0");
+			sKnumh = oSelectedItem[0].getBindingContext().getObject().knumh;
+			sObjectClass = "CNC";
+
+
+			sap.ushell.Container.getService("CrossApplicationNavigation").toExternal({
+				target: {
+					semanticObject: "cgdcchangelog",
+					action: "display"
+				},
+				params: {
+					objectclass: sObjectClass,
+					objectid: sVbeln,
+					tabname: sTabName,
+					tab_key: sKnumh
+				}
+			});
+
 
 		}
 
