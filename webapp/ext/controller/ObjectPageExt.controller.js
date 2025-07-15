@@ -26,7 +26,8 @@ sap.ui.define([
 						});
 
 						const oComboBox = new sap.m.ComboBox("idFilterBy", {
-							change: that.onFilterChange
+							change: that.onFilterChange,
+							selectedKey:"ACTIVE_FLT"
 						});
 						let oResourceBundle = that.getView().getModel("i18n").getResourceBundle();
 						const oFilterModel = new sap.ui.model.json.JSONModel({
@@ -48,9 +49,9 @@ sap.ui.define([
 								text: "{filterModel>text}"
 							})
 						});
-
-						oComboBox.setSelectedKey("ACTIVE_FLT");
-
+						
+						that.onFilterCallBack("ACTIVE_FLT");
+						
 						// Find the index of the Filter button
 						const aContent = oToolbar.getContent();
 						const iFilterButtonIndex = aContent.findIndex(control =>
@@ -150,8 +151,7 @@ sap.ui.define([
 
 		},
 
-		onFilterChange: function (oEvent) {
-			var sFilterKey = oEvent.getSource().getSelectedKey(); // Get selected filter type
+		onFilterCallBack:function(sFilterKey){
 			var oSmartTable = sap.ui.getCore().byId("cgdc.pricing.maint::sap.suite.ui.generic.template.ObjectPage.view.Details::xCGDCxI_CONDITON_CATALOG--ItemDetails::responsiveTable"); // Smart Table instance
 			var aFilters = []; // Initialize empty filter array
 			var oCurrentDate = new Date();
@@ -188,6 +188,11 @@ sap.ui.define([
 			// }
 
 			oSmartTable.getParent().rebindTable();
+		},
+
+		onFilterChange: function (oEvent) {
+			var sFilterKey = oEvent.getSource().getSelectedKey(); // Get selected filter type
+			this.getParent().getParent().getParent()._getView().getController().onFilterCallBack(sFilterKey);
 		},
 
 		extractParameters: function (inputString) {
