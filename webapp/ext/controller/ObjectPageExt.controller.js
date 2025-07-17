@@ -192,6 +192,13 @@ sap.ui.define([
 
 		onFilterChange: function (oEvent) {
 			var sFilterKey = oEvent.getSource().getSelectedKey(); // Get selected filter type
+			if (!sFilterKey) {
+				this.setValueState("Error");
+				this.setValueStateText("Please select a valid option.");
+				return;
+			} else {
+				this.setValueState("None");
+			}
 			this.getParent().getParent().getParent()._getView().getController().onFilterCallBack(sFilterKey);
 		},
 
