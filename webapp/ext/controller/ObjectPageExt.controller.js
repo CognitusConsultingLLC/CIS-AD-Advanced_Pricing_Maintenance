@@ -269,6 +269,9 @@ sap.ui.define([
 								for (let j = 0; j < aRequiredFields.length; j++) {
 									if (aAllSmartfield[i].getDataProperty().property.name == aRequiredFields[j]) {
 										aAllSmartfield[i].setVisible(true);
+										if(aAllSmartfield[i].getDataProperty().property.name == 'vbeln' && !aAllSmartfield[i].getValue()){
+											aAllSmartfield[i].setValue(that.object.Vbeln);
+										}
 										break;
 									}
 
