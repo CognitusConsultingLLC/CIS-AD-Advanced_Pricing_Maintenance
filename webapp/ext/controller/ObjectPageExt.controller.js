@@ -8,9 +8,10 @@ sap.ui.define([
 	"sap/ui/core/ListItem",
 	"sap/ui/model/Sorter",
 	"sap/m/BusyDialog",
-	"sap/ui/comp/state/UIState"
+	"sap/ui/comp/state/UIState",
+	"sap/m/MessageBox",
 
-], function (ControllerExtension, JSONModel, Fragment, ODataModel, Filter, FilterOperator, ListItem, Sorter, BusyDialog, UIState) {
+], function (ControllerExtension, JSONModel, Fragment, ODataModel, Filter, FilterOperator, ListItem, Sorter, BusyDialog, UIState, MessageBox) {
 	"use strict";
 
 	return sap.ui.controller("cgdc.pricing.maint.ext.controller.ObjectPageExt", {
@@ -27,7 +28,7 @@ sap.ui.define([
 
 						const oComboBox = new sap.m.ComboBox("idFilterBy", {
 							change: that.onFilterChange,
-							selectedKey:"ACTIVE_FLT"
+							selectedKey: "ACTIVE_FLT"
 						});
 						let oResourceBundle = that.getView().getModel("i18n").getResourceBundle();
 						const oFilterModel = new sap.ui.model.json.JSONModel({
@@ -49,9 +50,9 @@ sap.ui.define([
 								text: "{filterModel>text}"
 							})
 						});
-						
+
 						that.onFilterCallBack("ACTIVE_FLT");
-						
+
 						// Find the index of the Filter button
 						const aContent = oToolbar.getContent();
 						const iFilterButtonIndex = aContent.findIndex(control =>
@@ -91,15 +92,50 @@ sap.ui.define([
 						// that.hideBusyIndicator();//Added by AGUSAIN to for fields visibility
 						let edit = sap.ui.getCore().byId(
 							"cgdc.pricing.maint::sap.suite.ui.generic.template.ObjectPage.view.Details::xCGDCxI_CNC_MAIN--edit");
+						let customEdit = sap.ui.getCore().byId("cgdc.pricing.maint::sap.suite.ui.generic.template.ObjectPage.view.Details::xCGDCxI_CNC_MAIN--action::idCustomEditButton");
 						if (edit) {
+							that.editButtonVisibility()
 							edit.attachPress(that.editPress, that);
 						}
 
 					}
 				}
 			});
+			 this.extensionAPI.getTransactionController().attachAfterCancel(this.attachEditButtonBehavior);
+			 this.extensionAPI.getTransactionController().attachAfterSave(this.attachEditButtonBehavior);
 		},
-		editPress: function () {
+
+		editButtonVisibility: function(){
+			let edit = sap.ui.getCore().byId(
+				"cgdc.pricing.maint::sap.suite.ui.generic.template.ObjectPage.view.Details::xCGDCxI_CNC_MAIN--edit");
+			let customEdit = sap.ui.getCore().byId("cgdc.pricing.maint::sap.suite.ui.generic.template.ObjectPage.view.Details::xCGDCxI_CNC_MAIN--action::idCustomEditButton");
+			if (edit && customEdit) {
+				customEdit.setType("Emphasized");
+				if(this.getView().getBindingContext().getPath().includes("xCGDCxI_CNC_MAIN")){
+				var oCNCData = this.getView().getBindingContext().getObject();
+				if (!oCNCData.ModActive) {
+					edit.setVisible(true);
+					customEdit.setVisible(false);
+				} else {
+					if (!oCNCData.CNCEdit) {
+						edit.setVisible(false);
+						customEdit.setVisible(true);
+					} else {
+						edit.setVisible(true);
+						customEdit.setVisible(false);
+					}
+				}
+			}
+			}
+
+		},
+
+		attachEditButtonBehavior: function (oEvent) {
+			this.editButtonVisibility();
+		},
+
+
+		editPress: function (oEvent) {
 			if (sap.ui.getCore().byId(
 				"cgdc.pricing.maint::sap.suite.ui.generic.template.ObjectPage.view.Details::xCGDCxI_CNC_MAIN--Home::Form")) {
 				let createForm = sap.ui.getCore().byId(
@@ -115,7 +151,32 @@ sap.ui.define([
 					}
 				}
 			}
+		},
 
+
+		onPressCustomEdit: function (oEvent) {
+			var that = this;
+			var oCNCData = this.getView().getBindingContext().getObject();
+			if (oCNCData.ModActive && !oCNCData.CNCEdit) {
+				MessageBox.information("Modification tracking is active for this contract. To update the condition catalog, Contract must be in change mode. Do you want to navigate to Contract Management?", {
+					actions: ["Yes", "No"],
+					emphasizedAction: "Yes",
+					onClose: function (sAction) {
+						if(sAction === "Yes"){
+							that.navigateToContractManagement();
+						}
+					},
+					dependentOn: this.getView()
+				});
+			}
+		},
+
+		navigateToContractManagement: function(){
+			var oCNCData = this.getView().getBindingContext().getObject();
+			if(oCNCData.vbeln){
+				var fixedURL = "#ContractV4-manage&/xCGDCxC_ContractManagement_HD(Vbeln='" + oCNCData.vbeln +"',DraftUUID=00000000-0000-0000-0000-000000000000,IsActiveEntity=true)"
+				window.location.href = window.location.href.split('#')[0] + fixedURL;
+			}
 		},
 
 		onAfterRendering: function () {
@@ -151,7 +212,7 @@ sap.ui.define([
 
 		},
 
-		onFilterCallBack:function(sFilterKey){
+		onFilterCallBack: function (sFilterKey) {
 			var oSmartTable = sap.ui.getCore().byId("cgdc.pricing.maint::sap.suite.ui.generic.template.ObjectPage.view.Details::xCGDCxI_CONDITON_CATALOG--ItemDetails::responsiveTable"); // Smart Table instance
 			var aFilters = []; // Initialize empty filter array
 			var oCurrentDate = new Date();
@@ -269,7 +330,7 @@ sap.ui.define([
 								for (let j = 0; j < aRequiredFields.length; j++) {
 									if (aAllSmartfield[i].getDataProperty().property.name == aRequiredFields[j]) {
 										aAllSmartfield[i].setVisible(true);
-										if(aAllSmartfield[i].getDataProperty().property.name == 'vbeln' && !aAllSmartfield[i].getValue()){
+										if (aAllSmartfield[i].getDataProperty().property.name == 'vbeln' && !aAllSmartfield[i].getValue()) {
 											aAllSmartfield[i].setValue(that.object.Vbeln);
 										}
 										break;

@@ -141,6 +141,12 @@
                 "Sections": {},
                 "Header": {
                   "Actions": {
+                    "idCustomEdit": {
+                      "id" : "idCustomEditButton",
+                      "text" : "Edit",
+                      "press" : "onPressCustomEdit",
+                      "requiresSelection": false
+                  },
                     "ActionxDeliveryReleaseAndSchedulexButtonxHeader": {
                       "id": "ActionxDeliveryReleaseAndSchedulexButtonxHeader",
                       "text": "{i18n>DeliveryReleaseSchedule}",
