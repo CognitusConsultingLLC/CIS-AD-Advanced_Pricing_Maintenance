@@ -93,9 +93,13 @@ sap.ui.define([
 						let edit = sap.ui.getCore().byId(
 							"cgdc.pricing.maint::sap.suite.ui.generic.template.ObjectPage.view.Details::xCGDCxI_CNC_MAIN--edit");
 						let customEdit = sap.ui.getCore().byId("cgdc.pricing.maint::sap.suite.ui.generic.template.ObjectPage.view.Details::xCGDCxI_CNC_MAIN--action::idCustomEditButton");
+						let create = sap.ui.getCore().byId("cgdc.pricing.maint::sap.suite.ui.generic.template.ObjectPage.view.Details::xCGDCxI_CONDITON_CATALOG--ItemDetails::addEntry");
 						if (edit) {
-							that.editButtonVisibility()
+							that.editButtonVisibility(edit, customEdit)
 							edit.attachPress(that.editPress, that);
+						}
+						if(create){
+							that.createButtonEditability(create);
 						}
 
 					}
@@ -105,14 +109,15 @@ sap.ui.define([
 			 this.extensionAPI.getTransactionController().attachAfterSave(this.attachEditButtonBehavior);
 		},
 
-		editButtonVisibility: function(){
-			let edit = sap.ui.getCore().byId(
-				"cgdc.pricing.maint::sap.suite.ui.generic.template.ObjectPage.view.Details::xCGDCxI_CNC_MAIN--edit");
-			let customEdit = sap.ui.getCore().byId("cgdc.pricing.maint::sap.suite.ui.generic.template.ObjectPage.view.Details::xCGDCxI_CNC_MAIN--action::idCustomEditButton");
+		editButtonVisibility: function(edit, customEdit){
+			// let edit = sap.ui.getCore().byId(
+			// 	"cgdc.pricing.maint::sap.suite.ui.generic.template.ObjectPage.view.Details::xCGDCxI_CNC_MAIN--edit");
+			// let customEdit = sap.ui.getCore().byId("cgdc.pricing.maint::sap.suite.ui.generic.template.ObjectPage.view.Details::xCGDCxI_CNC_MAIN--action::idCustomEditButton");
 			if (edit && customEdit) {
 				customEdit.setType("Emphasized");
 				if(this.getView().getBindingContext().getPath().includes("xCGDCxI_CNC_MAIN")){
 				var oCNCData = this.getView().getBindingContext().getObject();
+				if (oCNCData.ModActive !== undefined) {
 				if (!oCNCData.ModActive) {
 					edit.setVisible(true);
 					customEdit.setVisible(false);
@@ -125,6 +130,31 @@ sap.ui.define([
 						customEdit.setVisible(false);
 					}
 				}
+			}else{
+				customEdit.setVisible(false);
+			}
+			}
+			}
+
+		},
+
+		createButtonEditability: function(create){
+			if (create) {
+				if(this.getView().getBindingContext().getPath().includes("xCGDCxI_CONDITON_CATALOG")){
+				var oCNCData = this.getView().getBindingContext().getObject();
+				if (oCNCData.ModActive !== undefined) {
+				if (!oCNCData.ModActive) {
+					create.setEnabled(true);
+				} else {
+					if (!oCNCData.CNCEdit) {
+						create.setEnabled(false);
+					} else {
+						create.setEnabled(true);
+					}
+				}
+			}else{
+				create.setEnabled(true);
+			}
 			}
 			}
 

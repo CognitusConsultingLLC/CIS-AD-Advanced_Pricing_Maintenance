@@ -145,6 +145,7 @@
                       "id" : "idCustomEditButton",
                       "text" : "Edit",
                       "press" : "onPressCustomEdit",
+                      "visible": false,
                       "requiresSelection": false
                   },
                     "ActionxDeliveryReleaseAndSchedulexButtonxHeader": {
