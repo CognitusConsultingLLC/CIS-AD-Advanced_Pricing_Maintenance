@@ -98,64 +98,64 @@ sap.ui.define([
 							that.editButtonVisibility(edit, customEdit)
 							edit.attachPress(that.editPress, that);
 						}
-						if(create){
+						if (create) {
 							that.createButtonEditability(create);
 						}
 
 					}
 				}
 			});
-			 this.extensionAPI.getTransactionController().attachAfterCancel(this.attachEditButtonBehavior);
-			 this.extensionAPI.getTransactionController().attachAfterSave(this.attachEditButtonBehavior);
+			this.extensionAPI.getTransactionController().attachAfterCancel(this.attachEditButtonBehavior);
+			this.extensionAPI.getTransactionController().attachAfterSave(this.attachEditButtonBehavior);
 		},
 
-		editButtonVisibility: function(edit, customEdit){
+		editButtonVisibility: function (edit, customEdit) {
 			// let edit = sap.ui.getCore().byId(
 			// 	"cgdc.pricing.maint::sap.suite.ui.generic.template.ObjectPage.view.Details::xCGDCxI_CNC_MAIN--edit");
 			// let customEdit = sap.ui.getCore().byId("cgdc.pricing.maint::sap.suite.ui.generic.template.ObjectPage.view.Details::xCGDCxI_CNC_MAIN--action::idCustomEditButton");
 			if (edit && customEdit) {
 				customEdit.setType("Emphasized");
-				if(this.getView().getBindingContext().getPath().includes("xCGDCxI_CNC_MAIN")){
-				var oCNCData = this.getView().getBindingContext().getObject();
-				if (oCNCData.ModActive !== undefined) {
-				if (!oCNCData.ModActive) {
-					edit.setVisible(true);
-					customEdit.setVisible(false);
-				} else {
-					if (!oCNCData.CNCEdit) {
-						edit.setVisible(false);
-						customEdit.setVisible(true);
+				if (this.getView().getBindingContext().getPath().includes("xCGDCxI_CNC_MAIN")) {
+					var oCNCData = this.getView().getBindingContext().getObject();
+					if (oCNCData.ModActive !== undefined) {
+						if (!oCNCData.ModActive) {
+							edit.setVisible(true);
+							customEdit.setVisible(false);
+						} else {
+							if (!oCNCData.CNCEdit) {
+								edit.setVisible(false);
+								customEdit.setVisible(true);
+							} else {
+								edit.setVisible(true);
+								customEdit.setVisible(false);
+							}
+						}
 					} else {
-						edit.setVisible(true);
 						customEdit.setVisible(false);
 					}
 				}
-			}else{
-				customEdit.setVisible(false);
-			}
-			}
 			}
 
 		},
 
-		createButtonEditability: function(create){
+		createButtonEditability: function (create) {
 			if (create) {
-				if(this.getView().getBindingContext().getPath().includes("xCGDCxI_CONDITON_CATALOG")){
-				var oCNCData = this.getView().getBindingContext().getObject();
-				if (oCNCData.ModActive !== undefined) {
-				if (!oCNCData.ModActive) {
-					create.setEnabled(true);
-				} else {
-					if (!oCNCData.CNCEdit) {
-						create.setEnabled(false);
+				if (this.getView().getBindingContext().getPath().includes("xCGDCxI_CONDITON_CATALOG")) {
+					var oCNCData = this.getView().getBindingContext().getObject();
+					if (oCNCData.ModActive !== undefined) {
+						if (!oCNCData.ModActive) {
+							create.setEnabled(true);
+						} else {
+							if (!oCNCData.CNCEdit) {
+								create.setEnabled(false);
+							} else {
+								create.setEnabled(true);
+							}
+						}
 					} else {
 						create.setEnabled(true);
 					}
 				}
-			}else{
-				create.setEnabled(true);
-			}
-			}
 			}
 
 		},
@@ -192,7 +192,7 @@ sap.ui.define([
 					actions: ["Yes", "No"],
 					emphasizedAction: "Yes",
 					onClose: function (sAction) {
-						if(sAction === "Yes"){
+						if (sAction === "Yes") {
 							that.navigateToContractManagement();
 						}
 					},
@@ -201,10 +201,10 @@ sap.ui.define([
 			}
 		},
 
-		navigateToContractManagement: function(){
+		navigateToContractManagement: function () {
 			var oCNCData = this.getView().getBindingContext().getObject();
-			if(oCNCData.vbeln){
-				var fixedURL = "#ContractV4-manage&/xCGDCxC_ContractManagement_HD(Vbeln='" + oCNCData.vbeln +"',DraftUUID=00000000-0000-0000-0000-000000000000,IsActiveEntity=true)"
+			if (oCNCData.vbeln) {
+				var fixedURL = "#ContractV4-manage&/xCGDCxC_ContractManagement_HD(Vbeln='" + oCNCData.vbeln + "',DraftUUID=00000000-0000-0000-0000-000000000000,IsActiveEntity=true)"
 				window.location.href = window.location.href.split('#')[0] + fixedURL;
 			}
 		},
@@ -360,9 +360,12 @@ sap.ui.define([
 								for (let j = 0; j < aRequiredFields.length; j++) {
 									if (aAllSmartfield[i].getDataProperty().property.name == aRequiredFields[j]) {
 										aAllSmartfield[i].setVisible(true);
-										if (aAllSmartfield[i].getDataProperty().property.name == 'vbeln' && !aAllSmartfield[i].getValue()) {
+										if (aAllSmartfield[i].getDataProperty().property.name == 'vbeln' &&
+											!aAllSmartfield[i].getValue()) {
 											aAllSmartfield[i].setValue(that.object.Vbeln);
-										}
+										}else if(aAllSmartfield[i].getDataProperty().property.name == 'datbi' && !aAllSmartfield[i].getValue() && tableColumn[0].prced){
+											aAllSmartfield[i].setValue(new Date(9999, 11, 32));
+										}	
 										break;
 									}
 
