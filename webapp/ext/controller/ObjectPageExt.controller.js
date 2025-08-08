@@ -204,7 +204,7 @@ sap.ui.define([
 		navigateToContractManagement: function () {
 			var oCNCData = this.getView().getBindingContext().getObject();
 			if (oCNCData.vbeln) {
-				var fixedURL = "#ContractV4-manage&/xCGDCxC_ContractManagement_HD(Vbeln='" + oCNCData.vbeln + "',DraftUUID=00000000-0000-0000-0000-000000000000,IsActiveEntity=true)"
+				var fixedURL = "#cgdccontractmanagement-manage&/xCGDCxC_ContractManagement_HD(Vbeln='" + oCNCData.vbeln + "',DraftUUID=00000000-0000-0000-0000-000000000000,IsActiveEntity=true)"
 				window.location.href = window.location.href.split('#')[0] + fixedURL;
 			}
 		},
