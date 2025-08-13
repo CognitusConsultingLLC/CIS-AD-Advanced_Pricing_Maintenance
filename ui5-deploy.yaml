@@ -21,6 +21,6 @@ builder:
           name: /CGDC/FR_ADVPRCING
           description: Fields Visibilites
           package: /CGDC/GC02_T3
-          transport: XD3K901802
+          transport: XD3K901905
         exclude:
           - /test/

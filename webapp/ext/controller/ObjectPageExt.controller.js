@@ -187,8 +187,8 @@ sap.ui.define([
 		onPressCustomEdit: function (oEvent) {
 			var that = this;
 			var oCNCData = this.getView().getBindingContext().getObject();
-			if (oCNCData.ModActive && !oCNCData.CNCEdit) {
-				MessageBox.information("Modification tracking is active for this contract. To update the condition catalog, Contract must be in change mode. Do you want to navigate to Contract Management?", {
+			if (oCNCData.ModActive && !oCNCData.CNCEdit && !oCNCData.ConEdit) {
+				MessageBox.information(oCNCData.LongMessage, {
 					actions: ["Yes", "No"],
 					emphasizedAction: "Yes",
 					onClose: function (sAction) {
@@ -196,6 +196,10 @@ sap.ui.define([
 							that.navigateToContractManagement();
 						}
 					},
+					dependentOn: this.getView()
+				});
+			}else if(oCNCData.ModActive && !oCNCData.CNCEdit && oCNCData.ConEdit){
+				MessageBox.information(oCNCData.LongMessage,{
 					dependentOn: this.getView()
 				});
 			}
