@@ -605,6 +605,32 @@ sap.ui.define([
 			});
 
 
+		},
+
+		onClickColorLegend:function(oEvent){
+			var oButton = oEvent.getSource(),
+				oView = this.getView();
+
+			if (!this._pPopoverFooter) {
+				this._pPopoverFooter = Fragment.load({
+					id: oView.getId(),
+					name: "cgdc.pricing.maint.ext.fragments.ColorLegend",
+					controller: this
+				}).then(function (oPopover) {
+					oView.addDependent(oPopover);
+					// oPopover.bindElement("/ProductCollection/0");
+					return oPopover;
+				});
+			}
+			this._pPopoverFooter.then(function (oPopover) {
+				oPopover.openBy(oButton);
+			});
+		},
+
+		handleCloseButton:function(){
+			this._pPopoverFooter.then(function (oPopover) {
+				oPopover.close();
+			});
 		}
 
 	});
